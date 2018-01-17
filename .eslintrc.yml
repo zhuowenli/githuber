@@ -1,0 +1,52 @@
+root: true
+
+env:
+  es6: true
+  browser: true
+  jest: true
+
+parser: 'babel-eslint'
+
+globals:
+  $: true
+
+extends:
+  - airbnb-base
+  - vue
+
+parserOptions:
+  sourceType: module
+
+rules:
+  indent:
+    - error
+    - 4
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - single
+  semi:
+    - error
+    - always
+  camelcase: 0
+  strict: 0
+  max-len: [1, { code: 120 }]
+  global-require: 0
+  func-names: 0
+  no-console: 0
+  arrow-parens: 0
+  comma-dangle: ['error', 'only-multiline']
+  no-param-reassign: 0
+  space-before-function-paren: 0
+  prefer-destructuring: 0
+  prefer-promise-reject-errors: 0
+  import/no-unresolved: [0, {commonjs: true, amd: true}]
+  import/no-extraneous-dependencies: 0
+  import/no-absolute-path: 0
+  import/prefer-default-export: 0
+  import/extensions: ['off', 'always', {
+    'js': 'never',
+    'vue': 'never'
+  }]
