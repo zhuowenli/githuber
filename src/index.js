@@ -5,10 +5,14 @@
  */
 
 import Vue from 'vue/dist/vue';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 import store from './vuex';
 import './stylesheet/index.sass';
 import main from './views/main.vue';
+
+Vue.use(ElementUI);
 
 export default new Vue({
     store,

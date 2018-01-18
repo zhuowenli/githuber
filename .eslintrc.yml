@@ -5,17 +5,16 @@ env:
   browser: true
   jest: true
 
-parser: 'babel-eslint'
-
 globals:
   $: true
 
 extends:
   - airbnb-base
-  - vue
+  - plugin:vue/base
 
 parserOptions:
   sourceType: module
+  parser: 'babel-eslint'
 
 rules:
   indent:
