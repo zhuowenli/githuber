@@ -1,5 +1,5 @@
 # githuber
-为 Githuber 每日发现优质内容。
+这是一个帮助 Githuber 每日发现优质内容的 Chrome 主页拓展。
 
 ## 本地开发
 
@@ -25,9 +25,9 @@ yarn dev
     - Yahoo
     - 附加搜索引擎（用%s代替查询参数）
     - 搜索联想
-- [ ] 推荐
-    - Discover repositories
-    - Trending，data range：Today、This week、This month，language range
+- [ ] 内容推荐
+    - GitHub Discover repositories
+    - GitHub Trending (data range：Today、This week、This month，language range)
 	- 其他平台（待定）
         - v2ex
         - Dribbble
@@ -51,3 +51,6 @@ yarn dev
     - 账号（登录，注册）
 - [ ] 书签收藏（快捷入口）
 - [ ] 最常访问（待定）
+
+## License
+Githuber © [zhuowenli](https://github.com/zhuowenli), Released under the [Mozilla Public License 2.0](./LICENSE) License.<br> See the included [LICENSE](./LICENSE) file for more details.
