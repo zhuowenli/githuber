@@ -24,6 +24,7 @@ yarn dev
     - Bing
     - Yahoo
     - 附加搜索引擎（用%s代替查询参数）
+    - 搜索联想
 - [ ] 推荐
     - Discover repositories
     - Trending，data range：Today、This week、This month，language range
