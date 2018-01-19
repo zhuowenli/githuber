@@ -11,6 +11,6 @@ yarn
 yarn dev
 ```
 
-打开 localhost:4000 访问
+打开 localhost:4000 访问页面。
 
-> 本地开发需要安装扩展程序 [Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)，解决开发时 CORS 跨域问题
+> 本地开发需要安装扩展程序 [Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)，解决开发时的 CORS 跨域问题

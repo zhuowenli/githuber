@@ -117,7 +117,12 @@ export default {
             }
 
             if (search) {
-                window.location.href = search.replace('%s', this.searchText);
+                if (/%s/.test(search)) {
+                    window.location.href = search.replace('%s', this.searchText);
+                } else {
+                    window.location.href = search + this.searchText;
+                }
+
                 return search;
             }
 

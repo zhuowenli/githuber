@@ -67,7 +67,16 @@ export const actions = {
      * @returns {Promise}
      */
     fetchCustomSearchEngine({ commit }) {
-        commit(types.RECEIVE_SEARCH_ENGINES, []);
+        commit(types.RECEIVE_SEARCH_ENGINES, [
+            {
+                name: 'GitHub',
+                url: 'https://github.com/search?utf8=✓&q=%s'
+            },
+            {
+                name: 'Stack Overflow',
+                url: 'http://stackoverflow.com/search?q=%s'
+            }
+        ]);
     }
 };
 
@@ -91,15 +100,6 @@ export default {
     state: {
         suggestions: [],
         superpages: [],
-        customSearchEngines: [
-            {
-                name: 'GitHub',
-                url: 'https://github.com/search?utf8=✓&q=%s'
-            },
-            {
-                name: 'Stack Overflow',
-                url: 'http://stackoverflow.com/search?q=%s'
-            }
-        ],
+        customSearchEngines: [],
     },
 };
