@@ -17,7 +17,7 @@ module.exports = (options, req) => ({
         static: 'static/[name]-[hash].[ext]'
     },
     html: {
-        title: 'Githuber',
+        title: 'New Tabs',
         template: 'index.html'
     },
     resolve: true,

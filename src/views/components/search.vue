@@ -9,6 +9,7 @@
             )
 
         el-autocomplete(
+            autofocus
             clearable
             :fetch-suggestions="onQuerySearchAction"
             :placeholder="searchEngine.name"

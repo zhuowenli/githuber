@@ -24,7 +24,7 @@ export const actions = {
      * @returns {Promise}
      */
     async fetchSuggestion ({ commit }, wd) {
-        const data = await jsonp('//suggestion.baidu.com/su', { wd }).then(res => res.s);
+        const data = await jsonp('http://suggestion.baidu.com/su', { wd }).then(res => res.s);
         commit(types.RECEIVE_SUGGESTIONS, data);
         return data;
     },
@@ -37,7 +37,7 @@ export const actions = {
      * @returns {Promise}
      */
     async fetchSuperpage({ commit }, wd) {
-        let data = await jsonp('//nssug.baidu.com/su', { wd, prod: 'superpage' }).then(res => res.s);
+        let data = await jsonp('http://nssug.baidu.com/su', { wd, prod: 'superpage' }).then(res => res.s);
 
         data = data.map(item => {
             const obj = {};

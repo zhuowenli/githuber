@@ -7,9 +7,7 @@
 'use strict';
 
 import axios from 'axios';
-import JSONP from 'jsonp';
 import Promise from 'bluebird';
-import querystring from 'querystring';
 // import cookie from './cookie';
 
 // const auths = {};
@@ -43,7 +41,7 @@ export function fetch(query = {}) {
                 return Promise.reject(res);
             }
 
-            // console.log(res, data, metadata);
+            // console.log(res, data);
             // console.log('=========== FETCH END ===========');
             return data;
         })
@@ -127,16 +125,23 @@ export function put(url, data = {}, headers = {}) {
  * @returns {Promise}
  */
 export function jsonp(url, query = {}) {
-    return new Promise((resolve, reject) => {
-        const params = querystring.encode(query);
+    return fetch({
+        url,
+        data: {
+            ...query,
+            cb: 'callback',
+            t: (new Date()).getTime()
+        },
+        method: 'get',
+        responseType: 'text',
+        headers: {}
+    }).then(res => {
+        const data = {};
+        const callback = (item) => Object.assign(data, item);
 
-        JSONP(`${url}?${params}`, { param: 'cb' }, (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(data);
-            }
-        });
+        eval(res);
+
+        return data;
     });
 }
 

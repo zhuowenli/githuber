@@ -31,8 +31,10 @@ rules:
     - always
   camelcase: 0
   strict: 0
+  no-eval: 0
   max-len: [1, { code: 120 }]
   global-require: 0
+  no-unused-vars: 1
   func-names: 0
   no-console: 0
   arrow-parens: 0

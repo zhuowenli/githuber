@@ -10,10 +10,20 @@
         "newtab": "./index.html"
     },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+	"externally_connectable": {
+		"matches": ["*://*.baidu.com/*"]
+	},
     "permissions": [
-        "http://*/*",
-        "https://*/*",
-        "file:///*",
-        "activeTab"
-    ]
+        "http://*/",
+        "https://*/",
+        "storage",
+        "activeTab",
+        "cookies",
+        "webRequest",
+        "webNavigation",
+        "tabs"
+    ],
+	"offline_enabled": true,
+	"update_url": "https://clients2.google.com/service/update2/crx",
+	"minimum_chrome_version": "36"
 }
