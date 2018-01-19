@@ -12,6 +12,7 @@ import * as types from '../types';
 export const getters = {
     suggestions: state => state.suggestions,
     superpages: state => state.superpages,
+    customSearchEngines: state => state.customSearchEngines,
 };
 
 export const actions = {
@@ -57,6 +58,16 @@ export const actions = {
 
         commit(types.RECEIVE_SUPERPAGES, data);
         return data;
+    },
+
+    /**
+     * 获取自定义搜索引擎
+     *
+     * @param {any} { commit } state
+     * @returns {Promise}
+     */
+    fetchCustomSearchEngine({ commit }) {
+        commit(types.RECEIVE_SEARCH_ENGINES, []);
     }
 };
 
@@ -67,6 +78,9 @@ export const mutations = {
     [types.RECEIVE_SUPERPAGES](state, data) {
         state.superpages = data;
     },
+    [types.RECEIVE_SEARCH_ENGINES](state, data) {
+        state.customSearchEngines = data;
+    }
 };
 
 export default {
@@ -77,5 +91,15 @@ export default {
     state: {
         suggestions: [],
         superpages: [],
+        customSearchEngines: [
+            {
+                name: 'GitHub',
+                url: 'https://github.com/search?utf8=✓&q=%s'
+            },
+            {
+                name: 'Stack Overflow',
+                url: 'http://stackoverflow.com/search?q=%s'
+            }
+        ],
     },
 };

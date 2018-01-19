@@ -10,6 +10,7 @@
 // ===========================
 export const RECEIVE_SUGGESTIONS = 'RECEIVE_SUGGESTIONS';
 export const RECEIVE_SUPERPAGES = 'RECEIVE_SUPERPAGES';
+export const RECEIVE_SEARCH_ENGINES = 'RECEIVE_SEARCH_ENGINES';
 
 // GitHub
 // ===========================
