@@ -53,4 +53,4 @@ yarn dev
 - [ ] 最常访问（待定）
 
 ## License
-Githuber © [zhuowenli](https://github.com/zhuowenli), Released under the [Mozilla Public License 2.0](./LICENSE) License.<br> See the included [LICENSE](./LICENSE) file for more details.
+Githuber © [zhuowenli](https://github.com/zhuowenli), Released under the [Mozilla Public License 2.0](./LICENSE) License.
