@@ -19,6 +19,11 @@ yarn dev
 ## TODO LIST
 
 - [x] 搜索引擎
+    - Google
+    - Baidu
+    - Bing
+    - Yahoo
+    - 附加搜索引擎（用%s代替查询参数）
 - [ ] 推荐
     - Discover repositories
     - Trending，data range：Today、This week、This month，language range
