@@ -1,0 +1,46 @@
+/*
+ * @Author: 卓文理
+ * @Email: 531840344@qq.com
+ * @Date: 2018-01-20 21:28:46
+ */
+
+@import '../../stylesheet/common.sass'
+
+.bookmark
+    padding: 10px
+    height: 100%
+    overflow: hidden
+    &__item
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 100%
+        height: 60px
+        margin-bottom: 10px
+        cursor: pointer
+        border-bottom: 1px solid #f2f2f2
+        &:last-child
+            border-bottom: 0
+        .logo
+            display: flex
+            align-items: center
+            justify-content: center
+            width: 40px
+            height: 40px
+            img
+                display: inline-block
+                width: 32px
+
+        .name
+            display: flex
+            height: 40px
+            line-height: 20px
+            align-items: center
+            justify-content: center
+            flex: 1
+            padding-left: 10px
+            @include max-text(2)
+        .el-icon-plus
+            font-size: 20px
+            color: $gray
+

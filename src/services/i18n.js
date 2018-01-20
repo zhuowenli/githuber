@@ -19,5 +19,9 @@ export default {
     Sports: '运动',
     SearchFrom: '搜索自',
     AdditionalSearchEngine: '附加搜索引擎',
+    openSearchInNewTap: '在新标签页中搜索',
+    openLinkInNewTap: '在新标签页中打开链接',
+    openBookmarkInNewTap: '在新标签页中打开书签',
+    showBookmark: '显示书签栏',
 };
 

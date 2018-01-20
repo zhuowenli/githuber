@@ -11,18 +11,18 @@ export default {
         const item = window.localStorage.getItem(key);
 
         if (item) {
-            return Promise.resolve(JSON.parse(item));
+            return JSON.parse(item);
         }
 
-        return Promise.resolve();
+        return null;
     },
     setItem(key, val) {
         window.localStorage.setItem(key, JSON.stringify(val));
-        return Promise.resolve();
+        return key;
     },
     removeItem(key) {
         window.localStorage.removeItem(key);
-        return Promise.resolve();
+        return key;
     }
 };
 

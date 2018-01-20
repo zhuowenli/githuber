@@ -34,7 +34,7 @@ export const actions = {
                 (since === 'monthly' && data.toMonth === toMonth)
             )
         ) {
-            commit(types.FETCH_GITHUB_TRENDINGS, data.data);
+            commit(types.RECEIVE_GITHUB_TRENDINGS, data.data);
             return data.data;
         }
 
@@ -46,7 +46,7 @@ export const actions = {
             return item;
         });
 
-        commit(types.FETCH_GITHUB_TRENDINGS, data);
+        commit(types.RECEIVE_GITHUB_TRENDINGS, data);
 
         storage.setItem(JSON.stringify(query), {
             data,
@@ -61,7 +61,7 @@ export const actions = {
 };
 
 export const mutations = {
-    [types.FETCH_GITHUB_TRENDINGS](state, data) {
+    [types.RECEIVE_GITHUB_TRENDINGS](state, data) {
         state.trendings = data;
     },
 };

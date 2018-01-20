@@ -37,7 +37,7 @@
                     :width="340"
                     :height="224"
                 )
-                    el-card.trending(@click.native="onPageTapAction(item)")
+                    el-card.trending(@click.native="onLinkTapAction(item)")
                         .trending__title {{item.repo}}
                         .trending__desc {{item.desc}}
                         .trending__meta
@@ -93,7 +93,7 @@ export default {
         onReflowedAction() {
             this.$refs.scrollView.refresh();
         },
-        onPageTapAction(item) {
+        onLinkTapAction(item) {
             this.$emit('tap', item.repo_link);
         }
     },

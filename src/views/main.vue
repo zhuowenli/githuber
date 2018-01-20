@@ -1,6 +1,7 @@
 <template lang="pug">
     .main
         .main__aside
+            bookmark(@tap="onlinkTapAction")
         .main__content
             .main__header
                 search-box(
@@ -13,43 +14,49 @@
                 github-trending(
                     :lang="config.lang"
                     :since="config.since"
-                    @tap="onPageTapAction"
+                    @tap="onlinkTapAction"
                     @update="onConfigUpdateAction"
                 )
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+// import { mapGetters, mapActions } from 'vuex';
 import searchBox from './components/search.vue';
 import githubTrending from './components/github-trending.vue';
+import bookmark from './components/bookmark.vue';
 import storage from '../services/storage';
+import config from '../services/config';
 
 export default {
     name: 'hero',
-    components: { searchBox, githubTrending },
+    components: { searchBox, githubTrending, bookmark },
     data() {
         return {
-            config: {}
+            config: storage.getItem('GITHUBER_CONFIGURATION') || config
         };
     },
-    async mounted() {
-        this.config = await storage.getItem('GITHUBER_CONFIGURATION') || {};
+    mounted() {
     },
     methods: {
+        // 搜索事件
         onSearchAction(url) {
-            window.open(url);
+            if (this.config.openSearchInNewTap) {
+                window.open(url);
+            } else {
+                window.location.href = url;
+            }
         },
-        onPageTapAction(url) {
-            window.open(url);
+        // 点击链接
+        onlinkTapAction(url) {
+            if (this.config.openLinkInNewTap) {
+                window.open(url);
+            } else {
+                window.location.href = url;
+            }
         },
         async onConfigUpdateAction(item) {
             if (typeof item === 'object') {
-                const data = await storage.getItem('GITHUBER_CONFIGURATION') || {};
-
-                storage.setItem('GITHUBER_CONFIGURATION', {
-                    ...data,
-                    ...item
-                });
+                storage.setItem('GITHUBER_CONFIGURATION', { ...this.config, ...item });
             }
         }
     },

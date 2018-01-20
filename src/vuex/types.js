@@ -14,5 +14,11 @@ export const RECEIVE_SEARCH_ENGINES = 'RECEIVE_SEARCH_ENGINES';
 
 // GitHub
 // ===========================
-export const FETCH_GITHUB_DATA = 'FETCH_GITHUB_DATA';
-export const FETCH_GITHUB_TRENDINGS = 'FETCH_GITHUB_TRENDINGS';
+export const RECEIVE_GITHUB_TRENDINGS = 'RECEIVE_GITHUB_TRENDINGS';
+
+// 书签
+// ===========================
+export const RECEIVE_BOOKMARKS = 'RECEIVE_BOOKMARKS';
+export const SAVE_BOOKMARKS = 'SAVE_BOOKMARKS';
+export const UPDATE_BOOKMARKS = 'UPDATE_BOOKMARKS';
+

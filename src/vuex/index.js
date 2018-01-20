@@ -11,6 +11,7 @@ import Vuex from 'vuex';
 
 import search from './modules/search';
 import github from './modules/github';
+import bookmark from './modules/bookmark';
 
 Vue.use(Vuex);
 
@@ -24,6 +25,7 @@ export default new Vuex.Store({
     modules: {
         search,
         github,
+        bookmark,
     },
     strict: process.env.NODE_ENV !== 'production'
 });
