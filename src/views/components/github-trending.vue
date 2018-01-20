@@ -62,13 +62,17 @@ export default {
         Waterfall,
         WaterfallSlot
     },
+    props: {
+        lang: String,
+        since: String,
+    },
     data() {
         return {
             languages,
             loading: false,
             query: {
-                lang: '',
-                since: 'weekly'
+                lang: this.lang || '',
+                since: this.since || 'weekly'
             }
         };
     },
@@ -83,13 +87,13 @@ export default {
         async init() {
             this.loading = true;
             await this.fetchTrending(this.query);
+            this.$emit('update', this.query);
             this.loading = false;
         },
         onReflowedAction() {
             this.$refs.scrollView.refresh();
         },
         onPageTapAction(item) {
-            console.log(item.repo_link);
             this.$emit('tap', item.repo_link);
         }
     },
@@ -97,7 +101,13 @@ export default {
         query: {
             handler: 'init',
             deep: true,
-        }
+        },
+        lang(val) {
+            this.query.lang = val;
+        },
+        since(val) {
+            this.query.since = val;
+        },
     }
 };
 </script>

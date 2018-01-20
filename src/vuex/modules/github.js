@@ -18,7 +18,6 @@ const toDay = time.getDate();
 const toWeek = Math.ceil((((new Date() - year) / 86400000) + year.getDay() + 1) / 7);
 const toMonth = time.getMonth() + 1;
 
-console.log(toDay, toWeek, toMonth);
 export const getters = {
     trendings: state => state.trendings,
 };
@@ -28,7 +27,13 @@ export const actions = {
         const { since } = query;
         let data = await storage.getItem(JSON.stringify(query));
 
-        if (data && (since === data.since)) {
+        if (
+            data && (
+                (since === 'daily' && data.toDay === toDay) ||
+                (since === 'weekly' && data.toWeek === toWeek) ||
+                (since === 'monthly' && data.toMonth === toMonth)
+            )
+        ) {
             commit(types.FETCH_GITHUB_TRENDINGS, data.data);
             return data.data;
         }
@@ -42,7 +47,13 @@ export const actions = {
         });
 
         commit(types.FETCH_GITHUB_TRENDINGS, data);
-        storage.setItem(JSON.stringify(query), { data, since });
+
+        storage.setItem(JSON.stringify(query), {
+            data,
+            toDay,
+            toWeek,
+            toMonth
+        });
 
         return data;
     },

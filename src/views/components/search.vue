@@ -46,12 +46,16 @@ import i18n from '../../services/i18n';
 
 export default {
     name: 'search-box',
+    props: {
+        engineName: String,
+        engineNavName: String,
+    },
     data() {
         return {
             searchEngines,
             searchText: '',
-            activeEngineName: 'google',
-            activeEngineNavName: 'Web',
+            activeEngineName: this.engineName || 'google',
+            activeEngineNavName: this.engineNavName || 'Web',
         };
     },
     computed: {
@@ -154,6 +158,20 @@ export default {
          */
         onSearchNameTapAction({ name }) {
             this.activeEngineNavName = name;
+        },
+    },
+    watch: {
+        activeEngineName(val) {
+            this.$emit('update', { engineName: val });
+        },
+        activeEngineNavName(val) {
+            this.$emit('update', { engineNavName: val });
+        },
+        engineName(val) {
+            this.activeEngineName = val;
+        },
+        engineNavName(val) {
+            this.activeEngineNavName = val;
         },
     }
 };
