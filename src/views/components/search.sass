@@ -1,0 +1,102 @@
+/*
+ * @Author: 卓文理
+ * @Email: 531840344@qq.com
+ * @Date: 2018-01-19 18:16:25
+ */
+
+@import '../../stylesheet/common.sass'
+
+.search
+    display: block
+    width: 100%
+    max-width: 540px
+    padding: 10px 20px 20px
+    background: #ffffff
+
+    .el-autocomplete
+        display: block
+        width: 100%
+        .el-input
+            &-group__append
+                border-left: 0
+        .el-button
+            background: #ffffff
+
+    .el-input
+        &--prefix .el-input__inner
+            padding-left: 46px
+        &__prefix
+            left: 0
+        &-group__append
+            position: absolute
+            right: 1px
+            top: 1px
+            bottom: 1px
+            display: block
+            border: 0
+            background: #ffffff
+            width: auto
+            padding: 0
+            .el-button
+                margin: 0
+                border: 0
+                padding-left: 16px
+                padding-right: 16px
+
+    .icon-search
+        display: inline-block
+        width: 46px
+        height: 40px
+        outline: 0
+        cursor: pointer
+        @each $icon in google, baidu, bing, yahoo
+            &--#{$icon}
+                background: url('../../assets/search-#{$icon}.png') center center no-repeat;
+                background-size: 30px 30px
+    .el-tabs
+        // padding-top: 10px
+        padding-left: 20px
+        &__item
+            text-align: center
+        &__header
+            margin-bottom: 0
+        &__nav-wrap:after
+            display: none
+
+
+.el-autocomplete-suggestion
+    cursor: pointer
+    li
+        padding: 0
+        &:hover
+            background: transparent
+
+    .suggestion
+        & > div
+            padding: 5px 20px
+        &__search
+            color: $orange
+            &:hover
+                background: $orange
+                color: #ffffff
+        &__url
+            color: $blue
+            &:hover
+                background: $blue
+                color: #ffffff
+        &__word
+            color: $green
+            &:hover
+                background: $green
+                color: #ffffff
+
+    .highlighted .suggestion
+        &__search
+            background: $orange
+            color: #ffffff
+        &__url
+            background: $blue
+            color: #ffffff
+        &__word
+            background: $green
+            color: #ffffff

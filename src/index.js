@@ -7,11 +7,14 @@
 import Vue from 'vue/dist/vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import IScrollView from 'vue-iscroll-view';
+import IScroll from 'iscroll';
 
 import store from './vuex';
 import './stylesheet/index.sass';
 import main from './views/main.vue';
 
+Vue.use(IScrollView, IScroll);
 Vue.use(ElementUI);
 
 export default new Vue({

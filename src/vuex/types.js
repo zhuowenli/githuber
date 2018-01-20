@@ -15,3 +15,4 @@ export const RECEIVE_SEARCH_ENGINES = 'RECEIVE_SEARCH_ENGINES';
 // GitHub
 // ===========================
 export const FETCH_GITHUB_DATA = 'FETCH_GITHUB_DATA';
+export const FETCH_GITHUB_TRENDINGS = 'FETCH_GITHUB_TRENDINGS';

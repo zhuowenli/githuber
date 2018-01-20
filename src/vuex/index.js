@@ -10,6 +10,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import search from './modules/search';
+import github from './modules/github';
 
 Vue.use(Vuex);
 
@@ -22,6 +23,7 @@ export default new Vuex.Store({
     mutations,
     modules: {
         search,
+        github,
     },
     strict: process.env.NODE_ENV !== 'production'
 });

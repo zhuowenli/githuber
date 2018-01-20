@@ -1,42 +1,42 @@
 <template lang="pug">
-    el-form.search(@submit.prevent.native="onSearchAction")
-        el-tabs(v-model="activeEngineNavName" @tab-click="onSearchNameTapAction")
-            el-tab-pane(
-                v-for="item in searchEngine.engines"
-                :label="item.name"
-                :name="item.value"
-                :key="item.name"
+    .search
+        el-form(@submit.prevent.native="onSearchAction")
+            el-tabs(v-model="activeEngineNavName" @tab-click="onSearchNameTapAction")
+                el-tab-pane(
+                    v-for="item in searchEngine.engines"
+                    :label="item.name"
+                    :name="item.value"
+                    :key="item.name"
+                )
+            el-autocomplete(
+                clearable
+                :fetch-suggestions="onQuerySearchAction"
+                :placeholder="searchEngine.name"
+                :trigger-on-focus="false"
+                v-model="searchText"
+                @select="onSearchAction"
             )
+                el-dropdown(
+                    slot="prefix"
+                    trigger="click"
+                    placement="top-start"
+                    @command="onEngineChangeAction"
+                )
+                    i.icon-search(:class="`icon-search--${activeEngineName}`")
+                    el-dropdown-menu(slot="dropdown")
+                        el-dropdown-item(
+                            v-for="item in searchEngines"
+                            :key="item.valuw"
+                            :command="item"
+                        ) {{item.name}}
 
-        el-autocomplete(
-            autofocus
-            clearable
-            :fetch-suggestions="onQuerySearchAction"
-            :placeholder="searchEngine.name"
-            :trigger-on-focus="false"
-            v-model="searchText"
-            @select="onSearchAction"
-        )
-            el-dropdown(
-                slot="prefix"
-                trigger="click"
-                placement="top-start"
-                @command="onEngineChangeAction"
-            )
-                i.icon-search(:class="`icon-search--${activeEngineName}`")
-                el-dropdown-menu(slot="dropdown")
-                    el-dropdown-item(
-                        v-for="item in searchEngines"
-                        :key="item.valuw"
-                        :command="item"
-                    ) {{item.name}}
+                .suggestion(slot-scope="props")
+                    .suggestion__search(v-if="props.item.search") {{props.item.name}}
+                    .suggestion__url(v-else-if="props.item.url") {{props.item.name}}
+                    .suggestion__word(v-else) {{props.item.name}}
 
-            .suggestion(slot-scope="props")
-                .suggestion__search(v-if="props.item.search") {{props.item.name}}
-                .suggestion__url(v-else-if="props.item.url") {{props.item.name}}
-                .suggestion__word(v-else) {{props.item.name}}
+                el-button(slot="append" icon="el-icon-search" @click="onSearchAction")
 
-            el-button(slot="append" icon="el-icon-search")
 </template>
 
 <script>
@@ -118,25 +118,21 @@ export default {
 
             if (search) {
                 if (/%s/.test(search)) {
-                    window.location.href = search.replace('%s', this.searchText);
-                } else {
-                    window.location.href = search + this.searchText;
+                    return this.$emit('search', search.replace('%s', this.searchText));
                 }
 
-                return search;
+                return this.$emit('search', search + this.searchText);
             }
 
             if (url) {
-                window.location.href = url;
-                return url;
+                return this.$emit('search', url);
             }
 
             if (name) {
                 this.searchText = name;
             }
 
-            window.location.href = `${this.searchEngineNav.url}${this.searchText}`;
-            return true;
+            return this.$emit('search', `${this.searchEngineNav.url}${this.searchText}`);
         },
 
         /**
@@ -164,65 +160,5 @@ export default {
 </script>
 
 <style lang="sass">
-    @import '../../stylesheet/common.sass'
-
-    .search
-        max-width: 560px
-        width: 100%
-        margin: 0 auto
-        .el-autocomplete
-            display: block
-            width: 100%
-
-        .el-input--prefix .el-input__inner
-            padding-left: 40px
-        .el-input__prefix
-            left: 0
-        .icon-search
-            display: inline-block
-            width: 40px
-            height: 40px
-            outline: 0
-            cursor: pointer
-            @each $icon in google, baidu, bing, yahoo
-                &--#{$icon}
-                    background: url('../../assets/search-#{$icon}.png') center center no-repeat;
-                    background-size: 30px 30px
-
-    .el-autocomplete-suggestion
-        cursor: pointer
-        li
-            padding: 0
-            &:hover
-                background: transparent
-
-        .suggestion
-            & > div
-                padding: 5px 20px
-            &__search
-                color: $orange
-                &:hover
-                    background: $orange
-                    color: #ffffff
-            &__url
-                color: $blue
-                &:hover
-                    background: $blue
-                    color: #ffffff
-            &__word
-                color: $green
-                &:hover
-                    background: $green
-                    color: #ffffff
-
-        .highlighted .suggestion
-            &__search
-                background: $orange
-                color: #ffffff
-            &__url
-                background: $blue
-                color: #ffffff
-            &__word
-                background: $green
-                color: #ffffff
+    @import './search.sass'
 </style>

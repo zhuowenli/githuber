@@ -14,11 +14,14 @@
     "axios": "^0.17.1",
     "bluebird": "^3.5.1",
     "element-ui": "^2.0.11",
+    "iscroll": "^5.2.0",
     "jquery": "^3.2.1",
     "jsonp": "^0.2.1",
     "normalize.css": "^7.0.0",
     "querystring": "^0.2.0",
     "vue": "^2.5.13",
+    "vue-iscroll-view": "^1.0.3",
+    "vue-waterfall": "^1.0.6",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

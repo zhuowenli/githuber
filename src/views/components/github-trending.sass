@@ -1,0 +1,89 @@
+/*
+ * @Author: 卓文理
+ * @Email: 531840344@qq.com
+ * @Date: 2018-01-20 15:33:21
+ */
+
+@import '../../stylesheet/common.sass'
+
+.github-trending
+    touch-action: none
+    overflow: hidden
+    height: 100%
+
+    &__title
+        padding: 30px 0
+        text-align: center
+        h1
+            margin: 0
+            line-height: 60px
+            font-size: 40px
+            color: $fontColor
+            font-weight: normal
+        p
+            margin: 0
+            line-height: 24px
+            font-size: 16px
+            color: $gray
+
+        .el-select
+            margin: 5px
+
+    .scroller
+        padding: 10px
+
+    .vue-waterfall
+        &-slot
+            padding: 10px
+
+    .trending
+        display: block
+        cursor: pointer
+        box-shadow: none
+        .el-card__body
+            padding: 16px 20px
+        &__title
+            color: $darkBlue
+            font-size: 20px
+            line-height: 30px
+            margin-bottom: 8px
+            @include ellipsis
+        &__desc
+            height: 72px
+            font-size: 14px
+            line-height: 24px
+            color: $fontColor
+            @include max-text(3)
+        &__meta
+            display: flex
+            height: 24px
+            align-items: center
+            flex-direction: row
+            margin-top: 8px
+            font-size: 12px
+            margin-bottom: 6px
+            span
+                display: inline-block
+            .color
+                width: 12px
+                height: 12px
+                border-radius: 50%
+                margin-right: 3px
+            .lang
+                margin-right: 16px
+            .stars
+                margin-right: 16px
+        &__built
+            display: flex
+            height: 24px
+            align-items: center
+            flex-direction: row
+            font-size: 12px
+            img
+                display: inline-block
+                width: 20px
+                height: 20px
+                border-radius: 3px
+                margin-left: 4px
+
+

@@ -3883,6 +3883,10 @@ isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/isarray/download/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
 
+iscroll@^5.2.0:
+  version "5.2.0"
+  resolved "http://registry.npm.taobao.org/iscroll/download/iscroll-5.2.0.tgz#d513307088b5b25a4f893af474804468481829c8"
+
 isexe@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/isexe/download/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
@@ -6911,6 +6915,10 @@ vue-hot-reload-api@^2.2.0:
   version "2.2.4"
   resolved "http://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.2.4.tgz#683bd1d026c0d3b3c937d5875679e9a87ec6cd8f"
 
+vue-iscroll-view@^1.0.3:
+  version "1.0.3"
+  resolved "http://registry.npm.taobao.org/vue-iscroll-view/download/vue-iscroll-view-1.0.3.tgz#a4f8c1420fa8f2b3f2a28bffc8d895eeed77803e"
+
 vue-loader@^13.0.0:
   version "13.7.0"
   resolved "http://registry.npm.taobao.org/vue-loader/download/vue-loader-13.7.0.tgz#4d6a35b169c2a0a488842fb95c85052105fa9729"
@@ -6946,6 +6954,10 @@ vue-template-compiler@^2.3.3:
 vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "http://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
+
+vue-waterfall@^1.0.6:
+  version "1.0.6"
+  resolved "http://registry.npm.taobao.org/vue-waterfall/download/vue-waterfall-1.0.6.tgz#00324a8f97f449bf6f8cdebb4974b60cffac9eed"
 
 vue@^2.3.3, vue@^2.5.13:
   version "2.5.13"

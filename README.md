@@ -1,4 +1,5 @@
 # githuber
+
 这是一个帮助 Githuber 每日发现优质内容的 Chrome 主页拓展。
 
 ## 本地开发
@@ -25,7 +26,7 @@ yarn dev
     - Yahoo
     - 附加搜索引擎（用%s代替查询参数）
     - 搜索联想
-- [ ] 内容推荐
+- [x] 内容推荐
     - GitHub Discover repositories
     - GitHub Trending (data range：Today、This week、This month，language range)
 	- 其他平台（待定）

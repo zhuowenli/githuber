@@ -10,3 +10,15 @@ $red: #F56C6C;
 $blue: #409EFF;
 $gray: #909399;
 $fontColor: #303133;
+$darkBlue: #4285f4;
+
+@mixin ellipsis
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+
+@mixin max-text($num)
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $num;
+    overflow: hidden;
