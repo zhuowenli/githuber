@@ -5,8 +5,8 @@
         ref="scrollView"
     )
         .github-trending__title
-            h1 Trending
-            p See what the GitHub community is most excited about today.
+            //- h1 Trending
+            //- p See what the GitHub community is most excited about today.
 
             el-select(v-model="query.since")
                 el-option(label="daily" value="daily")
@@ -35,7 +35,7 @@
                     v-for="item in trendings"
                     :key="item.repo"
                     :width="340"
-                    :height="224"
+                    :height="240"
                 )
                     el-card.trending(@click.native="onLinkTapAction(item)")
                         .trending__title {{item.repo}}

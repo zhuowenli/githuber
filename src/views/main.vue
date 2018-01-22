@@ -10,6 +10,7 @@
                     @search="onSearchAction"
                     @update="onConfigUpdateAction"
                 )
+                .search-border(:class="config.engineName")
             .main__trending
                 github-trending(
                     :lang="config.lang"
@@ -56,7 +57,8 @@ export default {
         },
         async onConfigUpdateAction(item) {
             if (typeof item === 'object') {
-                storage.setItem('GITHUBER_CONFIGURATION', { ...this.config, ...item });
+                this.config = { ...this.config, ...item };
+                storage.setItem('GITHUBER_CONFIGURATION', this.config);
             }
         }
     },
