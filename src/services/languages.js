@@ -8,14 +8,44 @@
 
 export default [
     {
-        name: 'Mercury',
-        value: 'Mercury',
-        color: '#ff2b2b',
+        name: 'C++',
+        value: 'C++',
+        color: '#555555',
+    },
+    {
+        name: 'CSS',
+        value: 'CSS',
+        color: '#563d7c',
+    },
+    {
+        name: 'HTML',
+        value: 'HTML',
+        color: '#e44b23',
+    },
+    {
+        name: 'JavaScript',
+        value: 'JavaScript',
+        color: '#f1e05a',
+    },
+    {
+        name: 'Python',
+        value: 'Python',
+        color: '#3572A5',
+    },
+    {
+        name: 'Ruby',
+        value: 'Ruby',
+        color: '#701516',
     },
     {
         name: 'TypeScript',
         value: 'TypeScript',
         color: '#2b7489',
+    },
+    {
+        name: 'Mercury',
+        value: 'Mercury',
+        color: '#ff2b2b',
     },
     {
         name: 'PureBasic',
@@ -183,11 +213,6 @@ export default [
         color: '#0050b2',
     },
     {
-        name: 'Ruby',
-        value: 'Ruby',
-        color: '#701516',
-    },
-    {
         name: 'Component Pascal',
         value: 'Component-Pascal',
         color: '#b0ce4e',
@@ -338,11 +363,6 @@ export default [
         color: '#244776',
     },
     {
-        name: 'HTML',
-        value: 'HTML',
-        color: '#e44b23',
-    },
-    {
         name: 'Lex',
         value: 'Lex',
         color: '#DBCA00',
@@ -360,11 +380,6 @@ export default [
     {
         name: 'C',
         value: 'C',
-        color: '#555555',
-    },
-    {
-        name: 'C++',
-        value: 'C++',
         color: '#555555',
     },
     {
@@ -588,11 +603,6 @@ export default [
         color: '#178600',
     },
     {
-        name: 'CSS',
-        value: 'CSS',
-        color: '#563d7c',
-    },
-    {
         name: 'Emacs Lisp',
         value: 'Emacs-Lisp',
         color: '#c065db',
@@ -763,11 +773,6 @@ export default [
         color: '#499886',
     },
     {
-        name: 'JavaScript',
-        value: 'JavaScript',
-        color: '#f1e05a',
-    },
-    {
         name: 'VimL',
         value: 'VimL',
         color: '#199f4b',
@@ -826,11 +831,6 @@ export default [
         name: 'PLSQL',
         value: 'PLSQL',
         color: '#dad8d8',
-    },
-    {
-        name: 'Python',
-        value: 'Python',
-        color: '#3572A5',
     },
     {
         name: 'Max',

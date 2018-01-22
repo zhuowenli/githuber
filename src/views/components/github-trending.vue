@@ -9,9 +9,9 @@
             //- p See what the GitHub community is most excited about today.
 
             el-select(v-model="query.since")
-                el-option(label="daily" value="daily")
-                el-option(label="weekly" value="weekly")
-                el-option(label="monthly" value="monthly")
+                el-option(label="today" value="daily")
+                el-option(label="this week" value="weekly")
+                el-option(label="this month" value="monthly")
             el-select(v-model="query.lang" filterable)
                 el-option(value="" label="All Languages")
                 el-option(
