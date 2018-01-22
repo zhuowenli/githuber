@@ -10,9 +10,15 @@
     overflow: hidden
     &__aside
         position: relative
-        width: 300px
         background: #ffffff
         box-shadow: 0 0 3px 0 #ddd
+        transform: translateX(-100%)
+        transition: all 0.2s ease
+        width: 0
+        overflow: hidden
+        &.show
+            width: 300px
+            transform: translate3d(0, 0, 0)
     &__content
         flex: 1
         background: #eceff1
@@ -32,9 +38,53 @@
                 background: #4d00ae
             &.bing
                 background: #278483
+        .btn-setting
+            position: absolute
+            top: 10px
+            right: 10px
+            display: flex
+            width: 30px
+            height: 30px
+            align-items: center
+            justify-content: center
+            border: 0
+            background: #ffffff
+            cursor: pointer
+            outline: 0
+            z-index: 101
+        .oction-kebab-vertical
+            width: 3px
+            height: 16px
+        .oction-x
+            width: 12px
+            height: 16px
     &__trending
         position: relative
         width: 100%
         height: calc(100vh - 109px)
         z-index: 10
+    &__setting
+        position: fixed
+        top: 0
+        right: 0
+        bottom: 0
+        width: 300px
+        overflow: hidden
+        background: #ffffff
+        z-index: 100
+        box-shadow: 0 0 3px 0 #ddd
+        transform: translateX(100%)
+        transition: all 0.2s ease
+        &.show
+            transform: translate3d(0,0,0)
+        &-title
+            height: 44px
+            line-height: 44px
+            border-bottom: 1px solid #efefef
+            padding-left: 20px
+            font-size: 14px
+        &-content
+            padding: 10px
+            .el-form-item
+                margin-bottom: 0
 

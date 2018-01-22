@@ -1,6 +1,6 @@
 <template lang="pug">
     .main
-        .main__aside
+        .main__aside(:class="{show: config.showBookmark}")
             bookmark(@tap="onlinkTapAction")
         .main__content
             .main__header
@@ -11,17 +11,34 @@
                     @update="onConfigUpdateAction"
                 )
                 .search-border(:class="config.engineName")
+                button.btn-setting(@click="onToggleSettingAction")
+                    svg.octicon.oction-x(v-html="octicons.x.path" v-if="config.showSetting")
+                    svg.octicon.oction-kebab-vertical(v-html="octicons['kebab-vertical'].path" v-else)
             .main__trending
                 github-trending(
                     :lang="config.lang"
                     :since="config.since"
+                    :showBookmark="config.showBookmark"
                     @tap="onlinkTapAction"
                     @update="onConfigUpdateAction"
                 )
+        .main__setting(:class="{show: config.showSetting}")
+            .main__setting-title 设置
+            el-form.main__setting-content()
+                el-form-item(:label="i18n.openSearchInNewTap")
+                    el-switch(v-model="config.openSearchInNewTap")
+                el-form-item(:label="i18n.openLinkInNewTap")
+                    el-switch(v-model="config.openLinkInNewTap")
+                el-form-item(:label="i18n.openBookmarkInNewTap")
+                    el-switch(v-model="config.openBookmarkInNewTap")
+                el-form-item(:label="i18n.showBookmark")
+                    el-switch(v-model="config.showBookmark")
 </template>
 
 <script>
 // import { mapGetters, mapActions } from 'vuex';
+import octicons from 'octicons';
+import i18n from '../services/i18n';
 import searchBox from './components/search.vue';
 import githubTrending from './components/github-trending.vue';
 import bookmark from './components/bookmark.vue';
@@ -32,8 +49,11 @@ export default {
     name: 'hero',
     components: { searchBox, githubTrending, bookmark },
     data() {
+        const cfg = storage.getItem('GITHUBER_CONFIGURATION');
         return {
-            config: storage.getItem('GITHUBER_CONFIGURATION') || config
+            i18n,
+            octicons,
+            config: { ...config, ...cfg }
         };
     },
     mounted() {
@@ -47,6 +67,7 @@ export default {
                 window.location.href = url;
             }
         },
+
         // 点击链接
         onlinkTapAction(url) {
             if (this.config.openLinkInNewTap) {
@@ -55,13 +76,25 @@ export default {
                 window.location.href = url;
             }
         },
+
+        // 显示设置面板
+        onToggleSettingAction() {
+            this.config.showSetting = !this.config.showSetting;
+        },
+
+        // 更新配置
         async onConfigUpdateAction(item) {
-            if (typeof item === 'object') {
-                this.config = { ...this.config, ...item };
-                storage.setItem('GITHUBER_CONFIGURATION', this.config);
-            }
-        }
+            Object.assign(this.config, item);
+        },
     },
+    watch: {
+        config: {
+            handler() {
+                storage.setItem('GITHUBER_CONFIGURATION', this.config);
+            },
+            deep: true,
+        }
+    }
 };
 </script>
 

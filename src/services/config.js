@@ -11,6 +11,10 @@ export default {
     engineName: 'google',
     since: 'monthly',
     lang: '',
-    showBookmark: true
+    showBookmark: true,
+    openSearchInNewTap: false,
+    openLinkInNewTap: false,
+    openBookmarkInNewTap: false,
+    showSetting: false,
 };
 

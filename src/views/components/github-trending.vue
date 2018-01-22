@@ -9,9 +9,9 @@
             //- p See what the GitHub community is most excited about today.
 
             el-select(v-model="query.since")
-                el-option(label="today" value="daily")
-                el-option(label="this week" value="weekly")
-                el-option(label="this month" value="monthly")
+                el-option(label="Today" value="daily")
+                el-option(label="This week" value="weekly")
+                el-option(label="This month" value="monthly")
             el-select(v-model="query.lang" filterable)
                 el-option(value="" label="All Languages")
                 el-option(
@@ -68,6 +68,7 @@ export default {
     props: {
         lang: String,
         since: String,
+        showBookmark: Boolean
     },
     data() {
         return {
@@ -90,12 +91,15 @@ export default {
         ...mapActions('github', ['fetchTrending']),
         async init() {
             this.loading = true;
+
             await this.fetchTrending(this.query);
+
             this.$emit('update', this.query);
             this.loading = false;
         },
         onReflowedAction() {
             this.$refs.scrollView.refresh();
+            this.$refs.waterfall.$emit('reflow');
         },
         onLinkTapAction(item) {
             this.$emit('tap', item.repo_link);
@@ -112,6 +116,7 @@ export default {
         since(val) {
             this.query.since = val;
         },
+        showBookmark: 'onReflowedAction'
     }
 };
 </script>
