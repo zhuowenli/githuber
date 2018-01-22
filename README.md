@@ -18,6 +18,32 @@ yarn dev
 
 > 本地开发需要安装扩展程序 [Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)，解决开发时的 CORS 跨域问题
 
+## 服务器部署
+
+1. 添加配置文件
+
+```bash
+# 添加 .env 填写正确的配置信息
+cp .env.example .env
+```
+
+2. 创建数据库（默认用MySQL）
+
+```bash
+# 初始化数据表
+yarn db:migrate
+```
+
+3. 启动服务
+
+```bash
+# 开发环境
+yarn nodemon
+
+# 生产环境
+yarn start
+```
+
 
 ## TODO LIST
 
