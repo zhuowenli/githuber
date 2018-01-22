@@ -9,7 +9,7 @@
     "dev": "poi --dev",
     "build": "cross-env NODE_ENV=production poi build",
     "start": "pm2 start ./app/index.js --name 'githuber-server'",
-    "restart": "pm2 restart wwdg-server",
+    "restart": "pm2 restart githuber-server",
     "nodemon": "nodemon --watch app ./app/index.js",
     "db:seed": "sequelize db:seed:all",
     "db:seed:undo": "sequelize db:seed:undo:all",

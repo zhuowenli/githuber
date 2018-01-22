@@ -2,7 +2,7 @@
     .image-uploader()
         el-upload(
             drag
-            action="//up-z0.qiniu.com/"
+            action="http://up-z0.qiniu.com/"
             :show-file-list="false"
             :data="qiniu"
             :before-upload="handleBeforeUpload"

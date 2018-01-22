@@ -2,6 +2,8 @@
 
 这是一个帮助 Githuber 每日发现优质内容的 Chrome 主页拓展。
 
+![](./assets/page.png)
+
 ## 本地开发
 
 ```bash
@@ -57,6 +59,8 @@ yarn dev
     - [x] 框架搭建：koa/egg Sequelize
     - [ ] Trending 爬虫
     - [ ] GitHub 授权，根据用户ID获取 Discover（待定）
+- [ ] 上架
+
 
 ## License
 Githuber © [zhuowenli](https://github.com/zhuowenli), Released under the [Mozilla Public License 2.0](./LICENSE) License.
