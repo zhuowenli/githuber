@@ -52,6 +52,11 @@ yarn dev
     - 账号（登录，注册）
 - [ ] 书签收藏（快捷入口）
 - [ ] 最常访问（待定）
+- [ ] 服务端
+    - [ ] 框架搭建：koa/egg Sequelize
+    - [ ] Trending 爬虫
+    - [ ] 数据备份
+    - [ ] GitHub 授权，根据用户ID获取 Discover（待定）
 
 ## License
 Githuber © [zhuowenli](https://github.com/zhuowenli), Released under the [Mozilla Public License 2.0](./LICENSE) License.

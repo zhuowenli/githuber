@@ -43,7 +43,9 @@
                         .trending__meta
                             span.color(:style="{background: item.color}")
                             span.lang {{item.lang}}
+                            svg.octicon.octicon-star(v-html="octicons.star.path")
                             span.stars {{item.stars}}
+                            svg.octicon.octicon-repo-forked(v-html="octicons['repo-forked'].path")
                             span.forks {{item.forks}}
                         .trending__built
                             | Built by
@@ -51,6 +53,7 @@
 </template>
 
 <script>
+import octicons from 'octicons';
 import { mapGetters, mapActions } from 'vuex';
 import Waterfall from 'vue-waterfall/lib/waterfall';
 import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot';
@@ -69,6 +72,7 @@ export default {
     data() {
         return {
             languages,
+            octicons,
             loading: false,
             query: {
                 lang: this.lang || '',
