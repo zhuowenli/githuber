@@ -18,6 +18,8 @@ export default {
     Maps: '地图',
     Sports: '运动',
     SearchFrom: '搜索自',
+    NewTabs: '新标签页',
+    Bookmark: '书签',
     AdditionalSearchEngine: '附加搜索引擎',
     openSearchInNewTap: '在新标签页中搜索',
     openLinkInNewTap: '在新标签页中打开链接',

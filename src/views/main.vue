@@ -1,7 +1,7 @@
 <template lang="pug">
     .main
         .main__aside(:class="{show: config.showBookmark}")
-            bookmark(@tap="onlinkTapAction")
+            bookmark(@tap="onlinkTapAction" @add="onBookmarkAddAction")
         .main__content
             .main__header
                 search-box(
@@ -33,27 +33,41 @@
                     el-switch(v-model="config.openBookmarkInNewTap")
                 el-form-item(:label="i18n.showBookmark")
                     el-switch(v-model="config.showBookmark")
+
+        el-dialog(title="添加" :visible.sync="dialog.show")
+            el-form(:model="dialog.form")
+                el-form-item(label="名称")
+                    el-input(v-model="dialog.form.name")
+                el-form-item(label="网址")
+                    el-input(v-model="dialog.form.url")
+                el-form-item(label="头像")
+                    image-uploader(v-model="dialog.form.logo")
 </template>
 
 <script>
-// import { mapGetters, mapActions } from 'vuex';
 import octicons from 'octicons';
 import i18n from '../services/i18n';
 import searchBox from './components/search.vue';
 import githubTrending from './components/github-trending.vue';
+import imageUploader from '../components/image-uploader';
 import bookmark from './components/bookmark.vue';
 import storage from '../services/storage';
 import config from '../services/config';
 
 export default {
     name: 'hero',
-    components: { searchBox, githubTrending, bookmark },
+    components: { searchBox, githubTrending, bookmark, imageUploader },
     data() {
         const cfg = storage.getItem('GITHUBER_CONFIGURATION');
         return {
             i18n,
             octicons,
-            config: { ...config, ...cfg }
+            config: { ...config, ...cfg },
+            dialog: {
+                show: false,
+                form: {},
+            },
+            upload: {},
         };
     },
     mounted() {
@@ -85,6 +99,31 @@ export default {
         // 更新配置
         async onConfigUpdateAction(item) {
             Object.assign(this.config, item);
+        },
+
+        onBookmarkAddAction() {
+            this.dialog = {
+                show: true,
+                form: {
+                    name: '',
+                    url: '',
+                    logo: ''
+                },
+            };
+        },
+        onUploadSuccess(res, { response }) {
+            const link = response.link.replace('screenshot.net', 'i.screenshot.net');
+
+            this.dialog.form.logo = link;
+        },
+        onBeforeUploadAction(file) {
+            this.upload = {
+                filename: file.name,
+                app_lang: 'en',
+                title: '',
+                password: '',
+            };
+            return this.upload;
         },
     },
     watch: {

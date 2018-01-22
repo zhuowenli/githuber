@@ -8,6 +8,7 @@
 
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { post } from '../services/fetch';
 
 import search from './modules/search';
 import github from './modules/github';
@@ -15,7 +16,11 @@ import bookmark from './modules/bookmark';
 
 Vue.use(Vuex);
 
-export const actions = {};
+export const actions = {
+    async fetchQiniuToken(store, key) {
+        return post('http://admin.wwdgmedia.com/api/token/qiniu', { key });
+    }
+};
 export const getters = {};
 export const mutations = {};
 export default new Vuex.Store({

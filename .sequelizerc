@@ -1,0 +1,15 @@
+/*
+ * @Author: 卓文理
+ * @Email: 531840344@qq.com
+ * @Date: 2017-12-17 15:09:16
+ */
+
+'use strict';
+
+const path = require('path');
+
+module.exports = {
+    'config':  path.resolve('./__config__/database.js'),
+    'migrations-path': path.resolve('./__database__/migrations'),
+    'seeders-path': path.resolve('./__database__/seeds'),
+};

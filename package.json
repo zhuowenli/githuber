@@ -8,7 +8,16 @@
   "scripts": {
     "dev": "poi --dev",
     "build": "cross-env NODE_ENV=production poi build",
-    "fix": "eslint --fix --ext .vue ./src"
+    "start": "pm2 start ./app/index.js --name 'wwdg-server'",
+    "restart": "pm2 restart wwdg-server",
+    "nodemon": "nodemon --watch app ./app/index.js",
+    "db:seed": "sequelize db:seed:all",
+    "db:seed:undo": "sequelize db:seed:undo:all",
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "sequelize db:migrate:undo",
+    "db:rollback": "sequelize db:migrate:undo:all",
+    "create:migration": "sequelize migration:create",
+    "create:seed": "sequelize seed:create"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -19,11 +28,24 @@
     "jsonp": "^0.2.1",
     "normalize.css": "^7.0.0",
     "octicons": "^7.1.0",
+    "qiniu": "^7.1.1",
     "querystring": "^0.2.0",
     "vue": "^2.5.13",
     "vue-iscroll-view": "^1.0.3",
     "vue-waterfall": "^1.0.6",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-convert": "^1.2.0",
+    "koa-logger": "^3.1.0",
+    "koa-mount": "^3.0.0",
+    "koa-proxy": "^0.9.0",
+    "koa-router": "^7.3.0",
+    "koa-session": "^5.7.1",
+    "koa-static": "^4.0.2",
+    "koa-views": "^6.1.3",
+    "moment": "^2.19.3",
+    "node-env-file": "^0.1.8"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.5",
@@ -39,9 +61,14 @@
     "eslint-config-vue": "^2.0.2",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-vue": "^4.2.0",
+    "mysql2": "^1.5.1",
     "node-sass": "^4.7.2",
+    "nodemon": "^1.12.7",
+    "pm2": "^2.9.1",
     "poi": "^9.5.5",
     "pug": "^2.0.0-rc.4",
-    "sass-loader": "^6.0.6"
+    "sass-loader": "^6.0.6",
+    "sequelize": "^4.28.5",
+    "sequelize-cli": "^3.2.0"
   }
 }
