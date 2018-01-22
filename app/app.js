@@ -11,7 +11,8 @@ import Koa from 'koa';
 import logger from 'koa-logger';
 import convert from 'koa-convert';
 import bodyParser from 'koa-bodyparser';
-import koaSession from 'koa-session';
+// import koaSession from 'koa-session';
+import cors from 'koa2-cors';
 import routes from './routes';
 import globalConfig from '../__config__/global.config';
 
@@ -26,6 +27,7 @@ app.keys = ['d0n7', '7311', '4ny0n3'];
 
 app.use(bodyParser());
 app.use(convert(logger()));
+app.use(cors());
 
 // 外层处理
 app.use(async (ctx, next) => {
@@ -38,13 +40,13 @@ app.use(async (ctx, next) => {
     }
 });
 
-app.use(koaSession({
-    key: 'koa:sess',
-    maxAge: 7200000,
-    overwrite: true,
-    httpOnly: true,
-    signed: true,
-}, app));
+// app.use(koaSession({
+//     key: 'koa:sess',
+//     maxAge: 7200000,
+//     overwrite: true,
+//     httpOnly: true,
+//     signed: true,
+// }, app));
 
 // 路由配置
 app.use(routes());

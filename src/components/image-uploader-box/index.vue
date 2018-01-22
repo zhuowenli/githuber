@@ -3,7 +3,7 @@
         el-upload(
             show-file-list
             list-type="picture-card"
-            action="//up-z2.qiniu.com/"
+            action="//up-z0.qiniu.com/"
             :data="qiniu"
             :file-list="images"
             :before-upload="handleBeforeUpload"

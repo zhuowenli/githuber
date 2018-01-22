@@ -18,7 +18,7 @@ Vue.use(Vuex);
 
 export const actions = {
     async fetchQiniuToken(store, key) {
-        return post('http://admin.wwdgmedia.com/api/token/qiniu', { key });
+        return post('http://localhost:9001/api/token/qiniu', { key });
     }
 };
 export const getters = {};

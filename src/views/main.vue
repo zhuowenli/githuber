@@ -34,7 +34,7 @@
                 el-form-item(:label="i18n.showBookmark")
                     el-switch(v-model="config.showBookmark")
 
-        el-dialog(title="添加" :visible.sync="dialog.show")
+        el-dialog(title="添加" :visible.sync="dialog.show" label-width="80px")
             el-form(:model="dialog.form")
                 el-form-item(label="名称")
                     el-input(v-model="dialog.form.name")

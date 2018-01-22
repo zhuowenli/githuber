@@ -1,14 +1,14 @@
 <template lang="pug">
-    .my-image-uploader()
+    .image-uploader()
         el-upload(
             drag
-            action="//up-z2.qiniu.com/"
+            action="//up-z0.qiniu.com/"
             :show-file-list="false"
             :data="qiniu"
             :before-upload="handleBeforeUpload"
             :on-success="handleUploadSuccess"
         )
-            img(:src="url + '?imageView2/1/w/358/h/178'" v-if="url")
+            img(:src="url + '?imageView2/1/w/178'" v-if="url")
             .el-upload-dragger__interact(
                 v-if="url"
                 :class="{show: showInteract}"
@@ -18,17 +18,13 @@
                 span.btn
                     i.el-icon-upload2
                     span 继续上传
-                a.btn(@click.stop="handleUploadPreview" target="_blank" :href="url")
-                    i.el-icon-view
-                    span 查看图片
                 span.btn(@click.stop="handleUploadRemove")
                     i.el-icon-delete
                     span 删除
             .el-upload-dragger__inner(v-else)
                 i.el-icon-upload
-                .el-dragger__text
-                    | 将文件拖到此处，或
-                    em 点击上传
+                .el-dragger__text 将文件拖到此处，或
+                .el-dragger__text 点击上传
 </template>
 
 <script>
@@ -99,6 +95,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     @import './index.scss';
 </style>
