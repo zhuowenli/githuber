@@ -7,6 +7,9 @@
 'use strict';
 
 export default {
+    Add: '添加',
+    Edit: '编辑',
+    Save: '保存',
     Baidu: '百度',
     Google: '谷歌',
     Bing: '必应',

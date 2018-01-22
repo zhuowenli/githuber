@@ -8,6 +8,7 @@
             .bookmark__item(
                 v-for="(item, inx) in bookmarks"
                 :key="inx"
+                @click="onLinkTapAction(item)"
             )
                 .logo
                     img(:src="item.logo")
@@ -39,6 +40,7 @@ export default {
             this.$refs.scrollView.refresh();
         },
         onLinkTapAction(item) {
+            console.log(item);
             this.$emit('tap', item.url);
         },
         onAddAction() {

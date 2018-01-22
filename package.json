@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "poi --dev",
     "build": "cross-env NODE_ENV=production poi build",
-    "start": "pm2 start ./app/index.js --name 'wwdg-server'",
+    "start": "pm2 start ./app/index.js --name 'githuber-server'",
     "restart": "pm2 restart wwdg-server",
     "nodemon": "nodemon --watch app ./app/index.js",
     "db:seed": "sequelize db:seed:all",

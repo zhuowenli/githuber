@@ -34,14 +34,7 @@
                 el-form-item(:label="i18n.showBookmark")
                     el-switch(v-model="config.showBookmark")
 
-        el-dialog(title="添加" :visible.sync="dialog.show" label-width="80px")
-            el-form(:model="dialog.form")
-                el-form-item(label="名称")
-                    el-input(v-model="dialog.form.name")
-                el-form-item(label="网址")
-                    el-input(v-model="dialog.form.url")
-                el-form-item(label="头像")
-                    image-uploader(v-model="dialog.form.logo")
+        dialog-bookmark-edit(v-model="dialog")
 </template>
 
 <script>
@@ -49,14 +42,14 @@ import octicons from 'octicons';
 import i18n from '../services/i18n';
 import searchBox from './components/search.vue';
 import githubTrending from './components/github-trending.vue';
-import imageUploader from '../components/image-uploader';
 import bookmark from './components/bookmark.vue';
+import dialogBookmarkEdit from './components/dialog-bookmark-edit.vue';
 import storage from '../services/storage';
 import config from '../services/config';
 
 export default {
     name: 'hero',
-    components: { searchBox, githubTrending, bookmark, imageUploader },
+    components: { searchBox, githubTrending, bookmark, dialogBookmarkEdit },
     data() {
         const cfg = storage.getItem('GITHUBER_CONFIGURATION');
         return {
@@ -67,7 +60,6 @@ export default {
                 show: false,
                 form: {},
             },
-            upload: {},
         };
     },
     mounted() {
@@ -82,7 +74,7 @@ export default {
             }
         },
 
-        // 点击链接
+        // 点击链接跳转
         onlinkTapAction(url) {
             if (this.config.openLinkInNewTap) {
                 window.open(url);
@@ -101,6 +93,7 @@ export default {
             Object.assign(this.config, item);
         },
 
+        // 添加书签
         onBookmarkAddAction() {
             this.dialog = {
                 show: true,
@@ -110,20 +103,6 @@ export default {
                     logo: ''
                 },
             };
-        },
-        onUploadSuccess(res, { response }) {
-            const link = response.link.replace('screenshot.net', 'i.screenshot.net');
-
-            this.dialog.form.logo = link;
-        },
-        onBeforeUploadAction(file) {
-            this.upload = {
-                filename: file.name,
-                app_lang: 'en',
-                title: '',
-                password: '',
-            };
-            return this.upload;
         },
     },
     watch: {
