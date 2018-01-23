@@ -23,7 +23,7 @@
 
         .github-trending__content(v-loading="loading")
             waterfall(
-                :line-gap="340"
+                :line-gap="320"
                 :max-line-gap="360"
                 :min-line-gap="300"
                 :single-max-width="400"
@@ -34,7 +34,7 @@
                 waterfall-slot(
                     v-for="item in trendings"
                     :key="item.repo"
-                    :width="340"
+                    :width="320"
                     :height="224"
                 )
                     el-card.trending(@click.native="onLinkTapAction(item)")
