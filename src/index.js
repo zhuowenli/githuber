@@ -21,3 +21,17 @@ export default new Vue({
     store,
     render: c => c(main)
 }).$mount('#app');
+
+// 添加书签
+const { id } = chrome.runtime;
+chrome.runtime.onMessage.addListener((request) => {
+    const { name, message } = request;
+
+    if (name === 'add' && message.id === id) {
+        store.dispatch('bookmark/saveBookmark', {
+            name: message.name,
+            url: message.url,
+            logo: message.logo
+        });
+    }
+});

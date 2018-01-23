@@ -31,8 +31,8 @@ export const actions = {
                 url: 'https://tympanus.net/codrops/'
             });
             data.push({
-                name: 'GitHub',
-                url: 'https://github.com',
+                name: 'zhuowenli - GitHub',
+                url: 'https://github.com/zhuowenli',
                 logo: 'http://zhuowenli.qiniudn.com/2018/1/22/1516614358916991.png'
             });
             storage.setItem('GITHUBER_BOOKMARKS', data);
@@ -45,6 +45,9 @@ export const actions = {
         commit(types.SAVE_BOOKMARKS, item);
         return item;
     },
+    async removeBookmark({ commit }, item) {
+        commit(types.DELETE_BOOKMARKS, item);
+    }
 };
 
 export const mutations = {
@@ -55,6 +58,14 @@ export const mutations = {
         state.bookmarks.unshift(item);
         storage.setItem('GITHUBER_BOOKMARKS', state.bookmarks);
     },
+    [types.DELETE_BOOKMARKS](state, item) {
+        const index = state.bookmarks.indexOf(item);
+
+        if (index >= 0) {
+            state.bookmarks.splice(index, 1);
+            storage.setItem('GITHUBER_BOOKMARKS', state.bookmarks);
+        }
+    }
 };
 
 export default {

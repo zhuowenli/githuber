@@ -7,6 +7,7 @@
   "license": "Mozilla Public License Version 2.0",
   "scripts": {
     "dev": "poi --dev",
+    "watch": "poi watch",
     "build": "cross-env NODE_ENV=production poi build",
     "start": "pm2 start ./app/index.js --name 'githuber-server'",
     "restart": "pm2 restart githuber-server",

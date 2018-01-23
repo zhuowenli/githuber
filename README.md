@@ -16,6 +16,18 @@ yarn dev
 
 打开 localhost:4000 访问页面。
 
+## chrome 插件开发模式
+
+1. 编译代码
+```
+# 执行 watch 命令
+yarn watch
+```
+
+2. 打开 Chrome [扩展程序](chrome://extensions/)，开启开发者模式
+3. 点击**加载已解压的扩展程序**，找到编译输出的 `dist` 目录，加载代码
+
+
 > 本地开发需要安装扩展程序 [Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)，解决开发时的 CORS 跨域问题
 
 ## 服务器部署

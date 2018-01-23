@@ -22,12 +22,23 @@ chrome.tabs.getSelected(null, function(tab) {
 });
 
 $button.on('click', function() {
+    var name = $title.val();
+    var url = $url.val();
+
+    if (!name) {
+        return $('#titleError').show();
+    }
+    if (!url) {
+        return $('#urlError').show();
+    }
+
     chrome.runtime.sendMessage({
 		name: 'add',
 		message: {
-            title: $title.val(),
-            url: $url.val(),
-            logo: $img.find('img').attr('src'),
+            id: chrome.runtime.id,
+            name: name,
+            url: url,
+            logo: $img.find('img').attr('src') || '',
         }
 	}, function(o) {
 		$notification.addClass('show');

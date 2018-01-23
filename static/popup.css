@@ -38,6 +38,10 @@ body{
 .el-form-item__content{
     margin-left: 40px;
 }
+.el-form-item__error{
+    display: none;
+}
+
 #button{
     display: block;
     width: 80%;

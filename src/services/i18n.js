@@ -28,5 +28,8 @@ export default {
     openLinkInNewTap: '在新标签页中打开链接',
     openBookmarkInNewTap: '在新标签页中打开书签',
     showBookmark: '显示书签栏',
+    DeleteSuccess: '删除成功！',
+    AddSuccess: '添加成功！',
+    EditSuccess: '编辑成功！',
 };
 

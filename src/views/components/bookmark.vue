@@ -60,7 +60,6 @@ export default {
             this.$emit('add');
         },
         onEditAction(item) {
-            console.log(item);
             this.$emit('edit', item);
         },
         onRemoveAction(item) {

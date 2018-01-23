@@ -1,7 +1,11 @@
 <template lang="pug">
     .main
         .main__aside(:class="{show: config.showBookmark}")
-            bookmark(@tap="onlinkTapAction" @add="onBookmarkAddAction")
+            bookmark(
+                @tap="onlinkTapAction"
+                @add="onBookmarkAddAction"
+                @remove="onBookmarkRemoveAction"
+            )
         .main__content
             .main__header
                 search-box(
@@ -38,6 +42,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import octicons from 'octicons';
 import i18n from '../services/i18n';
 import searchBox from './components/search.vue';
@@ -65,6 +70,8 @@ export default {
     mounted() {
     },
     methods: {
+        ...mapActions('bookmark', ['removeBookmark']),
+
         // 搜索事件
         onSearchAction(url) {
             if (this.config.openSearchInNewTap) {
@@ -103,6 +110,15 @@ export default {
                     logo: ''
                 },
             };
+        },
+
+        // 删除书签
+        async onBookmarkRemoveAction(item) {
+            await this.removeBookmark(item);
+            this.$message({
+                message: this.i18n.DeleteSuccess,
+                type: 'success'
+            });
         },
     },
     watch: {
