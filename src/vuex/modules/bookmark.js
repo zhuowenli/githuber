@@ -26,6 +26,15 @@ export const actions = {
                 url: 'https://dribbble.com/',
                 logo: 'https://cdn.dribbble.com/assets/dribbble-ball-192-ec064e49e6f63d9a5fa911518781bee0c90688d052a038f8876ef0824f65eaf2.png'
             });
+            data.push({
+                name: 'Codrops',
+                url: 'https://tympanus.net/codrops/'
+            });
+            data.push({
+                name: 'GitHub',
+                url: 'https://github.com',
+                logo: 'http://zhuowenli.qiniudn.com/2018/1/22/1516614358916991.png'
+            });
             storage.setItem('GITHUBER_BOOKMARKS', data);
         }
 

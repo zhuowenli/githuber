@@ -9,11 +9,17 @@
                 v-for="(item, inx) in bookmarks"
                 :key="inx"
                 @click="onLinkTapAction(item)"
+                @contextmenu="onContextMenuAction($event, item)"
+                :class="{edit: edit}"
             )
-                .logo
+                .el-icon-close(@click.stop="onRemoveAction(item)")
+                .logo.shake-constant(v-if="item.logo")
                     img(:src="item.logo")
+                .text.shake-constant(v-else) {{item.name[0]}}
                 .name {{item.name}}
-            .bookmark__item(@click="onAddAction")
+            .bookmark__item(@click="edit = false" v-if="edit")
+                .el-icon-check
+            .bookmark__item(@click="onAddAction" v-else)
                 .el-icon-plus
 </template>
 
@@ -25,6 +31,7 @@ export default {
     name: 'bookmark',
     data() {
         return {
+            edit: false
         };
     },
     async mounted() {
@@ -40,12 +47,19 @@ export default {
             this.$refs.scrollView.refresh();
         },
         onLinkTapAction(item) {
-            console.log(item);
             this.$emit('tap', item.url);
+        },
+        onContextMenuAction(e, item) {
+            e.preventDefault();
+
+            this.edit = !this.edit;
         },
         onAddAction() {
             this.$emit('add');
         },
+        onRemoveAction(item) {
+            console.log(item);
+        }
     }
 };
 </script>
