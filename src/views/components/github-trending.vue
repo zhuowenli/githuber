@@ -35,7 +35,7 @@
                     v-for="item in trendings"
                     :key="item.repo"
                     :width="340"
-                    :height="224"
+                    :height="230"
                 )
                     el-card.trending(@click.native="onLinkTapAction(item)")
                         .trending__title {{item.repo}}
