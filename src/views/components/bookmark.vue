@@ -9,6 +9,7 @@
                 v-for="(item, inx) in bookmarks"
                 :key="inx"
                 @click="onLinkTapAction(item)"
+                @dblclick="onEditAction(item)"
                 @contextmenu="onContextMenuAction($event, item)"
                 :class="{edit: edit}"
             )
@@ -47,19 +48,24 @@ export default {
             this.$refs.scrollView.refresh();
         },
         onLinkTapAction(item) {
-            this.$emit('tap', item.url);
+            if (!this.edit) {
+                this.$emit('tap', item.url);
+            }
         },
-        onContextMenuAction(e, item) {
+        onContextMenuAction(e) {
             e.preventDefault();
-
             this.edit = !this.edit;
         },
         onAddAction() {
             this.$emit('add');
         },
-        onRemoveAction(item) {
+        onEditAction(item) {
             console.log(item);
-        }
+            this.$emit('edit', item);
+        },
+        onRemoveAction(item) {
+            this.$emit('remove', item);
+        },
     }
 };
 </script>
