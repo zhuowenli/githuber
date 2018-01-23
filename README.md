@@ -69,7 +69,7 @@ yarn start
 - [x] 内容推荐
     - GitHub Discover repositories
     - GitHub Trending (data range：Today、This week、This month，language range)
-	- 其他平台（待定）
+- [ ] 其他平台（待定）
         - v2ex
         - Dribbble
         - Behance
@@ -77,7 +77,7 @@ yarn start
         - unsplash
         - producthunt
 - [x] 设置
-- [ ] 弹窗
+- [x] 弹窗
     - 书签收藏（快捷入口）
     - 读取标题、logo、URL（可编辑）
     - 添加按钮
