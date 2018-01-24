@@ -17,7 +17,8 @@
                 .logo.shake-constant(v-if="item.logo")
                     img(:src="item.logo")
                 .text.shake-constant(v-else) {{item.name[0]}}
-                .name {{item.name}}
+                .name
+                    span {{item.name}}
             .bookmark__item(@click="edit = false" v-if="edit")
                 .el-icon-check
             .bookmark__item(@click="onAddAction" v-else)

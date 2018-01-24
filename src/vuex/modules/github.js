@@ -31,7 +31,7 @@ export const actions = {
      * @param {Object} [query={}] 请求参数
      * @param {String} query.since 时间维度：daily、weekly、monthly
      * @param {String} query.lang 语言
-     * @returns
+     * @returns {Promise}
      */
     async fetchTrending ({ commit }, query = {}) {
         const { since, lang } = query;
