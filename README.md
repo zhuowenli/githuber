@@ -67,8 +67,8 @@ yarn start
     - 附加搜索引擎（用%s代替查询参数）
     - 搜索联想
 - [x] 内容推荐
-    - GitHub Discover repositories
-    - GitHub Trending (data range：Today、This week、This month，language range)
+    - [x] 爬虫 GitHub Trending (data range：Today、This week、This month，language range)
+    - [ ] GitHub Discover repositories
 - [ ] 其他平台（待定）
         - v2ex
         - Dribbble
@@ -86,7 +86,6 @@ yarn start
     - 英文
 - [ ] 高级设置（待定）
     - RSS
-    - 自定义爬虫
 - [ ] 数据同步
     - 手动备份到云端
     - 从云端恢复数据
@@ -95,7 +94,6 @@ yarn start
 - [ ] 最常访问（待定）
 - [ ] 服务端
     - [x] 框架搭建：koa/egg Sequelize
-    - [ ] Trending 爬虫
     - [ ] GitHub 授权，根据用户ID获取 Discover（待定）
 - [ ] 上架
 
