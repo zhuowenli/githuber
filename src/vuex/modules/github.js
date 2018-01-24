@@ -24,10 +24,31 @@ export const getters = {
 };
 
 export const actions = {
+    /**
+     * 获取GitHub Trending
+     *
+     * @param {any} { commit } state
+     * @param {Object} [query={}] 请求参数
+     * @param {String} query.since 时间维度：daily、weekly、monthly
+     * @param {String} query.lang 语言
+     * @returns
+     */
     async fetchTrending ({ commit }, query = {}) {
         const { since, lang } = query;
         let data = await storage.getItem(JSON.stringify(query));
 
+        if (
+            data && (
+                (since === 'daily' && data.toDay === toDay) ||
+                (since === 'weekly' && data.toWeek === toWeek) ||
+                (since === 'monthly' && data.toMonth === toMonth)
+            )
+        ) {
+            commit(types.RECEIVE_GITHUB_TRENDINGS, data.repos);
+            return data.repos;
+        }
+
+        // 访问页面
         data = await get(`https://github.com/trending/${lang}`, { since });
 
         const $ = cheerio.load(data);
@@ -68,13 +89,13 @@ export const actions = {
         commit(types.RECEIVE_GITHUB_TRENDINGS, repos);
 
         storage.setItem(JSON.stringify(query), {
-            data,
+            repos,
             toDay,
             toWeek,
             toMonth
         });
 
-        return data;
+        return repos;
     },
 
 };
