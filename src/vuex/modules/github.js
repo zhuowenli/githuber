@@ -6,6 +6,7 @@
 
 'use strict';
 
+import cheerio from 'cheerio';
 import { get } from '../../services/fetch';
 import * as types from '../types';
 import languages from '../../services/languages';
@@ -24,29 +25,47 @@ export const getters = {
 
 export const actions = {
     async fetchTrending ({ commit }, query = {}) {
-        const { since } = query;
+        const { since, lang } = query;
         let data = await storage.getItem(JSON.stringify(query));
 
-        if (
-            data && (
-                (since === 'daily' && data.toDay === toDay) ||
-                (since === 'weekly' && data.toWeek === toWeek) ||
-                (since === 'monthly' && data.toMonth === toMonth)
-            )
-        ) {
-            commit(types.RECEIVE_GITHUB_TRENDINGS, data.data);
-            return data.data;
-        }
+        data = await get(`https://github.com/trending/${lang}`, { since });
 
-        data = await get('https://trendings.herokuapp.com/repo', query).then(res => res.items);
+        const $ = cheerio.load(data);
+        const repos = [];
 
-        data.map(item => {
+        // 解析页面
+        $('li', 'ol.repo-list').each((index, repo) => {
+            const $repo = $(repo);
+            const $avatars = $repo.find('.avatar');
+            const title = $repo.find('h3').text().trim().replace(/ /g, '');
+
+            const starLink = `/${title}/stargazers`;
+            const forkLink = `/${title}/network`;
+            const repoLink = `https://github.com/${title}`;
+
+            const item = {
+                author: title.split('/')[0],
+                repo: title,
+                repo_link: repoLink,
+                desc: $repo.find('p', '.py-1').text().trim() || null,
+                lang: $repo.find('[itemprop=programmingLanguage]').text().trim() || 'unknown',
+                stars: $repo.find(`[href="${starLink}"]`).text().trim() || 0,
+                forks: $repo.find(`[href="${forkLink}"]`).text().trim() || 0,
+                avatars: [],
+                added_stars: '',
+            };
+
+            if ($avatars && $avatars.length) {
+                [...$avatars].map($avatar => item.avatars.push($avatar.attribs.src));
+            }
+
             const { result } = findOne(languages, { name: item.lang });
             if (result) item.color = result.color;
-            return item;
+
+            repos.push(item);
         });
 
-        commit(types.RECEIVE_GITHUB_TRENDINGS, data);
+        commit(types.RECEIVE_GITHUB_TRENDINGS, repos);
 
         storage.setItem(JSON.stringify(query), {
             data,
