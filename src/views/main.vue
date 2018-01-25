@@ -37,6 +37,10 @@
                     el-switch(v-model="config.openBookmarkInNewTab")
                 el-form-item(:label="$t('showBookmark')")
                     el-switch(v-model="config.showBookmark")
+                el-form-item(:label="$t('Language')")
+                    el-select(v-model="config.locale")
+                        el-option(label="中文" value="zh")
+                        el-option(label="English" value="en")
 
         dialog-bookmark-edit(v-model="dialog")
 </template>
@@ -128,6 +132,10 @@ export default {
             //     type: 'success'
             // });
         },
+
+        onLocaleChange() {
+            this.$i18n.locale = this.config.locale;
+        }
     },
     watch: {
         config: {
@@ -135,7 +143,8 @@ export default {
                 storage.setItem('GITHUBER_CONFIGURATION', this.config);
             },
             deep: true,
-        }
+        },
+        'config.locale': 'onLocaleChange'
     }
 };
 </script>

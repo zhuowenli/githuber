@@ -29,7 +29,8 @@ export default {
     openSearchInNewTab: 'Open search in new tab:',
     openLinkInNewTab: 'Open link in new tab:',
     openBookmarkInNewTab: 'Open bookmark in new tab:',
-    showBookmark: 'Show Bookmark',
+    showBookmark: 'Show Bookmark:',
+    Language: 'Language:',
 
     // dialog
     Add: 'Add',

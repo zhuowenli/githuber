@@ -25,11 +25,12 @@ export default {
 
     // setting
     Setting: '设置',
-    AdditionalSearchEngine: '附加搜索引擎',
-    openSearchInNewTab: '在新标签页中搜索',
-    openLinkInNewTab: '在新标签页中打开链接',
-    openBookmarkInNewTab: '在新标签页中打开书签',
-    showBookmark: '显示书签栏',
+    AdditionalSearchEngine: '附加搜索引擎:',
+    openSearchInNewTab: '在新标签页中搜索:',
+    openLinkInNewTab: '在新标签页中打开链接:',
+    openBookmarkInNewTab: '在新标签页中打开书签:',
+    showBookmark: '显示书签栏:',
+    Language: '语言:',
 
     // dialog
     Add: '添加',
