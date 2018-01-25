@@ -4,7 +4,7 @@
             el-tabs(v-model="activeEngineNavName" @tab-click="onSearchNameTapAction")
                 el-tab-pane(
                     v-for="item in searchEngine.engines"
-                    :label="item.name"
+                    :label="$t(item.name)"
                     :name="item.value"
                     :key="item.name"
                 )
@@ -28,7 +28,7 @@
                             v-for="item in searchEngines"
                             :key="item.valuw"
                             :command="item"
-                        ) {{item.name}}
+                        ) {{$t(item.name)}}
 
                 .suggestion(slot-scope="props")
                     .suggestion__search(v-if="props.item.search") {{props.item.name}}
@@ -42,7 +42,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import searchEngines from './searchEngines';
-import i18n from '../../services/i18n';
 
 export default {
     name: 'search-box',
@@ -84,20 +83,24 @@ export default {
             const result = [];
 
             if (str) {
-                await this.fetchSuperpage(str);
-                await this.fetchSuggestion(str);
+                try {
+                    await this.fetchSuperpage(str);
+                    await this.fetchSuggestion(str);
 
-                this.suggestions.map(name => result.push({ name }));
+                    this.suggestions.map(name => result.push({ name }));
 
-                if (this.superpages.length) {
-                    result.unshift({
-                        ...this.superpages[0],
-                        value: str
-                    });
+                    if (this.superpages.length) {
+                        result.unshift({
+                            ...this.superpages[0],
+                            value: str
+                        });
+                    }
+                } catch (e) {
+                    console.log(e);
                 }
 
                 this.customSearchEngines.map(item => result.unshift({
-                    name: `${i18n.SearchFrom} ${item.name}`,
+                    name: `${this.$t('SearchFrom')} ${item.name}`,
                     search: item.url,
                     value: str
                 }));

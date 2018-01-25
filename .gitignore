@@ -58,3 +58,6 @@ typings/
 .env
 dist/
 .vscode-upload.json
+
+*.pem
+*.crx

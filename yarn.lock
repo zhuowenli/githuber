@@ -7961,6 +7961,10 @@ vue-hot-reload-api@^2.2.0:
   version "2.2.4"
   resolved "http://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.2.4.tgz#683bd1d026c0d3b3c937d5875679e9a87ec6cd8f"
 
+vue-i18n@^7.4.0:
+  version "7.4.0"
+  resolved "http://registry.npm.taobao.org/vue-i18n/download/vue-i18n-7.4.0.tgz#bd96cee90b3074e3f43e7347639e6fad0b45b6ae"
+
 vue-iscroll-view@^1.0.3:
   version "1.0.3"
   resolved "http://registry.npm.taobao.org/vue-iscroll-view/download/vue-iscroll-view-1.0.3.tgz#a4f8c1420fa8f2b3f2a28bffc8d895eeed77803e"

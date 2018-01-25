@@ -27,7 +27,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-// import i18n from '../../services/i18n';
 
 export default {
     name: 'bookmark',

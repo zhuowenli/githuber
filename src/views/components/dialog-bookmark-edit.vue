@@ -1,5 +1,5 @@
 <template lang="pug">
-    el-dialog(:title="i18n.Add" :visible.sync="dialog.show")
+    el-dialog(:title="$t('Add')" :visible.sync="dialog.show")
         el-form(:model="dialog.form" label-width="40px")
             el-form-item(label="名称")
                 el-input(v-model="dialog.form.name")
@@ -14,7 +14,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import i18n from '../../services/i18n';
 import imageUploader from '../../components/image-uploader';
 
 export default {
@@ -25,7 +24,6 @@ export default {
     },
     data() {
         return {
-            i18n,
             dialog: this.value
         };
     },
