@@ -13,9 +13,9 @@ export default {
     lang: '',
     locale: 'zh',
     showBookmark: true,
-    openSearchInNewTap: false,
-    openLinkInNewTap: false,
-    openBookmarkInNewTap: false,
+    openSearchInNewTab: false,
+    openLinkInNewTab: false,
+    openBookmarkInNewTab: false,
     showSetting: false,
 };
 

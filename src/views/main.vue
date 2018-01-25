@@ -95,7 +95,7 @@ export default {
 
         // 点击书签跳转
         onBookmarkTapAction(url) {
-            if (this.config.openBookmarkInNewTap) {
+            if (this.config.openBookmarkInNewTab) {
                 window.open(url);
             } else {
                 window.location.href = url;
