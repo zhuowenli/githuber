@@ -32,11 +32,7 @@ if (id) {
         const { name, message } = request;
 
         if (name === 'add' && message.id === id) {
-            store.dispatch('bookmark/saveBookmark', {
-                name: message.name,
-                url: message.url,
-                logo: message.logo
-            });
+            store.dispatch('bookmark/fetchBookmarks');
         }
     });
 }

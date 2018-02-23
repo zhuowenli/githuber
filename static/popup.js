@@ -32,13 +32,22 @@ $button.on('click', function() {
         return $('#urlError').show();
     }
 
+
+    var storage = localStorage.getItem('GITHUBER_BOOKMARKS') || '[]';
+    var data = JSON.parse(storage);
+
+    data.push({
+        name: name,
+        logo: $img.find('img').attr('src') || '',
+        url: url,
+    });
+
+    localStorage.setItem('GITHUBER_BOOKMARKS', JSON.stringify(data));
+
     chrome.runtime.sendMessage({
 		name: 'add',
 		message: {
             id: chrome.runtime.id,
-            name: name,
-            url: url,
-            logo: $img.find('img').attr('src') || '',
         }
 	}, function(o) {
 		$notification.addClass('show');

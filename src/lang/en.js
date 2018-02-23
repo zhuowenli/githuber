@@ -11,6 +11,7 @@ export default {
     Baidu: 'Baidu',
     Google: 'Google',
     Bing: 'Bing',
+    Yahoo: 'Yahoo',
     Web: 'Web',
     Images: 'Images',
     News: 'News',

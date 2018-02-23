@@ -11,6 +11,7 @@ export default {
     Baidu: '百度',
     Google: '谷歌',
     Bing: '必应',
+    Yahoo: '雅虎',
     Web: '网页',
     Images: '图片',
     News: '新闻',
