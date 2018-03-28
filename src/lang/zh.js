@@ -43,5 +43,15 @@ export default {
     DeleteSuccess: '删除成功！',
     AddSuccess: '添加成功！',
     EditSuccess: '编辑成功！',
+
+    // Trending
+    Today: '今日',
+    ThisWeek: '本周',
+    ThisMonth: '本月',
+
+    // network error
+    NetworkErrorTitle: '网络异常',
+    NetworkErrorContent: '如果你不知道发生了什么事，请点击刷新试试。',
+    Refresh: '刷新',
 };
 

@@ -43,5 +43,15 @@ export default {
     DeleteSuccess: 'Delete Success!',
     AddSuccess: 'Add Success!',
     EditSuccess: 'Edit Success!',
+
+    // Trending
+    Today: 'Today',
+    ThisWeek: 'This week',
+    ThisMonth: 'This month',
+
+    // network error
+    NetworkErrorTitle: 'Network error',
+    NetworkErrorContent: 'If you encounter an unkonwn problem select refresh.',
+    Refresh: 'Refresh',
 };
 

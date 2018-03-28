@@ -9,9 +9,9 @@
             //- p See what the GitHub community is most excited about today.
 
             el-select(v-model="query.since")
-                el-option(label="Today" value="daily")
-                el-option(label="This week" value="weekly")
-                el-option(label="This month" value="monthly")
+                el-option(:label="$t('Today')" value="daily")
+                el-option(:label="$t('ThisWeek')" value="weekly")
+                el-option(:label="$t('ThisMonth')" value="monthly")
             el-select(v-model="query.lang" filterable)
                 el-option(value="" label="All Languages")
                 el-option(
@@ -21,38 +21,34 @@
                     :label="item.name"
                 )
 
-        .github-trending__content(v-loading="loading")
-            waterfall(
-                :line-gap="320"
-                :max-line-gap="360"
-                :min-line-gap="300"
-                :single-max-width="400"
-                :watch="trendings"
-                ref="waterfall"
-                @reflowed="onReflowedAction"
+        .github-trending__loading(ref="loading" v-show="loading")
+        .github-trending__error(v-if="fetchError")
+            img(src="../../assets/network-error.png", alt="")
+            p.title {{$t('NetworkErrorTitle')}}
+            p.content {{$t('NetworkErrorContent')}}
+            button.button(@click="init") {{$t('Refresh')}}
+        .github-trending__content(v-if="!loading && !fetchError")
+            .trending(
+                v-for="(item, inx) in trendings"
+                :key="inx"
             )
-                waterfall-slot(
-                    v-for="item in trendings"
-                    :key="item.repo"
-                    :width="320"
-                    :height="224"
-                )
-                    el-card.trending(@click.native="onLinkTapAction(item)")
-                        .trending__title {{item.repo}}
-                        .trending__desc {{item.desc}}
-                        .trending__meta
-                            span.color(:style="{background: item.color}")
-                            span.lang {{item.lang}}
-                            svg.octicon.octicon-star(v-html="octicons.star.path")
-                            span.stars {{item.stars}}
-                            svg.octicon.octicon-repo-forked(v-html="octicons['repo-forked'].path")
-                            span.forks {{item.forks}}
-                        .trending__built
-                            | Built by
-                            img(v-for="(avatar, inx) in item.avatars" :key="inx" :src="avatar")
+                el-card(@click.native="onLinkTapAction(item)")
+                    .trending__title {{item.repo}}
+                    .trending__desc {{item.desc}}
+                    .trending__meta
+                        span.color(:style="{background: item.color}")
+                        span.lang {{item.lang}}
+                        svg.octicon.octicon-star(v-html="octicons.star.path")
+                        span.stars {{item.stars}}
+                        svg.octicon.octicon-repo-forked(v-html="octicons['repo-forked'].path")
+                        span.forks {{item.forks}}
+                    .trending__built
+                        | Built by
+                        img(v-for="(avatar, inx) in item.avatars" :key="inx" :src="avatar")
 </template>
 
 <script>
+import { Loading } from 'element-ui';
 import octicons from 'octicons';
 import { mapGetters, mapActions } from 'vuex';
 import Waterfall from 'vue-waterfall/lib/waterfall';
@@ -74,6 +70,7 @@ export default {
         return {
             languages,
             octicons,
+            fetchError: false,
             loading: false,
             query: {
                 lang: this.lang || '',
@@ -90,16 +87,21 @@ export default {
     methods: {
         ...mapActions('github', ['fetchTrending']),
         async init() {
+            const { loading } = this.$refs;
+            const loadingInstance = Loading.service({ target: loading });
+
             this.loading = true;
+            this.fetchError = false;
+            try {
+                await this.fetchTrending(this.query);
+                this.$emit('update', this.query);
+            } catch (e) {
+                this.fetchError = true;
+            }
 
-            await this.fetchTrending(this.query);
-
-            this.$emit('update', this.query);
             this.loading = false;
-        },
-        onReflowedAction() {
+            loadingInstance.close();
             this.$refs.scrollView.refresh();
-            this.$refs.waterfall.$emit('reflow');
         },
         onLinkTapAction(item) {
             this.$emit('tap', item.repo_link);
@@ -116,7 +118,7 @@ export default {
         since(val) {
             this.query.since = val;
         },
-        showBookmark: 'onReflowedAction'
+        // showBookmark: 'onReflowedAction'
     }
 };
 </script>

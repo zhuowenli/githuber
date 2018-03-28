@@ -24,15 +24,18 @@ export default new Vue({
     render: c => c(main)
 }).$mount('#app');
 
-// 添加书签
-const { id } = chrome.runtime;
 
-if (id) {
-    chrome.runtime.onMessage.addListener((request) => {
-        const { name, message } = request;
+if (chrome && chrome.runtime) {
+    // 添加书签
+    const { id } = chrome.runtime;
 
-        if (name === 'add' && message.id === id) {
-            store.dispatch('bookmark/fetchBookmarks');
-        }
-    });
+    if (id) {
+        chrome.runtime.onMessage.addListener((request) => {
+            const { name, message } = request;
+
+            if (name === 'add' && message.id === id) {
+                store.dispatch('bookmark/fetchBookmarks');
+            }
+        });
+    }
 }

@@ -37,10 +37,50 @@
         &-slot
             padding: 10px
 
+    &__content
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+
+    &__loading
+        position: relative
+        height: 100px
+        .el-loading-mask
+            background: transparent
+
+    &__error
+        padding: 50px 0
+        text-align: center
+        .title
+            font-size: 32px
+            font-weight: bold
+            color: #333333
+            margin: 0
+        .content
+            font-size: 16px
+            color: #888888
+            margin-bottom: 20px
+        .button
+            height: 58px
+            line-height: 58px
+            width: 220px
+            font-size: 22px
+            border: 0
+            border-radius: 58px
+            outline: 0
+            font-size: 22px
+            color: #ffffff
+            background: #6abcfe
+            text-align: center
+            cursor: pointer
+
     .trending
         display: block
         cursor: pointer
         box-shadow: none
+        padding: 10px
+        width: 100%
+        max-width: 400px
         .el-card__body
             padding: 16px 20px
         &__title
@@ -94,4 +134,18 @@
                 border-radius: 3px
                 margin-left: 4px
 
+@media only screen and (min-width: 960px)
+    .github-trending .trending
+        width: 50%
 
+@media only screen and (min-width: 1280px)
+    .github-trending .trending
+        width: 33.3%
+
+@media only screen and (min-width: 1600px)
+    .github-trending .trending
+        width: 25%
+
+@media only screen and (min-width: 1920px)
+    .github-trending .trending
+        width: 20%
