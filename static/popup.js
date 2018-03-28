@@ -32,7 +32,6 @@ $button.on('click', function() {
         return $('#urlError').show();
     }
 
-
     var storage = localStorage.getItem('GITHUBER_BOOKMARKS') || '[]';
     var data = JSON.parse(storage);
 
