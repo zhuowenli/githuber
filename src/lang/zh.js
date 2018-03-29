@@ -37,6 +37,7 @@ export default {
     Add: '添加',
     Edit: '编辑',
     Save: '保存',
+    Cancel: '取消',
     Name: '名字',
     Url: '链接',
     Logo: 'Logo',
@@ -48,6 +49,7 @@ export default {
     Today: '今日',
     ThisWeek: '本周',
     ThisMonth: '本月',
+    AllLanguages: '所有语言',
 
     // network error
     NetworkErrorTitle: '网络异常',

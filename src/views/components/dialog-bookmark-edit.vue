@@ -1,15 +1,15 @@
 <template lang="pug">
     el-dialog(:title="$t('Add')" :visible.sync="dialog.show")
         el-form(:model="dialog.form" label-width="40px")
-            el-form-item(label="名称")
+            el-form-item(:label="$t('Name')")
                 el-input(v-model="dialog.form.name")
-            el-form-item(label="网址")
+            el-form-item(:label="$t('Url')")
                 el-input(v-model="dialog.form.url")
-            el-form-item(label="头像")
+            el-form-item(:label="$t('Logo')")
                 image-uploader(v-model="dialog.form.logo")
         .dialog-footer(slot="footer")
-            el-button(@click="dialog.show = false") 取消
-            el-button(type="primary" @click="onBookmarkSaveAction") 保存
+            el-button(@click="dialog.show = false") {{$t('Cancel')}}
+            el-button(type="primary" @click="onBookmarkSaveAction") {{$t('Save')}}
 </template>
 
 <script>

@@ -13,7 +13,7 @@
                 el-option(:label="$t('ThisWeek')" value="weekly")
                 el-option(:label="$t('ThisMonth')" value="monthly")
             el-select(v-model="query.lang" filterable)
-                el-option(value="" label="All Languages")
+                el-option(value="" :label="$t('AllLanguages')")
                 el-option(
                     v-for="item in languages"
                     :key="item.value"

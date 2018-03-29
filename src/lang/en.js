@@ -37,6 +37,7 @@ export default {
     Add: 'Add',
     Edit: 'Edit',
     Save: 'Save',
+    Cancel: 'Cancel',
     Name: 'Name',
     Url: 'Url',
     Logo: 'Logo',
@@ -48,6 +49,7 @@ export default {
     Today: 'Today',
     ThisWeek: 'This week',
     ThisMonth: 'This month',
+    AllLanguages: 'All Languages',
 
     // network error
     NetworkErrorTitle: 'Network error',
