@@ -603,6 +603,11 @@ export default [
         color: '#178600',
     },
     {
+        name: 'C#',
+        value: 'C#',
+        color: '#178600',
+    },
+    {
         name: 'Emacs Lisp',
         value: 'Emacs-Lisp',
         color: '#c065db',
