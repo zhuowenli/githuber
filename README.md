@@ -70,12 +70,12 @@ yarn start
     - [x] 爬虫 GitHub Trending (data range：Today、This week、This month，language range)
     - [ ] GitHub Discover repositories
 - [ ] 其他平台（待定）
-        - v2ex
-        - Dribbble
-        - Behance
-        - 500px
-        - unsplash
-        - producthunt
+    - v2ex
+    - Dribbble
+    - Behance
+    - 500px
+    - unsplash
+    - producthunt
 - [x] 设置
 - [x] 弹窗
     - 书签收藏（快捷入口）
