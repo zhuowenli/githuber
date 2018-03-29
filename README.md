@@ -2,7 +2,7 @@
 
 这是一个帮助 Githuber 每日发现优质内容的 Chrome 主页拓展。
 
-![](./assets/page.png)
+![](./assets/action.gif)
 
 ## 本地开发
 
