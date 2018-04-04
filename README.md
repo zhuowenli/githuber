@@ -1,5 +1,7 @@
 # githuber
 
+<a target="_blank" href="https://chrome.google.com/webstore/detail/githuber/janmcneaglgklfljjcpihkkomeghljnf"><img alt="Try it now" src="https://raw.github.com/GoogleChrome/chrome-app-samples/master/tryitnowbutton_small.png" title="Click here to install this sample from the Chrome Web Store"></img></a>
+
 这是一个帮助 Githuber 每日发现优质内容的 Chrome 主页拓展。
 
 ![](./assets/action.gif)
