@@ -97,7 +97,8 @@ yarn start
 - [ ] 服务端
     - [x] 框架搭建：koa/egg Sequelize
     - [ ] GitHub 授权，根据用户ID获取 Discover（待定）
-- [ ] 上架
+- [x] 上架
+- [ ] Firefox 支持
 
 
 ## License
