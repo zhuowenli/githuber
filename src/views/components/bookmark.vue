@@ -1,28 +1,27 @@
 <template lang="pug">
-    .bookmark
-        iscroll-view(
-            :scrollerClass="{scroller: true}"
-            :options="{mouseWheel: true, scrollbars: true}"
-            ref="scrollView"
+    iscroll-view.bookmark(
+        :scrollerClass="{scroller: true}"
+        :options="{mouseWheel: true, scrollbars: true}"
+        ref="scrollView"
+    )
+        .bookmark__item(
+            v-for="(item, inx) in bookmarks"
+            :key="inx"
+            @click="onLinkTapAction(item)"
+            @dblclick="onEditAction(item)"
+            @contextmenu="onContextMenuAction($event, item)"
+            :class="{edit: edit}"
         )
-            .bookmark__item(
-                v-for="(item, inx) in bookmarks"
-                :key="inx"
-                @click="onLinkTapAction(item)"
-                @dblclick="onEditAction(item)"
-                @contextmenu="onContextMenuAction($event, item)"
-                :class="{edit: edit}"
-            )
-                .el-icon-close(@click.stop="onRemoveAction(item)")
-                .logo.shake-constant(v-if="item.logo")
-                    img(:src="item.logo")
-                .text.shake-constant(v-else) {{item.name[0]}}
-                .name
-                    span {{item.name}}
-            .bookmark__item(@click="edit = false" v-if="edit")
-                .el-icon-check
-            .bookmark__item(@click="onAddAction" v-else)
-                .el-icon-plus
+            .el-icon-close(@click.stop="onRemoveAction(item)")
+            .logo.shake-constant(v-if="item.logo")
+                img(:src="item.logo")
+            .text.shake-constant(v-else) {{item.name[0]}}
+            .name
+                span {{item.name}}
+        .bookmark__item(@click="edit = false" v-if="edit")
+            .el-icon-check
+        .bookmark__item(@click="onAddAction" v-else)
+            .el-icon-plus
 </template>
 
 <script>
