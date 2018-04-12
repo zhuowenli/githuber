@@ -8,8 +8,8 @@
 
 // import { get } from '../../services/fetch';
 import * as types from '../types';
-import languages from '../../services/languages';
-import findOne from '../../services/findOne';
+// import languages from '../../services/languages';
+// import findOne from '../../services/findOne';
 import storage from '../../services/storage';
 
 export const getters = {
@@ -38,6 +38,11 @@ export const actions = {
             storage.setItem('GITHUBER_BOOKMARKS', data);
         }
 
+        commit(types.RECEIVE_BOOKMARKS, data);
+        return data;
+    },
+    async updateBookmarks ({ commit }, data) {
+        console.log(data);
         commit(types.RECEIVE_BOOKMARKS, data);
         return data;
     },
