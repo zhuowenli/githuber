@@ -62,8 +62,6 @@ export default {
         async init() {
             await this.fetchBookmarks();
             this.$refs.scrollView.refresh();
-
-            console.log(this.updateBookmarks);
         },
         onLinkTapAction(item) {
             if (!this.edit) {

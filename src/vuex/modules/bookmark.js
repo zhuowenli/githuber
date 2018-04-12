@@ -42,7 +42,6 @@ export const actions = {
         return data;
     },
     async updateBookmarks ({ commit }, data) {
-        console.log(data);
         commit(types.RECEIVE_BOOKMARKS, data);
         return data;
     },

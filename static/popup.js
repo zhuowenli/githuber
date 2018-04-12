@@ -18,7 +18,11 @@ var $notification = $('#notification');
 chrome.tabs.getSelected(null, function(tab) {
     $title.val(tab.title);
     $url.val(tab.url);
-    $img.html('<img src="' + tab.favIconUrl + '">')
+    if (tab.favIconUrl) {
+        $img.html('<img src="' + tab.favIconUrl + '">')
+    } else {
+        $img.html('<text>' + tab.title[0] + '</text>')
+    }
 });
 
 $button.on('click', function() {
@@ -37,7 +41,7 @@ $button.on('click', function() {
 
     data.push({
         name: name,
-        logo: $img.find('img').attr('src') || '',
+        logo: $img.find('img') && $img.find('img').attr('src') || '',
         url: url,
     });
 
