@@ -18,7 +18,7 @@ yarn
 yarn dev
 ```
 
-打开 (localhost:4000)[http://localhost:4000] 访问页面。
+打开 [http://localhost:4000](localhost:4000) 访问页面。
 
 ## Chrome 开发模式
 
