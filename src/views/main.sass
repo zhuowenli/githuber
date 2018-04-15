@@ -8,7 +8,7 @@
     display: flex
     height: 100vh
     overflow: hidden
-    &__aside
+    &-aside
         background: #ffffff
         box-shadow: 0 0 3px 0 #ddd
         transform: translateX(-100%)
@@ -18,7 +18,7 @@
         &.show
             width: 300px
             transform: translate3d(0, 0, 0)
-    &__content
+    &-content
         flex: 1
         background: #eceff1
     &__header
@@ -62,28 +62,3 @@
         width: 100%
         height: calc(100vh - 109px)
         z-index: 10
-    &__setting
-        position: fixed
-        top: 0
-        right: 0
-        bottom: 0
-        width: 300px
-        overflow: hidden
-        background: #ffffff
-        z-index: 100
-        box-shadow: 0 0 3px 0 #ddd
-        transform: translateX(100%)
-        transition: all 0.2s ease
-        &.show
-            transform: translate3d(0,0,0)
-        &-title
-            height: 44px
-            line-height: 44px
-            border-bottom: 1px solid #efefef
-            padding-left: 20px
-            font-size: 14px
-        &-content
-            padding: 10px
-            .el-form-item
-                margin-bottom: 0
-

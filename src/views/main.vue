@@ -1,12 +1,13 @@
 <template lang="pug">
     .main
-        .main__aside(:class="{show: config.showBookmark}")
+        .main-aside(:class="{show: config.showBookmark}")
             bookmark(
                 @tap="onBookmarkTapAction"
                 @add="onBookmarkAddAction"
                 @remove="onBookmarkRemoveAction"
             )
-        .main__content
+
+        .main-content
             .main__header
                 search-box(
                     :engineName="config.engineName"
@@ -26,22 +27,8 @@
                     @tap="onLinkTapAction"
                     @update="onConfigUpdateAction"
                 )
-        .main__setting(:class="{show: config.showSetting}")
-            .main__setting-title {{$t('Setting')}}
-            el-form.main__setting-content()
-                el-form-item(:label="$t('openSearchInNewTab')")
-                    el-switch(v-model="config.openSearchInNewTab")
-                el-form-item(:label="$t('openLinkInNewTab')")
-                    el-switch(v-model="config.openLinkInNewTab")
-                el-form-item(:label="$t('openBookmarkInNewTab')")
-                    el-switch(v-model="config.openBookmarkInNewTab")
-                el-form-item(:label="$t('showBookmark')")
-                    el-switch(v-model="config.showBookmark")
-                el-form-item(:label="$t('Language')")
-                    el-select(v-model="config.locale")
-                        el-option(label="中文" value="zh")
-                        el-option(label="English" value="en")
 
+        main-setting(v-model="config" @upload="onUploadAction")
         dialog-bookmark-edit(v-model="dialog")
 </template>
 
@@ -52,17 +39,18 @@ import searchBox from './components/search.vue';
 import githubTrending from './components/github-trending.vue';
 import bookmark from './components/bookmark.vue';
 import dialogBookmarkEdit from './components/dialog-bookmark-edit.vue';
+import mainSetting from './components/setting.vue';
 import storage from '../services/storage';
-import config from '../services/config';
+import defaultConfig from '../services/config';
 
 export default {
     name: 'hero',
-    components: { searchBox, githubTrending, bookmark, dialogBookmarkEdit },
+    components: { searchBox, githubTrending, bookmark, mainSetting, dialogBookmarkEdit },
     data() {
         const cfg = storage.getItem('GITHUBER_CONFIGURATION');
         return {
             octicons,
-            config: { ...config, ...cfg },
+            config: { ...defaultConfig, ...cfg },
             dialog: {
                 show: false,
                 form: {},
@@ -73,7 +61,7 @@ export default {
         document.title = this.$t('NewTabs');
     },
     methods: {
-        ...mapActions('bookmark', ['removeBookmark']),
+        ...mapActions('bookmark', ['removeBookmark', 'restoreBackupBookmarks']),
 
         // 搜索事件
         onSearchAction(url) {
@@ -135,6 +123,16 @@ export default {
 
         onLocaleChange() {
             this.$i18n.locale = this.config.locale;
+        },
+
+        // 导入配置
+        onUploadAction({ config, bookmarks }) {
+            Object.assign(this.config, config);
+            this.restoreBackupBookmarks(bookmarks);
+            this.$message({
+                message: this.$t('RestoreBackupSuccess'),
+                type: 'success'
+            });
         }
     },
     watch: {
