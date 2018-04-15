@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Githuber",
     "description": "每日发现 GitHub 优质内容，支持四大搜索引擎、添加便捷书签、以及爬 Github Trending 展示每日热门 Repo 等。",
-    "version": "0.2.0",
+    "version": "1.1.0",
     "icons": {
         "16": "assets/icon/icon-16.png",
         "48": "assets/icon/icon-48.png",
