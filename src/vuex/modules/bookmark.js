@@ -9,7 +9,7 @@
 // import { get } from '../../services/fetch';
 import * as types from '../types';
 // import languages from '../../services/languages';
-// import findOne from '../../services/findOne';
+import findOne from '../../services/findOne';
 import storage from '../../services/storage';
 
 export const getters = {
@@ -27,7 +27,7 @@ export const actions = {
                 logo: 'https://cdn.dribbble.com/assets/dribbble-ball-192-ec064e49e6f63d9a5fa911518781bee0c90688d052a038f8876ef0824f65eaf2.png'
             });
             data.push({
-                name: 'Codrops',
+                name: 'Codrops - 右键点击菜单可进行删除、排序',
                 url: 'https://tympanus.net/codrops/'
             });
             data.push({
@@ -51,12 +51,26 @@ export const actions = {
     },
     async removeBookmark({ commit }, item) {
         commit(types.DELETE_BOOKMARKS, item);
+    },
+    async restoreBackupBookmarks({ commit }, data) {
+        commit(types.RESTORE_BACKUP_BOOKMARKS, data);
     }
 };
 
 export const mutations = {
     [types.RECEIVE_BOOKMARKS](state, data) {
         state.bookmarks = data;
+    },
+    [types.RESTORE_BACKUP_BOOKMARKS](state, data) {
+        data.map(item => {
+            const { index } = findOne(state.bookmarks, { name: item.name });
+            if (index === -1) {
+                state.bookmarks.push(item);
+            }
+            return item;
+        });
+
+        storage.setItem('GITHUBER_BOOKMARKS', state.bookmarks);
     },
     [types.SAVE_BOOKMARKS](state, item) {
         state.bookmarks.unshift(item);
@@ -69,7 +83,7 @@ export const mutations = {
             state.bookmarks.splice(index, 1);
             storage.setItem('GITHUBER_BOOKMARKS', state.bookmarks);
         }
-    }
+    },
 };
 
 export default {

@@ -1,6 +1,6 @@
 <template lang="pug">
     el-dialog(:title="$t('Add')" :visible.sync="dialog.show")
-        el-form(:model="dialog.form" label-width="40px")
+        el-form(:model="dialog.form" label-width="60px")
             el-form-item(:label="$t('Name')")
                 el-input(v-model="dialog.form.name")
             el-form-item(:label="$t('Url')")

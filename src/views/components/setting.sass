@@ -1,0 +1,89 @@
+/*
+ * @Author: 卓文理
+ * @Email: 531840344@qq.com
+ * @Date: 2018-04-14 16:43:38
+ */
+
+@import '../../stylesheet/common.sass'
+
+.setting
+    position: fixed
+    top: 0
+    right: 0
+    bottom: 0
+    display: flex
+    flex-direction: column
+    width: 360px
+    height: 100vh
+    overflow: hidden
+    background: #ffffff
+    z-index: 100
+    box-shadow: 0 0 3px 0 #ddd
+    transform: translateX(100%)
+    transition: transform 0.2s ease
+    &.show
+        transform: translate3d(0,0,0)
+
+    &-title
+        position: relative
+        height: 44px
+        line-height: 44px
+        border-bottom: 1px solid #efefef
+        padding-left: 20px
+        font-size: 14px
+        z-index: 102
+        background: #ffffff
+        box-shadow: 0 0 3px 0 #ddd
+
+    &-content
+        height: calc(100vh - 44px)
+        padding: 20px
+        background: #eeeeee
+
+        .scroller:after
+            content: ''
+            display: block
+            height: 20px
+
+        .el-card
+            box-shadow: none
+            margin-bottom: 20px
+            &__header
+                font-weight: bold
+            &__tips
+                padding-top: 10px
+                font-size: 12px
+                color: $gray
+            &__upload
+                display: flex
+                flex-direction: row
+                .upload
+                    position: relative
+                    margin-left: 10px
+                    input
+                        position: absolute
+                        top: 0
+                        left: 0
+                        opacity: 0
+                        width: 100%
+                        height: 100%
+                        cursor: pointer
+                        &:hover + .el-button--success
+                            background: #85ce61;
+                            border-color: #85ce61;
+                            color: #fff;
+
+        .el-form
+            margin-top: -5px
+            .el-form-item
+                margin-bottom: 0
+                display: flex
+                &__label
+                    float: none
+                    flex: 1
+                    text-align: left
+                &__content
+                    display: block
+            .el-select
+                width: 96px
+

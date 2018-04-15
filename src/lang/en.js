@@ -26,12 +26,23 @@ export default {
 
     // setting
     Setting: 'Setting',
-    AdditionalSearchEngine: 'Additional search engine:',
-    openSearchInNewTab: 'Open search in new tab:',
-    openLinkInNewTab: 'Open link in new tab:',
-    openBookmarkInNewTab: 'Open bookmark in new tab:',
-    showBookmark: 'Show Bookmark:',
-    Language: 'Language:',
+
+    // 目标打开方式
+    GoalOpeningMethod: 'Goal opening method',
+    AdditionalSearchEngine: 'Additional search engine',
+    openSearchInNewTab: 'Open search in new tab',
+    openLinkInNewTab: 'Open link in new tab',
+    openBookmarkInNewTab: 'Open bookmark in new tab',
+    GoalOpeningMethodNote: 'Note: The above open method only works on Githuber internal modules.',
+
+    // 视图
+    View: 'View',
+    showBookmark: 'Show Bookmark',
+    Language: 'Language',
+
+    // 数据备份
+    DataBackup: 'Data Backup',
+    RestoreBackup: 'Restore Backup',
 
     // dialog
     Add: 'Add',
@@ -44,6 +55,10 @@ export default {
     DeleteSuccess: 'Delete Success!',
     AddSuccess: 'Add Success!',
     EditSuccess: 'Edit Success!',
+    KeepUpload: 'Upload',
+    Delete: 'Delete',
+    UploadNote: 'Drop file here or click to upload',
+    RestoreBackupSuccess: 'Restore Backup Success!',
 
     // Trending
     Today: 'Today',

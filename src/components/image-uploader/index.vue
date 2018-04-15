@@ -17,14 +17,13 @@
             )
                 span.btn
                     i.el-icon-upload2
-                    span 继续上传
+                    span {{$t('KeepUpload')}}
                 span.btn(@click.stop="handleUploadRemove")
                     i.el-icon-delete
-                    span 删除
+                    span {{$t('Delete')}}
             .el-upload-dragger__inner(v-else)
                 i.el-icon-upload
-                .el-dragger__text 将文件拖到此处，或{{$t('Logo')}}
-                .el-dragger__text 点击上传
+                .el-dragger__text(v-html="$t('UploadNote')")
 </template>
 
 <script>
