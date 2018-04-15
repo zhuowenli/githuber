@@ -39,11 +39,19 @@
                             @change="onImportAction"
                         )
                         el-button(type="success" size="medium" round) {{$t('RestoreBackup')}}
+
+            el-card
+                div(slot="header") {{$t('About')}}
+                a.link(href="https://github.com/zhuowenli/" target="_blank") {{$t('AboutAuthor')}}
+                a.link(href="https://github.com/zhuowenli/githuber/issues" target="_blank") {{$t('Feedback')}}
+                a.link(href="https://github.com/zhuowenli/githuber" target="_blank") {{$t('SourceCode')}}
+                .version v{{manifest.version}}
 </template>
 
 <script>
 import fileSaver from 'file-saver';
 import storage from '../../services/storage';
+import manifest from '../../../static/manifest.json';
 
 export default {
     name: 'setting',
@@ -52,6 +60,7 @@ export default {
     },
     data() {
         return {
+            manifest,
             config: this.value || {},
         };
     },

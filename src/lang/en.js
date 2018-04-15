@@ -44,6 +44,12 @@ export default {
     DataBackup: 'Data Backup',
     RestoreBackup: 'Restore Backup',
 
+    // 关于
+    About: 'About',
+    AboutAuthor: 'About author',
+    Feedback: 'Feedback',
+    SourceCode: 'Source code',
+
     // dialog
     Add: 'Add',
     Edit: 'Edit',
