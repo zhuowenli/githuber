@@ -26,12 +26,29 @@ export default {
 
     // setting
     Setting: '设置',
-    AdditionalSearchEngine: '附加搜索引擎:',
-    openSearchInNewTab: '在新标签页中搜索:',
-    openLinkInNewTab: '在新标签页中打开链接:',
-    openBookmarkInNewTab: '在新标签页中打开书签:',
-    showBookmark: '显示书签栏:',
-    Language: '语言:',
+
+    // 目标打开方式
+    GoalOpeningMethod: '目标打开方式',
+    AdditionalSearchEngine: '附加搜索引擎',
+    openSearchInNewTab: '在新标签页中搜索',
+    openLinkInNewTab: '在新标签页中打开链接',
+    openBookmarkInNewTab: '在新标签页中打开书签',
+    GoalOpeningMethodNote: '备注：以上打开方式仅作用于 Githuber 内部模块',
+
+    // 视图
+    View: '视图',
+    showBookmark: '显示书签栏',
+    Language: '语言',
+
+    // 数据备份
+    DataBackup: '数据备份',
+    RestoreBackup: '恢复备份',
+
+    // 关于
+    About: '关于',
+    AboutAuthor: '关于作者',
+    Feedback: '意见反馈',
+    SourceCode: '项目源码',
 
     // dialog
     Add: '添加',
@@ -44,6 +61,10 @@ export default {
     DeleteSuccess: '删除成功！',
     AddSuccess: '添加成功！',
     EditSuccess: '编辑成功！',
+    KeepUpload: '继续上传',
+    Delete: '删除',
+    UploadNote: '将文件拖到此处，或 <br> 点击上传',
+    RestoreBackupSuccess: '备份恢复成功！',
 
     // Trending
     Today: '今日',

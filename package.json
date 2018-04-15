@@ -1,6 +1,6 @@
 {
   "name": "githuber",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "repository": "git@github.com:zhuowenli/githuber.git",
   "author": "卓文理 <531840344@qq.com>",
@@ -27,6 +27,7 @@
     "cheerio": "^1.0.0-rc.2",
     "csshake": "^1.5.3",
     "element-ui": "^2.0.11",
+    "file-saver": "^1.3.8",
     "iscroll": "^5.2.0",
     "jquery": "^3.2.1",
     "jsonp": "^0.2.1",
@@ -51,6 +52,7 @@
     "vue-i18n": "^7.4.0",
     "vue-iscroll-view": "^1.0.3",
     "vue-waterfall": "^1.0.6",
+    "vuedraggable": "^2.16.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
