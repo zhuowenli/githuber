@@ -92,7 +92,7 @@ export default {
                     });
                 }
             };
-            reader.readAsBinaryString(file);
+            reader.readAsText(file);
         }
     },
     watch: {
