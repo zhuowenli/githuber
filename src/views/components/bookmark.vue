@@ -9,11 +9,11 @@
             :options="dragOptions"
         )
             .bookmark__item(
+                @contextmenu="toggleEditAction"
                 v-for="(item, inx) in bookmarks"
                 :key="inx"
                 @click="onLinkTapAction(item)"
                 @dblclick="onEditAction(item)"
-                @contextmenu="onContextMenuAction($event, item)"
                 :class="{edit: edit}"
             )
                 .el-icon-close(@click.stop="onRemoveAction(item)")
@@ -22,7 +22,7 @@
                 .text.shake-constant(v-else) {{item.name[0]}}
                 .name
                     span {{item.name}}
-        .bookmark__item(@click="edit = false" v-if="edit")
+        .bookmark__item(@click="toggleEditAction" v-if="edit")
             .el-icon-check
         .bookmark__item(@click="onAddAction" v-else)
             .el-icon-plus
@@ -46,6 +46,11 @@ export default {
     async mounted() {
         this.init();
     },
+    watch: {
+        bookmarks() {
+            this.$refs.scrollView.refresh();
+        }
+    },
     computed: {
         ...mapGetters('bookmark', ['bookmarks']),
         bookmarkLists: {
@@ -68,7 +73,7 @@ export default {
                 this.$emit('tap', item.url);
             }
         },
-        onContextMenuAction(e) {
+        toggleEditAction(e) {
             e.preventDefault();
             this.edit = !this.edit;
             if (this.edit) {
