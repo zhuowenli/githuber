@@ -6,9 +6,7 @@
 
 'use strict';
 
-// import { get } from '../../services/fetch';
 import * as types from '../types';
-// import languages from '../../services/languages';
 import findOne from '../../services/findOne';
 import storage from '../../services/storage';
 
@@ -18,23 +16,33 @@ export const getters = {
 
 export const actions = {
     async fetchBookmarks ({ commit }) {
-        const data = storage.getItem('GITHUBER_BOOKMARKS') || [];
+        let data = storage.getItem('GITHUBER_BOOKMARKS') || [];
 
         if (!data.length) {
-            data.push({
-                name: 'Dribbble - Show and tell for designers',
-                url: 'https://dribbble.com/',
-                logo: 'https://cdn.dribbble.com/assets/dribbble-ball-192-ec064e49e6f63d9a5fa911518781bee0c90688d052a038f8876ef0824f65eaf2.png'
-            });
-            data.push({
-                name: 'Codrops - 右键点击菜单可进行删除、排序',
-                url: 'https://tympanus.net/codrops/'
-            });
-            data.push({
-                name: 'zhuowenli - GitHub',
-                url: 'https://github.com/zhuowenli',
-                logo: 'http://zhuowenli.qiniudn.com/2018/1/22/1516614358916991.png'
-            });
+            /* eslint-disable max-len */
+            data = [
+                {
+                    name: 'zhuowenli/githuber: 这是一个帮助 Githuber 每日发现优质内容的 Chrome 主页拓展。',
+                    logo: 'https://assets-cdn.github.com/favicon.ico',
+                    url: 'https://github.com/zhuowenli/githuber'
+                }, {
+                    name: 'zhuowenli - GitHub',
+                    url: 'https://github.com/zhuowenli',
+                    logo: 'http://zhuowenli.qiniudn.com/2018/1/22/1516614358916991.png'
+                }, {
+                    name: 'Dribbble - Show and tell for designers',
+                    url: 'https://dribbble.com/',
+                    logo: 'https://cdn.dribbble.com/assets/dribbble-ball-192-ec064e49e6f63d9a5fa911518781bee0c90688d052a038f8876ef0824f65eaf2.png'
+                }, {
+                    name: 'Codrops - 右键点击列表进入编辑模式',
+                    url: 'https://tympanus.net/codrops/'
+                }, {
+                    name: '编辑模式下双击可编辑、拖拽可排序',
+                    logo: 'https://www.google.com/images/branding/product/ico/googleg_lodp.ico',
+                    url: 'https://www.google.com/'
+                },
+            ];
+
             storage.setItem('GITHUBER_BOOKMARKS', data);
         }
 
@@ -45,8 +53,8 @@ export const actions = {
         commit(types.RECEIVE_BOOKMARKS, data);
         return data;
     },
-    async saveBookmark ({ commit }, item) {
-        commit(types.SAVE_BOOKMARKS, item);
+    async saveBookmark ({ commit }, { form: item, index }) {
+        commit(types.SAVE_BOOKMARKS, { item, index });
         return item;
     },
     async removeBookmark({ commit }, item) {
@@ -72,8 +80,12 @@ export const mutations = {
 
         storage.setItem('GITHUBER_BOOKMARKS', state.bookmarks);
     },
-    [types.SAVE_BOOKMARKS](state, item) {
-        state.bookmarks.unshift(item);
+    [types.SAVE_BOOKMARKS](state, { item, index }) {
+        if (index || index === 0) {
+            state.bookmarks.splice(index, 1, item);
+        } else {
+            state.bookmarks.unshift(item);
+        }
         storage.setItem('GITHUBER_BOOKMARKS', state.bookmarks);
     },
     [types.DELETE_BOOKMARKS](state, item) {

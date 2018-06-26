@@ -13,7 +13,7 @@
                 v-for="(item, inx) in bookmarks"
                 :key="inx"
                 @click="onLinkTapAction(item)"
-                @dblclick="onEditAction(item)"
+                @dblclick="onEditAction(item, inx)"
                 :class="{edit: edit}"
             )
                 .el-icon-close(@click.stop="onRemoveAction(item)")
@@ -85,8 +85,12 @@ export default {
         onAddAction() {
             this.$emit('add');
         },
-        onEditAction(item) {
-            this.$emit('edit', item);
+        onEditAction(item, inx) {
+            if (this.edit) {
+                this.$emit('edit', item, inx);
+            } else {
+                this.$emit('tap', item.url);
+            }
         },
         onRemoveAction(item) {
             this.$emit('remove', item);

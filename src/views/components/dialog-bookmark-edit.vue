@@ -1,11 +1,12 @@
 <template lang="pug">
-    el-dialog(:title="$t('Add')" :visible.sync="dialog.show")
+    el-dialog(:title="$t(dialog.edit ? 'Edit' : 'Add')" :visible.sync="dialog.show")
         el-form(:model="dialog.form" label-width="60px")
             el-form-item(:label="$t('Name')")
                 el-input(v-model="dialog.form.name")
             el-form-item(:label="$t('Url')")
                 el-input(v-model="dialog.form.url")
             el-form-item(:label="$t('Logo')")
+                el-input(v-model="dialog.form.logo" placeholder="https?://xxx.png")
                 image-uploader(v-model="dialog.form.logo")
         .dialog-footer(slot="footer")
             el-button(@click="dialog.show = false") {{$t('Cancel')}}
@@ -33,7 +34,7 @@ export default {
     methods: {
         ...mapActions('bookmark', ['fetchBookmarks', 'saveBookmark']),
         onBookmarkSaveAction() {
-            this.saveBookmark(this.dialog.form);
+            this.saveBookmark(this.dialog);
             this.dialog.show = false;
         },
     },
@@ -54,3 +55,7 @@ export default {
 };
 </script>
 
+<style lang="sass" scoped>
+    .image-uploader
+        margin-top: 5px
+</style>
