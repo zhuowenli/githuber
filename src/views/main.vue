@@ -32,13 +32,14 @@
                     @update="onConfigUpdateAction"
                 )
 
-        main-setting(v-model="config" @upload="onUploadAction")
+        main-setting(v-model="config" @upload="onUploadAction" @import="onImportBookmarks")
         dialog-bookmark-edit(v-model="dialog")
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 import octicons from 'octicons';
+import Promise from 'bluebird';
 import searchBox from './components/search.vue';
 import githubTrending from './components/github-trending.vue';
 import bookmark from './components/bookmark.vue';
@@ -65,7 +66,7 @@ export default {
         document.title = this.$t('NewTabs');
     },
     methods: {
-        ...mapActions('bookmark', ['removeBookmark', 'restoreBackupBookmarks']),
+        ...mapActions('bookmark', ['removeBookmark', 'restoreBackupBookmarks', 'saveBookmark']),
 
         // 搜索事件
         onSearchAction(url) {
@@ -118,7 +119,6 @@ export default {
 
         // 编辑书签
         onBookmarkEditAction(item, index) {
-            console.log(item);
             this.dialog = {
                 index,
                 show: true,
@@ -134,10 +134,20 @@ export default {
         // 删除书签
         async onBookmarkRemoveAction(item) {
             await this.removeBookmark(item);
-            // this.$message({
-            //     message: this.$t('DeleteSuccess'),
-            //     type: 'success'
-            // });
+        },
+
+        // 导入书签
+        onImportBookmarks(sites) {
+            Promise.map(sites, item => {
+                this.saveBookmark({ form: {
+                    name: item.title,
+                    url: item.url,
+                    logo: `chrome://favicon/${item.url}`,
+                } });
+            }).then(() => {
+                console.log(111);
+            });
+            console.log(sites);
         },
 
         onLocaleChange() {

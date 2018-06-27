@@ -40,6 +40,8 @@ export default {
     showBookmark: '显示书签栏',
     collapseBookmark: '折叠书签栏',
     Language: '语言',
+    importTopSites: '导入最常访问',
+    import: '导入',
 
     // 数据备份
     DataBackup: '数据备份',

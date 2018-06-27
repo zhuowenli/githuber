@@ -26,6 +26,8 @@
     "permissions": [
         "http://*/",
         "https://*/",
+        "chrome://favicon/",
+        "topSites",
         "storage",
         "activeTab",
         "cookies",
