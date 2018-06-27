@@ -12,6 +12,7 @@ import qiniuToken from './qiniu';
 import admin from './admin';
 import login from './login';
 import metadata from './metadata';
+import github from './github';
 
 const router = new Router();
 
@@ -23,6 +24,7 @@ router.use('/api', qiniuToken.routes(), qiniuToken.allowedMethods());
 router.use('/api', admin.routes(), admin.allowedMethods());
 router.use('/api', login.routes(), login.allowedMethods());
 router.use('/api', metadata.routes(), metadata.allowedMethods());
+router.use('/api', github.routes(), github.allowedMethods());
 
 export default function routes() {
     return compose([

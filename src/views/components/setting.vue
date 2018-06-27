@@ -26,6 +26,11 @@
                             el-option(label="English" value="en")
                     el-form-item(:label="$t('showBookmark')")
                         el-switch(v-model="config.showBookmark")
+                    el-form-item(:label="$t('collapseBookmark')")
+                        el-switch(v-model="config.collapseBookmark")
+
+                    el-form-item(:label="$t('importTopSites')")
+                        el-button(type="info" size="medium" round @click="onImportTopSites") {{$t('import')}}
 
             el-card
                 div(slot="header") {{$t('DataBackup')}}
@@ -93,6 +98,12 @@ export default {
                 }
             };
             reader.readAsText(file);
+        },
+
+        onImportTopSites() {
+            chrome.topSites.get(sites => {
+                this.$emit('import', sites);
+            });
         }
     },
     watch: {

@@ -38,7 +38,10 @@ export default {
     // 视图
     View: 'View',
     showBookmark: 'Show Bookmark',
+    collapseBookmark: 'Collapse Bookmark',
     Language: 'Language',
+    importTopSites: 'Import top sites',
+    import: 'Import',
 
     // 数据备份
     DataBackup: 'Data Backup',

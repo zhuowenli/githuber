@@ -9,19 +9,31 @@
             :options="dragOptions"
         )
             .bookmark__item(
-                @contextmenu="toggleEditAction"
                 v-for="(item, inx) in bookmarks"
                 :key="inx"
+                :class="{edit: edit}"
+                @contextmenu="toggleEditAction"
                 @click="onLinkTapAction(item)"
                 @dblclick="onEditAction(item, inx)"
-                :class="{edit: edit}"
             )
                 .el-icon-close(@click.stop="onRemoveAction(item)")
-                .logo.shake-constant(v-if="item.logo")
-                    img(:src="item.logo")
-                .text.shake-constant(v-else) {{item.name[0]}}
+
+                //- 折叠状态下、hover提示
+                el-tooltip(
+                    class="item"
+                    effect="dark"
+                    placement="right"
+                    :content="item.name"
+                    :disabled="!collapseBookmark"
+                )
+                    .logo.shake-constant(v-if="item.logo")
+                        img(:src="item.logo")
+                    .text.shake-constant(v-else) {{item.name[0]}}
+
                 .name
                     span {{item.name}}
+
+        //- 新增、保存按钮
         .bookmark__item(@click="toggleEditAction" v-if="edit")
             .el-icon-check
         .bookmark__item(@click="onAddAction" v-else)
@@ -34,6 +46,9 @@ import draggable from 'vuedraggable';
 
 export default {
     name: 'bookmark',
+    props: {
+        collapseBookmark: Boolean
+    },
     data() {
         return {
             edit: false,

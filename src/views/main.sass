@@ -8,19 +8,27 @@
     display: flex
     height: 100vh
     overflow: hidden
+
+    // 左侧悬浮栏
     &-aside
+        position: relative
         background: #ffffff
         box-shadow: 0 0 3px 0 #ddd
         transform: translateX(-100%)
         transition: all 0.2s ease
         width: 0
         overflow: hidden
-        &.show
+        &--show
             width: 300px
             transform: translate3d(0, 0, 0)
+            &.main-aside--collapse
+                width: 60px
+
     &-content
         flex: 1
         background: #eceff1
+
+    // 头部
     &__header
         width: 100%
         background: #ffffff
@@ -57,6 +65,8 @@
         .oction-x
             width: 12px
             height: 16px
+
+    // trending
     &__trending
         position: relative
         width: 100%
