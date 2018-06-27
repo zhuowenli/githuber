@@ -11,7 +11,7 @@ export default {
     engineName: 'google',
     since: 'monthly',
     lang: '',
-    locale: 'zh',
+    locale: 'en',
     showBookmark: true,
     openSearchInNewTab: false,
     openLinkInNewTab: false,

@@ -4,6 +4,7 @@
             bookmark(
                 @tap="onBookmarkTapAction"
                 @add="onBookmarkAddAction"
+                @edit="onBookmarkEditAction"
                 @remove="onBookmarkRemoveAction"
             )
 
@@ -108,6 +109,21 @@ export default {
                     name: '',
                     url: '',
                     logo: ''
+                },
+            };
+        },
+
+        // 编辑书签
+        onBookmarkEditAction(item, index) {
+            console.log(item);
+            this.dialog = {
+                index,
+                show: true,
+                edit: true,
+                form: {
+                    name: item.name || '',
+                    url: item.url || '',
+                    logo: item.logo || '',
                 },
             };
         },

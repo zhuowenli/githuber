@@ -1,10 +1,22 @@
-# githuber
+<p align="center">
+    <img src="./assets/logo.png" width="150" />
+</p>
 
-<a target="_blank" href="https://chrome.google.com/webstore/detail/githuber/janmcneaglgklfljjcpihkkomeghljnf"><img alt="Try it now" src="https://raw.github.com/GoogleChrome/chrome-app-samples/master/tryitnowbutton_small.png" title="Click here to install this sample from the Chrome Web Store"></img></a>
+## GITHUBER
 
-这是一个帮助 Githuber 每日发现优质内容的 Chrome 主页拓展。
+:octocat: 这是一个帮助 GitHub 开发者每日发现优质内容的 Chrome 主页拓展。
 
-![](./assets/action.gif)
+✔ 支持四大搜索引擎：谷歌、百度、必应、雅虎<br>
+✔ 添加便捷书签<br>
+✔ 爬 Github Trending 展示所有编程语言的每日、每周、每月热门 Repo<br>
+✔ 项目开源，方便大家进行代码审计、添加新功能<br>
+✔ 支持中英文、备份数据、以及基本视图设置
+
+![](./assets/0.png)
+
+One-click install from Google Chrome Web Store ⬇️ ⬇️ ⬇️
+
+<a target="_blank" href="https://chrome.google.com/webstore/detail/githuber/janmcneaglgklfljjcpihkkomeghljnf"><img alt="Try it now"  width="300" src="https://raw.github.com/GoogleChrome/chrome-app-samples/master/tryitnowbutton.png" title="Click here to install this sample from the Chrome Web Store"></img></a>
 
 ## 本地网页开发
 
