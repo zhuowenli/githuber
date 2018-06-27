@@ -80,7 +80,6 @@
         box-shadow: none
         padding: 10px
         width: 100%
-        max-width: 400px
         .el-card__body
             padding: 16px 20px
         &__title
@@ -137,19 +136,35 @@
 @media only screen and (min-width: 960px)
     .github-trending .trending
         width: 50%
+    .main-aside:not(.main-aside--show), .main-aside--collapse
+        & ~ .main-content .github-trending .trending
+            width: 33.3%
 
 @media only screen and (min-width: 1280px)
     .github-trending .trending
         width: 33.3%
+    .main-aside:not(.main-aside--show), .main-aside--collapse
+        & ~ .main-content .github-trending .trending
+            width: 25%
 
 @media only screen and (min-width: 1600px)
     .github-trending .trending
         width: 25%
+    .main-aside:not(.main-aside--show), .main-aside--collapse
+        & ~ .main-content .github-trending .trending
+            width: 20%
 
 @media only screen and (min-width: 1920px)
     .github-trending .trending
         width: 20%
+    .main-aside:not(.main-aside--show), .main-aside--collapse
+        & ~ .main-content .github-trending .trending
+            width: 16.66%
 
 @media only screen and (min-width: 2560px)
     .github-trending .trending
         width: 16.66%
+    .main-aside:not(.main-aside--show), .main-aside--collapse
+        & ~ .main-content .github-trending .trending
+            width: 14.285%
+
