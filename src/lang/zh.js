@@ -38,6 +38,7 @@ export default {
     // 视图
     View: '视图',
     showBookmark: '显示书签栏',
+    collapseBookmark: '折叠书签栏',
     Language: '语言',
 
     // 数据备份

@@ -38,6 +38,7 @@ export default {
     // 视图
     View: 'View',
     showBookmark: 'Show Bookmark',
+    collapseBookmark: 'Collapse Bookmark',
     Language: 'Language',
 
     // 数据备份

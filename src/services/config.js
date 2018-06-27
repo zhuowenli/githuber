@@ -13,6 +13,7 @@ export default {
     lang: '',
     locale: 'en',
     showBookmark: true,
+    collapseBookmark: false,
     openSearchInNewTab: false,
     openLinkInNewTab: false,
     openBookmarkInNewTab: false,

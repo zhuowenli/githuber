@@ -26,6 +26,8 @@
                             el-option(label="English" value="en")
                     el-form-item(:label="$t('showBookmark')")
                         el-switch(v-model="config.showBookmark")
+                    el-form-item(:label="$t('collapseBookmark')")
+                        el-switch(v-model="config.collapseBookmark")
 
             el-card
                 div(slot="header") {{$t('DataBackup')}}

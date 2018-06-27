@@ -1,7 +1,10 @@
 <template lang="pug">
     .main
-        .main-aside(:class="{show: config.showBookmark}")
+        .main-aside(
+            :class="{'main-aside--show': config.showBookmark, 'main-aside--collapse': config.collapseBookmark}"
+        )
             bookmark(
+                :collapseBookmark="config.collapseBookmark"
                 @tap="onBookmarkTapAction"
                 @add="onBookmarkAddAction"
                 @edit="onBookmarkEditAction"

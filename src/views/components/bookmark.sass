@@ -28,8 +28,10 @@
             display: flex
             align-items: center
             justify-content: center
+            flex-shrink: 0;
             width: 40px
             height: 40px
+            outline: 0
             img
                 display: inline-block
                 width: 32px
@@ -38,6 +40,7 @@
             display: flex
             align-items: center
             justify-content: center
+            flex-shrink: 0;
             width: 40px
             height: 40px
             background: $gray
@@ -45,13 +48,14 @@
             color: #ffffff
             font-size: 20px
             user-select: none
+            outline: 0
 
         .name
             flex: 1
             display: flex
             height: 40px
-            padding-left: 10px
             font-size: 12px
+            padding-left: 10px
             span
                 @include max-text(2)
                 width: 100%
@@ -92,3 +96,6 @@
                 @extend %running
                 animation-play-state: running;
                 display: flex
+
+.main-aside--collapse .bookmark__item .name
+    width: 0
