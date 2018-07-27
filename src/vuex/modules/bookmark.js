@@ -68,6 +68,7 @@ export const actions = {
 export const mutations = {
     [types.RECEIVE_BOOKMARKS](state, data) {
         state.bookmarks = data;
+        storage.setItem('GITHUBER_BOOKMARKS', state.bookmarks);
     },
     [types.RESTORE_BACKUP_BOOKMARKS](state, data) {
         data.map(item => {
