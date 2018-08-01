@@ -71,27 +71,27 @@ export default {
         // 搜索事件
         onSearchAction(url) {
             if (this.config.openSearchInNewTab) {
-                window.open(url);
+                chrome.tabs.create({ url });
             } else {
-                window.location.href = url;
+                chrome.tabs.update({ url });
             }
         },
 
         // 点击链接跳转
         onLinkTapAction(url) {
             if (this.config.openLinkInNewTab) {
-                window.open(url);
+                chrome.tabs.create({ url });
             } else {
-                window.location.href = url;
+                chrome.tabs.update({ url });
             }
         },
 
         // 点击书签跳转
         onBookmarkTapAction(url) {
             if (this.config.openBookmarkInNewTab) {
-                window.open(url);
+                chrome.tabs.create({ url });
             } else {
-                window.location.href = url;
+                chrome.tabs.update({ url });
             }
         },
 
