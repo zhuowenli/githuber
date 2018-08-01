@@ -6,42 +6,7 @@
 
 'use strict';
 
-export default [
-    {
-        name: 'C++',
-        value: 'C++',
-        color: '#555555',
-    },
-    {
-        name: 'CSS',
-        value: 'CSS',
-        color: '#563d7c',
-    },
-    {
-        name: 'HTML',
-        value: 'HTML',
-        color: '#e44b23',
-    },
-    {
-        name: 'JavaScript',
-        value: 'JavaScript',
-        color: '#f1e05a',
-    },
-    {
-        name: 'Python',
-        value: 'Python',
-        color: '#3572A5',
-    },
-    {
-        name: 'Ruby',
-        value: 'Ruby',
-        color: '#701516',
-    },
-    {
-        name: 'TypeScript',
-        value: 'TypeScript',
-        color: '#2b7489',
-    },
+const languages = [
     {
         name: 'Mercury',
         value: 'Mercury',
@@ -1012,5 +977,54 @@ export default [
         value: 'unknown',
         color: '#aaa',
     },
-];
+].sort((a, b) => {
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
 
+    if (nameA < nameB) {
+        return -1;
+    }
+    if (nameA > nameB) {
+        return 1;
+    }
+
+    return 0;
+});
+
+export default [
+    {
+        name: 'C++',
+        value: 'C++',
+        color: '#555555',
+    },
+    {
+        name: 'CSS',
+        value: 'CSS',
+        color: '#563d7c',
+    },
+    {
+        name: 'HTML',
+        value: 'HTML',
+        color: '#e44b23',
+    },
+    {
+        name: 'JavaScript',
+        value: 'JavaScript',
+        color: '#f1e05a',
+    },
+    {
+        name: 'Python',
+        value: 'Python',
+        color: '#3572A5',
+    },
+    {
+        name: 'Ruby',
+        value: 'Ruby',
+        color: '#701516',
+    },
+    {
+        name: 'TypeScript',
+        value: 'TypeScript',
+        color: '#2b7489',
+    }
+].concat(languages);
