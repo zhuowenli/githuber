@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "GITHUBER - 开发者的新标签页",
     "description": "这是一个帮助 GitHub 开发者每日发现优质内容的 Chrome 主页拓展。",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "icons": {
         "16": "assets/icon/icon-16.png",
         "48": "assets/icon/icon-48.png",
