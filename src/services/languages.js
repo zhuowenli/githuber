@@ -18,7 +18,7 @@ const languages = [
         color: '#5a6986',
     },
     {
-        name: 'Objective-C++',
+        name: 'Objective C++',
         value: 'Objective-C++',
         color: '#6866fb',
     },
@@ -39,7 +39,7 @@ const languages = [
     },
     {
         name: 'Jupyter Notebook',
-        value: 'Jupyter-Notebook',
+        value: 'Jupyter Notebook',
         color: '#DA5B0B',
     },
     {
@@ -69,7 +69,7 @@ const languages = [
     },
     {
         name: 'Web Ontology Language',
-        value: 'Web-Ontology-Language',
+        value: 'Web Ontology Language',
         color: '#9cc9dd',
     },
     {
@@ -143,14 +143,9 @@ const languages = [
         color: '#776791',
     },
     {
-        name: 'Objective-C',
+        name: 'Objective C',
         value: 'Objective-C',
         color: '#438eff',
-    },
-    {
-        name: 'ColdFusion CFC',
-        value: 'ColdFusion-CFC',
-        color: '#ed2cd6',
     },
     {
         name: 'Oz',
@@ -163,7 +158,7 @@ const languages = [
         color: '#c7a938',
     },
     {
-        name: 'Objective-J',
+        name: 'Objective J',
         value: 'Objective-J',
         color: '#ff0c5a',
     },
@@ -179,7 +174,7 @@ const languages = [
     },
     {
         name: 'Component Pascal',
-        value: 'Component-Pascal',
+        value: 'Component Pascal',
         color: '#b0ce4e',
     },
     {
@@ -209,7 +204,7 @@ const languages = [
     },
     {
         name: 'Visual Basic',
-        value: 'Visual-Basic',
+        value: 'Visual Basic',
         color: '#945db7',
     },
     {
@@ -289,7 +284,7 @@ const languages = [
     },
     {
         name: 'Pure Data',
-        value: 'Pure-Data',
+        value: 'Pure Data',
         color: '#91de79',
     },
     {
@@ -334,7 +329,7 @@ const languages = [
     },
     {
         name: 'API Blueprint',
-        value: 'API-Blueprint',
+        value: 'API Blueprint',
         color: '#2ACCA8',
     },
     {
@@ -459,7 +454,7 @@ const languages = [
     },
     {
         name: 'Propeller Spin',
-        value: 'Propeller-Spin',
+        value: 'Propeller Spin',
         color: '#7fa2a7',
     },
     {
@@ -481,11 +476,6 @@ const languages = [
         name: 'Ada',
         value: 'Ada',
         color: '#02f88c',
-    },
-    {
-        name: 'Unity3D Asset',
-        value: 'Unity3D-Asset',
-        color: '#ab69a1',
     },
     {
         name: 'Nu',
@@ -563,18 +553,13 @@ const languages = [
         color: '#ff6375',
     },
     {
-        name: 'C Sharp',
-        value: 'C-Sharp',
-        color: '#178600',
-    },
-    {
         name: 'C#',
         value: 'C#',
         color: '#178600',
     },
     {
         name: 'Emacs Lisp',
-        value: 'Emacs-Lisp',
+        value: 'Emacs Lisp',
         color: '#c065db',
     },
     {
@@ -649,7 +634,7 @@ const languages = [
     },
     {
         name: 'Unified Parallel C',
-        value: 'Unified-Parallel-C',
+        value: 'Unified Parallel C',
         color: '#4e3617',
     },
     {
@@ -699,7 +684,7 @@ const languages = [
     },
     {
         name: 'Ragel in Ruby Host',
-        value: 'Ragel-in-Ruby-Host',
+        value: 'Ragel in Ruby Host',
         color: '#9d5200',
     },
     {
@@ -809,7 +794,7 @@ const languages = [
     },
     {
         name: 'Common Lisp',
-        value: 'Common-Lisp',
+        value: 'Common Lisp',
         color: '#3fb68b',
     },
     {
@@ -869,23 +854,18 @@ const languages = [
     },
     {
         name: 'Grammatical Framework',
-        value: 'Grammatical-Framework',
+        value: 'Grammatical Framework',
         color: '#79aa7a',
     },
     {
         name: 'Game Maker Language',
-        value: 'Game-Maker-Language',
+        value: 'Game Maker Language',
         color: '#8fb200',
     },
     {
         name: 'Papyrus',
         value: 'Papyrus',
         color: '#6600cc',
-    },
-    {
-        name: 'NetLinx+ERB',
-        value: 'NetLinx+ERB',
-        color: '#747faa',
     },
     {
         name: 'Clean',
@@ -914,7 +894,7 @@ const languages = [
     },
     {
         name: 'Standard ML',
-        value: 'Standard-ML',
+        value: 'Standard ML',
         color: '#dc566d',
     },
     {
@@ -959,7 +939,7 @@ const languages = [
     },
     {
         name: 'AGS Script',
-        value: 'AGS-Script',
+        value: 'AGS Script',
         color: '#B9D9FF',
     },
     {
@@ -982,7 +962,7 @@ const languages = [
     const nameB = b.name.toUpperCase();
 
     if (nameA < nameB) {
-        return -1;
+        return 1;
     }
     if (nameA > nameB) {
         return 1;

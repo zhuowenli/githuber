@@ -49,7 +49,7 @@ export const actions = {
         }
 
         // 访问页面
-        data = await get(`https://github.com/trending/${lang}`, { since });
+        data = await get(`https://github.com/trending/${encodeURIComponent(lang)}`, { since });
 
         const $ = cheerio.load(data);
         const repos = [];
