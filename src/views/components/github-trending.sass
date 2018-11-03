@@ -129,7 +129,15 @@
             .lang
                 margin-right: 16px
             .stars
+                position: relative
                 margin-right: 16px
+                .added
+                    position: absolute
+                    top: 0
+                    left: -8px
+                    color: $red
+                    opacity: 0
+                    transition: all 0.2s ease
         &__built
             display: flex
             height: 24px
@@ -142,6 +150,12 @@
                 height: 20px
                 border-radius: 3px
                 margin-left: 4px
+
+        &:hover .trending__meta
+            .added
+                opacity: 1
+                transform: translateY(-15px)
+
 
 @media only screen and (min-width: 960px)
     .github-trending .trending

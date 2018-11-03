@@ -48,9 +48,9 @@
                         span.lang {{item.lang}}
                         svg.octicon.octicon-star(v-html="octicons.star.path")
                         span.stars {{item.stars}}
+                            .added +{{item.added}}
                         svg.octicon.octicon-repo-forked(v-html="octicons['repo-forked'].path")
                         span.forks {{item.forks}}
-                        //- .trending__added +{{item.added}}
                     .trending__built
                         | Built by
                         img(v-for="(avatar, inx) in item.avatars" :key="inx" :src="avatar")
