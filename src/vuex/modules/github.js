@@ -7,6 +7,7 @@
 'use strict';
 
 import cheerio from 'cheerio';
+import Promise from 'bluebird';
 import { get } from '../../services/fetch';
 import * as types from '../types';
 import languages from '../../services/languages';
@@ -18,6 +19,48 @@ const year = new Date(time.getFullYear(), 0, 1);
 const toDay = time.getDate();
 const toWeek = Math.ceil((((new Date() - year) / 86400000) + year.getDay() + 1) / 7);
 const toMonth = time.getMonth() + 1;
+
+const fetchTrendingRepos = async (lang, since) => {
+    // 访问页面
+    const data = await get(`https://github.com/trending/${encodeURIComponent(lang)}`, { since });
+
+    const $ = cheerio.load(data);
+    const repos = [];
+
+    // 解析页面
+    $('li', 'ol.repo-list').each((index, repo) => {
+        const $repo = $(repo);
+        const $avatars = $repo.find('.avatar');
+        const title = $repo.find('h3').text().trim().replace(/ /g, '');
+
+        const starLink = `/${title}/stargazers`;
+        const forkLink = `/${title}/network`;
+        const repoLink = `https://github.com/${title}`;
+
+        const item = {
+            author: title.split('/')[0],
+            repo: title,
+            repo_link: repoLink,
+            desc: $repo.find('p', '.py-1').text().trim() || null,
+            lang: $repo.find('[itemprop=programmingLanguage]').text().trim() || 'unknown',
+            stars: $repo.find(`[href="${starLink}"]`).text().trim() || 0,
+            forks: $repo.find(`[href="${forkLink}"]`).text().trim() || 0,
+            avatars: [],
+            added: $repo.find('.d-inline-block.float-sm-right').text().trim().replace(/([a-z,\s])/g, '') || 0,
+        };
+
+        if ($avatars && $avatars.length) {
+            [...$avatars].map($avatar => item.avatars.push($avatar.attribs.src));
+        }
+
+        const { result } = findOne(languages, { name: item.lang });
+        if (result) item.color = result.color;
+
+        repos.push(item);
+    });
+
+    return repos;
+};
 
 export const getters = {
     trendings: state => state.trendings,
@@ -34,57 +77,41 @@ export const actions = {
      * @returns {Promise}
      */
     async fetchTrending ({ commit }, query = {}) {
-        const { since, lang } = query;
-        let data = await storage.getItem(JSON.stringify(query));
+        const data = await storage.getItem(JSON.stringify(query));
 
         if (
-            data && (
-                (since === 'daily' && data.toDay === toDay) ||
-                (since === 'weekly' && data.toWeek === toWeek) ||
-                (since === 'monthly' && data.toMonth === toMonth)
+            data && data.repos.length && (
+                (query.since === 'daily' && data.toDay === toDay) ||
+                (query.since === 'weekly' && data.toWeek === toWeek) ||
+                (query.since === 'monthly' && data.toMonth === toMonth)
             )
         ) {
             commit(types.RECEIVE_GITHUB_TRENDINGS, data.repos);
             return data.repos;
         }
 
-        // 访问页面
-        data = await get(`https://github.com/trending/${encodeURIComponent(lang)}`, { since });
+        const { since } = query;
 
-        const $ = cheerio.load(data);
-        const repos = [];
+        let repos = [];
+        let isAllLanguage = false;
 
-        // 解析页面
-        $('li', 'ol.repo-list').each((index, repo) => {
-            const $repo = $(repo);
-            const $avatars = $repo.find('.avatar');
-            const title = $repo.find('h3').text().trim().replace(/ /g, '');
+        if (query.lang.length) {
+            query.lang.map(item => {
+                if (item === '') isAllLanguage = true;
+                return item;
+            });
+        }
 
-            const starLink = `/${title}/stargazers`;
-            const forkLink = `/${title}/network`;
-            const repoLink = `https://github.com/${title}`;
-
-            const item = {
-                author: title.split('/')[0],
-                repo: title,
-                repo_link: repoLink,
-                desc: $repo.find('p', '.py-1').text().trim() || null,
-                lang: $repo.find('[itemprop=programmingLanguage]').text().trim() || 'unknown',
-                stars: $repo.find(`[href="${starLink}"]`).text().trim() || 0,
-                forks: $repo.find(`[href="${forkLink}"]`).text().trim() || 0,
-                avatars: [],
-                added_stars: '',
-            };
-
-            if ($avatars && $avatars.length) {
-                [...$avatars].map($avatar => item.avatars.push($avatar.attribs.src));
-            }
-
-            const { result } = findOne(languages, { name: item.lang });
-            if (result) item.color = result.color;
-
-            repos.push(item);
-        });
+        if (!query.lang.length || isAllLanguage) {
+            repos = await fetchTrendingRepos('', since);
+        } else {
+            await Promise.map(query.lang, async lang => {
+                const res = await fetchTrendingRepos(lang, since);
+                repos = repos.concat(res);
+                return res;
+            });
+            repos = repos.sort((a, b) => (+b.added - a.added));
+        }
 
         commit(types.RECEIVE_GITHUB_TRENDINGS, repos);
 

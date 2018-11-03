@@ -12,8 +12,14 @@
                 el-option(:label="$t('Today')" value="daily")
                 el-option(:label="$t('ThisWeek')" value="weekly")
                 el-option(:label="$t('ThisMonth')" value="monthly")
-            el-select(v-model="query.lang" filterable)
-                el-option(value="" :label="$t('AllLanguages')")
+
+            el-select.language(
+                multiple
+                filterable
+                :multiple-limit="5"
+                v-model="query.lang"
+                :placeholder="$t('AllLanguages')"
+            )
                 el-option(
                     v-for="item in languages"
                     :key="item.value"
@@ -22,11 +28,13 @@
                 )
 
         .github-trending__loading(ref="loading" v-show="loading")
+
         .github-trending__error(v-if="fetchError")
             img(src="../../assets/network-error.png", alt="")
             p.title {{$t('NetworkErrorTitle')}}
             p.content {{$t('NetworkErrorContent')}}
             button.button(@click="init") {{$t('Refresh')}}
+
         .github-trending__content(v-if="!loading && !fetchError")
             .trending(
                 v-for="(item, inx) in trendings"
@@ -42,6 +50,7 @@
                         span.stars {{item.stars}}
                         svg.octicon.octicon-repo-forked(v-html="octicons['repo-forked'].path")
                         span.forks {{item.forks}}
+                        //- .trending__added +{{item.added}}
                     .trending__built
                         | Built by
                         img(v-for="(avatar, inx) in item.avatars" :key="inx" :src="avatar")
@@ -62,18 +71,26 @@ export default {
         WaterfallSlot
     },
     props: {
-        lang: String,
+        lang: [String, Array],
         since: String,
         showBookmark: Boolean
     },
     data() {
+        let lang = [];
+
+        if (typeof this.lang === 'object') {
+            lang = this.lang;
+        } else if (typeof this.lang === 'string' && this.lang !== 'all') {
+            lang = [this.lang];
+        }
+
         return {
             languages,
             octicons,
             fetchError: false,
             loading: false,
             query: {
-                lang: this.lang || '',
+                lang,
                 since: this.since || 'weekly'
             }
         };
@@ -92,6 +109,7 @@ export default {
 
             this.loading = true;
             this.fetchError = false;
+
             try {
                 await this.fetchTrending(this.query);
                 this.$emit('update', this.query);
@@ -105,6 +123,9 @@ export default {
         },
         onLinkTapAction(item) {
             this.$emit('tap', item.repo_link);
+        },
+        onAllLangAction() {
+            console.log(111);
         }
     },
     watch: {
@@ -112,8 +133,12 @@ export default {
             handler: 'init',
             deep: true,
         },
-        lang(val) {
-            this.query.lang = val;
+        lang: {
+            handler(val) {
+                const lang = typeof val === 'string' ? [val] : [];
+                this.query.lang = lang.length ? lang : val;
+            },
+            deep: true
         },
         since(val) {
             this.query.since = val;
