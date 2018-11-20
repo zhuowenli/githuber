@@ -47,6 +47,8 @@ import dialogBookmarkEdit from './components/dialog-bookmark-edit.vue';
 import mainSetting from './components/setting.vue';
 import storage from '../services/storage';
 import defaultConfig from '../services/config';
+import themeBlack from '../theme/black';
+import themeDefault from '../theme/default';
 
 export default {
     name: 'hero',
@@ -64,6 +66,7 @@ export default {
     },
     mounted() {
         document.title = this.$t('NewTabs');
+        this.onThemeChange();
     },
     methods: {
         ...mapActions('bookmark', ['removeBookmark', 'restoreBackupBookmarks', 'saveBookmark']),
@@ -162,6 +165,13 @@ export default {
                 message: this.$t('RestoreBackupSuccess'),
                 type: 'success'
             });
+        },
+
+        onThemeChange() {
+            const theme = this.config.nightMode ? themeBlack : themeDefault;
+            Object.keys(theme).forEach((key) => {
+                document.body.style.setProperty(key, theme[key]);
+            });
         }
     },
     watch: {
@@ -171,11 +181,12 @@ export default {
             },
             deep: true,
         },
-        'config.locale': 'onLocaleChange'
+        'config.locale': 'onLocaleChange',
+        'config.nightMode': 'onThemeChange'
     }
 };
 </script>
 
 <style lang="sass">
-    @import './main.sass'
+    @import './main.sass';
 </style>

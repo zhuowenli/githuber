@@ -3,7 +3,7 @@
  * @Email: 531840344@qq.com
  * @Date: 2018-01-19 18:03:22
  */
-
+@import '../stylesheet/common.sass'
 .main
     display: flex
     height: 100vh
@@ -12,7 +12,7 @@
     // 左侧悬浮栏
     &-aside
         position: relative
-        background: #ffffff
+        background: var(--background)
         box-shadow: 0 0 3px 0 #ddd
         transform: translateX(-100%)
         transition: all 0.2s ease
@@ -31,11 +31,11 @@
     // 头部
     &__header
         width: 100%
-        background: #ffffff
+        background: var(--background)
         .search-border
             height: 4px
             width: 100%
-            background: #ffffff
+            background: var(--background)
             transition: all 0.2s ease
             &.google
                 background: linear-gradient(to right, #4285f4 ((100/6) * 1%), #ea4335 ((100/6) * 1%), #ea4335 ((100/6) * 2%), #f9bc05 ((100/6) * 2%), #f9bc05 ((100/6) * 3%), #4285f4 ((100/6) * 3%), #4285f4 ((100/6) * 4%), #34a852 ((100/6) * 4%), #34a852 ((100/6) * 5%), #ea4335 ((100/6) * 5%), #ea4335 ((100/6) * 6%));
@@ -55,7 +55,7 @@
             align-items: center
             justify-content: center
             border: 0
-            background: #ffffff
+            background: var(--background)
             cursor: pointer
             outline: 0
             z-index: 101

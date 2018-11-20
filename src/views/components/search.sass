@@ -11,7 +11,7 @@
     width: 100%
     max-width: 540px
     padding: 10px 20px 15px
-    background: #ffffff
+    background: var(--background)
 
     .el-autocomplete
         display: block
@@ -20,7 +20,7 @@
             &-group__append
                 border-left: 0
         .el-button
-            background: #ffffff
+            background: var(--background)
 
     .el-input
         &--prefix .el-input__inner
@@ -34,7 +34,7 @@
             bottom: 1px
             display: block
             border: 0
-            background: #ffffff
+            background: var(--background)
             width: auto
             padding: 0
             .el-button
@@ -76,28 +76,28 @@
         & > div
             padding: 5px 20px
         &__search
-            color: $orange
+            color: var(--orange)
             &:hover
-                background: $orange
+                background: var(--orange)
                 color: #ffffff
         &__url
-            color: $blue
+            color: var(--blue)
             &:hover
-                background: $blue
+                background: var(--blue)
                 color: #ffffff
         &__word
-            color: $green
+            color: var(--green)
             &:hover
-                background: $green
+                background: var(--green)
                 color: #ffffff
 
     .highlighted .suggestion
         &__search
-            background: $orange
+            background: var(--orange)
             color: #ffffff
         &__url
-            background: $blue
+            background: var(--blue)
             color: #ffffff
         &__word
-            background: $green
+            background: var(--green)
             color: #ffffff
