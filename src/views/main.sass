@@ -13,7 +13,7 @@
     &-aside
         position: relative
         background: var(--background)
-        box-shadow: 0 0 3px 0 #ddd
+        box-shadow: 0 0 3px 0 var(--shadowColor)
         transform: translateX(-100%)
         transition: all 0.2s ease
         width: 0
@@ -26,7 +26,7 @@
 
     &-content
         flex: 1
-        background: #eceff1
+        background: var(--backgroundLighter)
 
     // 头部
     &__header
@@ -62,9 +62,11 @@
         .oction-kebab-vertical
             width: 3px
             height: 16px
+            fill: var(--fontColor)
         .oction-x
             width: 12px
             height: 16px
+            fill: var(--fontColor)
 
     // trending
     &__trending

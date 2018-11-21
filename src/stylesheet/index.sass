@@ -16,14 +16,104 @@ html
 *, *:before, *:after
     box-sizing: border-box
 
+.el-upload-dragger
+    background-color: var(--background)
+    border: 1px dashed var(--borderColor)
+    &:hover
+        border-color: var(--backgroundLightest)
+
+.el-card
+    background-color: var(--background)
+    color: var(--fontColor)
+    border: 1px solid var(--borderColor)
+    &__header
+        border-bottom: 1px solid var(--borderColor)
+
 .el-dialog
     max-width: 600px
+    background: var(--background)
+    color: var(--fontColor)
+    &__title
+        color: var(--fontColor)
     &__body
         padding: 10px 20px
+
+
+.el-input__inner
+    background-color: var(--background)
+    background: var(--background)
+    color: var(--fontColor)
+    border: 1px solid var(--borderColor)
+    &:hover
+        border-color: var(--backgroundLightest)
+    &:focus
+        border-color: var(--borderColor)
+
+.el-input.is-active .el-input__inner,
+    border-color: var(--borderColor)
+
+
+.el-select 
+    &:hover .el-input__inner,
+    .el-input.is-focus .el-input__inner,
+    .el-input__inner:focus
+        border-color: var(--backgroundLightest)
+
+    .el-tag
+        background-color: var(--backgroundLighter)
+        &__close.el-icon-close
+            color: var(--fontColor)
+            background-color: var(--background)
+            &:hover
+                background-color: var(--backgroundLightest)
+        &--info
+            color: var(--fontColor)
+            
+.el-tabs__item
+    color: var(--fontColor)
 
 .el-form
     &-item:last-child
         margin-bottom: 0
+    &-item__label
+        color: var(--fontColor)
 
-.el-select-dropdown .popper__arrow
-    transform: none
+.el-autocomplete-suggestion__wrap
+    background-color: var(--background)
+    border: 1px solid var(--borderColor)
+
+.el-popper[x-placement^=bottom] .popper__arrow
+    border-bottom-color: var(--background)
+    &::after
+        border-bottom-color: var(--background)
+
+
+.el-select-dropdown 
+    border: 1px solid var(--borderColor)
+    background-color: var(--background)
+    .popper__arrow
+        transform: none
+    &__item
+        color: var(--fontColor)
+    &__item.selected
+        background-color: var(--backgroundLighter)
+    &__item.hover,
+    &__item:hover
+        background-color: var(--backgroundLighter)
+        color: var(--blue)
+
+
+.el-select-dropdown.is-multiple
+    .el-select-dropdown__item.selected,
+    .el-select-dropdown__item.selected.hover
+        background-color: var(--backgroundLighter)
+
+.el-dropdown-menu
+    background-color: var(--background)
+    border: 1px solid var(--borderColor)
+    &__item
+        color: var(--fontColor)
+        &:focus,
+        &:not(.is-disabled):hover
+            background-color: var(--background)
+            border-bottom-color: var(--gray)
