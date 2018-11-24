@@ -1,7 +1,7 @@
 <template lang="pug">
     iscroll-view.bookmark(
         :scrollerClass="{scroller: true}"
-        :options="{mouseWheel: true, scrollbars: true}"
+        :options="{mouseWheel: true}"
         ref="scrollView"
     )
         draggable(

@@ -1,7 +1,7 @@
 <template lang="pug">
     iscroll-view.github-trending(
         :scrollerClass="{scroller: true}"
-        :options="{mouseWheel: true, scrollbars: true}"
+        :options="{mouseWheel: true}"
         ref="scrollView"
     )
         .github-trending__title

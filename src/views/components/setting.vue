@@ -3,7 +3,7 @@
         .setting-title {{$t('Setting')}}
         iscroll-view.setting-content(
             :scrollerClass="{scroller: true}"
-            :options="{mouseWheel: true, scrollbars: true}"
+            :options="{mouseWheel: true}"
             ref="scrollView"
         )
             el-card
