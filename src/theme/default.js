@@ -4,6 +4,7 @@
 export default {
     '--fontColor': '#303133',
     '--background': '#ffffff',
+    '--backgroundMedian': '#ebeff1',
     '--backgroundLighter': '#eaeaea',
     '--backgroundLightest': '#c0c4cc',
     '--borderColor': '#ebeef5',
