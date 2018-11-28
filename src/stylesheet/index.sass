@@ -13,6 +13,9 @@ html
     overflow: hidden
     -webkit-font-smoothing: antialiased
 
+body
+    --borderColor: #ebeef5
+
 *, *:before, *:after
     box-sizing: border-box
 
@@ -53,7 +56,7 @@ html
     border-color: var(--borderColor)
 
 
-.el-select 
+.el-select
     &:hover .el-input__inner,
     .el-input.is-focus .el-input__inner,
     .el-input__inner:focus
@@ -68,7 +71,7 @@ html
                 background-color: var(--backgroundLightest)
         &--info
             color: var(--fontColor)
-            
+
 .el-tabs__item
     color: var(--fontColor)
 
@@ -88,7 +91,7 @@ html
         border-bottom-color: var(--background)
 
 
-.el-select-dropdown 
+.el-select-dropdown
     border: 1px solid var(--borderColor)
     background-color: var(--background)
     .popper__arrow

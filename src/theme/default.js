@@ -4,8 +4,8 @@
 export default {
     '--fontColor': '#303133',
     '--background': '#ffffff',
+    '--backgroundLighter': '#f1f3f4',
     '--backgroundMedian': '#ebeff1',
-    '--backgroundLighter': '#eaeaea',
     '--backgroundLightest': '#c0c4cc',
     '--borderColor': '#ebeef5',
     '--shadowColor': '#dddddd',
