@@ -36,7 +36,7 @@ body{
     height: 100%;
     background: #909399;
     border-radius: 50%;
-    color: #ffffff;
+    color: var(--background);
     font-size: 20px;
     user-select: none;
 }
@@ -67,7 +67,7 @@ body{
     right: 0;
     bottom: 0;
     display: none;
-    background: #ffffff;
+    background: var(--background);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -79,7 +79,7 @@ body{
 }
 
 #notification .el-icon-success{
-    color: #67c23a;
+    color: var(--green);
     font-size: 28px;
 }
 

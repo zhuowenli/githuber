@@ -14,6 +14,7 @@ export default {
     locale: 'en',
     showBookmark: true,
     collapseBookmark: false,
+    nightMode: false,
     openSearchInNewTab: false,
     openLinkInNewTab: false,
     openBookmarkInNewTab: false,

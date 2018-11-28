@@ -3,7 +3,7 @@
         .setting-title {{$t('Setting')}}
         iscroll-view.setting-content(
             :scrollerClass="{scroller: true}"
-            :options="{mouseWheel: true, scrollbars: true}"
+            :options="{mouseWheel: true}"
             ref="scrollView"
         )
             el-card
@@ -28,9 +28,12 @@
                         el-switch(v-model="config.showBookmark")
                     el-form-item(:label="$t('collapseBookmark')")
                         el-switch(v-model="config.collapseBookmark")
+                    el-form-item(:label="$t('Theme')")
+                        el-switch(v-model="config.nightMode")
 
                     el-form-item(:label="$t('importTopSites')")
                         el-button(type="info" size="medium" round @click="onImportTopSites") {{$t('import')}}
+
 
             el-card
                 div(slot="header") {{$t('DataBackup')}}

@@ -76,7 +76,7 @@
             border-radius: 58px
             outline: 0
             font-size: 22px
-            color: #ffffff
+            color: var(--background)
             background: #6abcfe
             text-align: center
             cursor: pointer
@@ -100,7 +100,7 @@
                 width: 10px
 
         &__title
-            color: $darkBlue
+            color: var(--darkBlue)
             font-size: 20px
             line-height: 30px
             margin-bottom: 8px
@@ -109,7 +109,7 @@
             height: 72px
             font-size: 14px
             line-height: 24px
-            color: $fontColor
+            color: var(--fontColor)
             @include max-text(3)
         &__meta
             display: flex
@@ -135,7 +135,7 @@
                     position: absolute
                     top: 0
                     left: -8px
-                    color: $red
+                    color: var(--red)
                     opacity: 0
                     transition: all 0.2s ease
         &__built

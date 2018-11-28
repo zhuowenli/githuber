@@ -39,6 +39,7 @@ export default {
     View: '视图',
     showBookmark: '显示书签栏',
     collapseBookmark: '折叠书签栏',
+    Theme: '夜间模式',
     Language: '语言',
     importTopSites: '导入最常访问',
     import: '导入',

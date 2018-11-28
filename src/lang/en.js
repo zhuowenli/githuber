@@ -39,6 +39,7 @@ export default {
     View: 'View',
     showBookmark: 'Show Bookmark',
     collapseBookmark: 'Collapse Bookmark',
+    Theme: 'Night Mode',
     Language: 'Language',
     importTopSites: 'Import top sites',
     import: 'Import',
