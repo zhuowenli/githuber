@@ -18,60 +18,46 @@ One-click install from Google Chrome Web Store ⬇️ ⬇️ ⬇️
 
 <a target="_blank" href="https://chrome.google.com/webstore/detail/githuber/janmcneaglgklfljjcpihkkomeghljnf"><img alt="Try it now"  width="300" src="https://raw.github.com/GoogleChrome/chrome-app-samples/master/tryitnowbutton.png" title="Click here to install this sample from the Chrome Web Store"></img></a>
 
-## 本地网页开发
-
-主要用于开发 UI，可自动刷新页面（无法调试 `chrome` 特性）
-
-```bash
-# 安装依赖
-yarn
-
-# 开发环境
-yarn dev
-```
-
-打开 [http://localhost:4000](localhost:4000) 访问页面。
-
-## Chrome 开发模式
+## 本地开发
 
 用于调试 `chrome` 特性，代码编译成功后手动刷新页面方可生效
 
-1. 编译代码
+1. 安装依赖
+    ```bash
+    npm i
     ```
-    # 执行 watch 命令
-    yarn watch
+2. 编译代码
+    ```bash
+    npm run watch
     ```
-2. 打开 Chrome [扩展程序](chrome://extensions/)，开启开发者模式
-3. 点击**加载已解压的扩展程序**，找到编译后输出的 `dist` 目录，加载代码
-
-> 开发时如果遇到 CORS 跨域问题，可以安装扩展程序 [Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi) 绕过CORS
-
+3. 打开 Chrome 扩展程序 [chrome://extensions/](chrome://extensions/)，开启开发者模式
+4. 点击**加载已解压的扩展程序**，找到编译后输出的 `dist` 目录，加载代码
 
 ## 服务端部署
 
 1. 添加配置文件
 
-```bash
-# 添加 .env 填写正确的配置信息
-cp .env.example .env
-```
+    ```bash
+    # 添加 .env 填写正确的配置信息
+    cp .env.example .env
+    ```
 
 2. 创建数据库（默认用MySQL）
 
-```bash
-# 初始化数据表
-yarn db:migrate
-```
+    ```bash
+    # 初始化数据表
+    yarn db:migrate
+    ```
 
 3. 启动服务
 
-```bash
-# 开发环境
-yarn nodemon
+    ```bash
+    # 开发环境
+    yarn nodemon
 
-# 生产环境
-yarn start
-```
+    # 生产环境
+    yarn start
+    ```
 
 ## TODO LIST
 
