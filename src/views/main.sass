@@ -22,12 +22,16 @@
         &--show
             width: 300px
             transform: translate3d(0, 0, 0)
+            & + .main-content
+                max-width: calc(100% - 300px);
             &.main-aside--collapse
                 width: 60px
+                & + .main-content
+                    max-width: calc(100% - 60px);
 
     &-content
         flex: 1
-        max-width: calc(100% - 300px);
+        max-width: 100%
         background: var(--backgroundLighter)
 
     // 头部
