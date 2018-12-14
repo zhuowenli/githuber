@@ -110,6 +110,7 @@
             font-size: 14px
             line-height: 24px
             color: var(--fontColor)
+            word-break: break-all
             @include max-text(3)
         &__meta
             display: flex
@@ -160,6 +161,7 @@
 @media only screen and (min-width: 960px)
     .github-trending .trending
         width: 50%
+        max-width: 50%
     .main-aside:not(.main-aside--show), .main-aside--collapse
         & ~ .main-content .github-trending .trending
             width: 33.3%

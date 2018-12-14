@@ -18,6 +18,7 @@
         transition: all 0.2s ease
         width: 0
         overflow: hidden
+        flex-shrink: 0;
         &--show
             width: 300px
             transform: translate3d(0, 0, 0)
@@ -26,6 +27,7 @@
 
     &-content
         flex: 1
+        max-width: calc(100% - 300px);
         background: var(--backgroundLighter)
 
     // 头部
@@ -59,9 +61,9 @@
             cursor: pointer
             outline: 0
             z-index: 101
-        .oction-kebab-vertical
-            width: 3px
-            height: 16px
+        .oction-gear
+            width: 14px
+            height: 14px
             fill: var(--fontColor)
         .oction-x
             width: 12px

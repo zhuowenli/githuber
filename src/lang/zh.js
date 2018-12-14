@@ -19,6 +19,7 @@ export default {
     Videos: '视频',
     Maps: '地图',
     Sports: '运动',
+    Search: '搜索',
     SearchFrom: '搜索自',
 
     NewTabs: '新标签页',

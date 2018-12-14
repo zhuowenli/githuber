@@ -22,7 +22,8 @@
                 .search-border(:class="config.engineName")
                 button.btn-setting(@click="onToggleSettingAction")
                     svg.octicon.oction-x(v-html="octicons.x.path" v-if="config.showSetting")
-                    svg.octicon.oction-kebab-vertical(v-html="octicons['kebab-vertical'].path" v-else)
+                    svg.octicon.oction-gear(v-html="octicons.gear.path" v-else)
+
             .main__trending
                 github-trending(
                     :lang="config.lang"
@@ -145,7 +146,7 @@ export default {
                 this.saveBookmark({ form: {
                     name: item.title,
                     url: item.url,
-                    logo: `chrome://favicon/${item.url}`,
+                    logo: `chrome://favicon/64@2x/${item.url}`,
                 } });
             }).then(() => {
                 console.log(111);

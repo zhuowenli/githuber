@@ -19,6 +19,7 @@ export default {
     Videos: 'Videos',
     Maps: 'Maps',
     Sports: 'Sports',
+    Search: 'Search',
     SearchFrom: 'Search From',
 
     NewTabs: 'New Tabs',
