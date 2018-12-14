@@ -100,6 +100,9 @@ One-click install from Google Chrome Web Store ⬇️ ⬇️ ⬇️
 - [x] 上架
 - [ ] Firefox 支持
 
+## 相关链接
+
+- [GitHub Octicons](https://octicons.github.com/)
 
 ## License
 Githuber © [zhuowenli](https://github.com/zhuowenli), Released under the [Mozilla Public License 2.0](./LICENSE) License.
