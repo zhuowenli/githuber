@@ -106,3 +106,8 @@ One-click install from Google Chrome Web Store ⬇️ ⬇️ ⬇️
 
 ## License
 Githuber © [zhuowenli](https://github.com/zhuowenli), Released under the [Mozilla Public License 2.0](./LICENSE) License.
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/zhuowenli/githuber/badge.svg?style=beer-square)](https://beerpay.io/zhuowenli/githuber)  [![Beerpay](https://beerpay.io/zhuowenli/githuber/make-wish.svg?style=flat-square)](https://beerpay.io/zhuowenli/githuber?focus=wish)
