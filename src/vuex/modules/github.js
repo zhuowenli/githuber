@@ -28,13 +28,13 @@ const fetchTrendingRepos = async (lang, since) => {
     const repos = [];
 
     // 解析页面
-    $('li', 'ol.repo-list').each((index, repo) => {
+    $('article').each((index, repo) => {
         const $repo = $(repo);
         const $avatars = $repo.find('.avatar');
-        const title = $repo.find('h3').text().trim().replace(/ /g, '');
+        const title = $repo.find('h1').text().trim().replace(/ /g, '');
 
         const starLink = `/${title}/stargazers`;
-        const forkLink = `/${title}/network`;
+        const forkLink = `/${title}/network/members`;
         const repoLink = `https://github.com/${title}`;
 
         const item = {
