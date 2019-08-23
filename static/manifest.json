@@ -25,7 +25,6 @@
             "*://*.baidu.com/*",
             "*://github.com/*",
             "*://*.github.com/*",
-            "*://*.githubusercontent.com/*",
             "*://up-z0.qiniu.com/*"
         ]
 	},
