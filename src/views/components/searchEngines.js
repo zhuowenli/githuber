@@ -134,7 +134,7 @@ export default [
             }, {
                 name: 'News',
                 value: 'News',
-                url: 'https://duckduckgo.com/?ia=news&iax=news&q='
+                url: 'https://duckduckgo.com/?ia=news&iar=news&q='
             }, {
                 name: 'Videos',
                 value: 'Videos',

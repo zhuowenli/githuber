@@ -154,6 +154,7 @@ export default {
             console.log(sites);
         },
 
+        // i18n
         onLocaleChange() {
             this.$i18n.locale = this.config.locale;
         },
