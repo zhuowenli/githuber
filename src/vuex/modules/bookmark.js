@@ -23,12 +23,12 @@ export const actions = {
             data = [
                 {
                     name: 'zhuowenli/githuber: 这是一个帮助 Githuber 每日发现优质内容的 Chrome 主页拓展。',
-                    logo: 'https://assets-cdn.github.com/favicon.ico',
+                    logo: 'https://github.com/favicon.ico',
                     url: 'https://github.com/zhuowenli/githuber'
                 }, {
                     name: 'zhuowenli - GitHub',
                     url: 'https://github.com/zhuowenli',
-                    logo: 'http://zhuowenli.qiniudn.com/2018/1/22/1516614358916991.png'
+                    logo: 'https://st-qn.gittt.cn/2018/1/22/1516614358916991.png'
                 }, {
                     name: 'Dribbble - Show and tell for designers',
                     url: 'https://dribbble.com/',

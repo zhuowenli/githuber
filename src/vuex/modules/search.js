@@ -75,9 +75,9 @@ export const actions = {
             {
                 name: 'Stack Overflow',
                 url: 'http://stackoverflow.com/search?q=%s'
-            }
+            },
         ]);
-    }
+    },
 };
 
 export const mutations = {

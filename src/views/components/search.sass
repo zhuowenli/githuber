@@ -53,6 +53,10 @@
             &--#{$icon}
                 background: url('../../assets/search-#{$icon}.png') center center no-repeat;
                 background-size: 30px 30px
+        &--duckduckgo
+            background: url('../../assets/search-duckduckgo.svg') center center no-repeat
+            background-size: 30px 30px
+
     .el-tabs
         // padding-top: 10px
         padding-left: 20px
@@ -76,9 +80,9 @@
         & > div
             padding: 5px 20px
         &__search
-            color: var(--orange)
+            color: var(--yellow)
             &:hover
-                background: var(--orange)
+                background: var(--yellow)
                 color: var(--background)
         &__url
             color: var(--blue)
@@ -93,7 +97,7 @@
 
     .highlighted .suggestion
         &__search
-            background: var(--orange)
+            background: var(--yellow)
             color: var(--background)
         &__url
             background: var(--blue)

@@ -118,5 +118,32 @@ export default [
                 url: 'http://www.bing.com/maps/default.aspx?q='
             }
         ]
+    },
+    {
+        name: 'DuckDuckGo',
+        value: 'duckduckgo',
+        engines: [
+            {
+                name: 'Web',
+                value: 'Web',
+                url: 'https://duckduckgo.com/?ia=web&q='
+            }, {
+                name: 'Images',
+                value: 'Images',
+                url: 'https://duckduckgo.com/?ia=images&iax=images&q='
+            }, {
+                name: 'News',
+                value: 'News',
+                url: 'https://duckduckgo.com/?ia=news&iax=news&q='
+            }, {
+                name: 'Videos',
+                value: 'Videos',
+                url: 'https://duckduckgo.com/?ia=videos&iax=videos&q='
+            }, {
+                name: 'Maps',
+                value: 'Maps',
+                url: 'https://duckduckgo.com/?iaxm=maps&ia=web&q='
+            }
+        ]
     }
 ];

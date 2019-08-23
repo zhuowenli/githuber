@@ -62,3 +62,4 @@ dist/
 *.pem
 *.crx
 __temp__
+.DS_Store

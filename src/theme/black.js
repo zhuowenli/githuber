@@ -10,7 +10,7 @@ export default {
     '--borderColor': '#252323',
     '--shadowColor': '#191414',
     '--green': '#67C23A',
-    '--orange': '#E6A23C',
+    '--yellow': '#E6A23C',
     '--red': '#F56C6C',
     '--blue': '#409EFF',
     '--gray': '#8c8c8c',
