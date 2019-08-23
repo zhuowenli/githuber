@@ -6,7 +6,7 @@
     )
         draggable(
             v-model="bookmarkLists"
-            :options="dragOptions"
+            draggable=".bookmark__item"
         )
             .bookmark__item(
                 v-for="(item, inx) in bookmarks"
@@ -52,9 +52,6 @@ export default {
     data() {
         return {
             edit: false,
-            dragOptions: {
-                draggable: '.bookmark__item'
-            }
         };
     },
     components: { draggable },
