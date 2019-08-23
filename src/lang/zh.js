@@ -12,6 +12,7 @@ export default {
     Google: '谷歌',
     Bing: '必应',
     Yahoo: '雅虎',
+    DuckDuckGo: 'DuckDuckGo',
     Web: '网页',
     Images: '图片',
     News: '新闻',

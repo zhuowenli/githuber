@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "GITHUBER - 开发者的新标签页",
     "description": "这是一个帮助 GitHub 开发者每日发现优质内容的 Chrome 主页拓展。",
-    "version": "1.4.3",
+    "version": "1.5.0",
     "icons": {
         "16": "assets/icon/icon-16.png",
         "48": "assets/icon/icon-48.png",
@@ -21,11 +21,18 @@
     },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
 	"externally_connectable": {
-		"matches": ["*://*.baidu.com/*", "*://up-z0.qiniu.com/*"]
+		"matches": [
+            "*://*.baidu.com/*",
+            "*://github.com/*",
+            "*://*.github.com/*",
+            "*://*.githubusercontent.com/*",
+            "*://up-z0.qiniu.com/*"
+        ]
 	},
     "permissions": [
-        "http://*/",
-        "https://*/",
+        "*://github.com/*",
+        "*://*.github.com/*",
+        "*://*.baidu.com/*",
         "chrome://favicon/",
         "topSites",
         "storage",

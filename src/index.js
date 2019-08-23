@@ -15,6 +15,8 @@ import './stylesheet/index.sass';
 import main from './views/main.vue';
 import i18n from './lang';
 
+Vue.config.devtools = true;
+
 Vue.use(IScrollView, IScroll);
 Vue.use(ElementUI);
 
@@ -23,7 +25,6 @@ export default new Vue({
     store,
     render: c => c(main)
 }).$mount('#app');
-
 
 if (chrome && chrome.runtime) {
     // 添加书签

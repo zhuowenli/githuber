@@ -12,14 +12,14 @@
             )
 
         .main-content
-            .main__header
+            .main__header(:class="config.engineName")
                 search-box(
                     :engineName="config.engineName"
                     :engineNavName="config.engineNavName"
                     @search="onSearchAction"
                     @update="onConfigUpdateAction"
                 )
-                .search-border(:class="config.engineName")
+                .search-border
                 button.btn-setting(@click="onToggleSettingAction")
                     svg.octicon.oction-x(v-html="octicons.x.path" v-if="config.showSetting")
                     svg.octicon.oction-gear(v-html="octicons.gear.path" v-else)
@@ -154,6 +154,7 @@ export default {
             console.log(sites);
         },
 
+        // i18n
         onLocaleChange() {
             this.$i18n.locale = this.config.locale;
         },

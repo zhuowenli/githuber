@@ -10,7 +10,7 @@ export default {
     engineNavName: 'Images',
     engineName: 'google',
     since: 'monthly',
-    lang: '',
+    lang: [],
     locale: 'en',
     showBookmark: true,
     collapseBookmark: false,
