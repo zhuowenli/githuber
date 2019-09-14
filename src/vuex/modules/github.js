@@ -80,6 +80,18 @@ const fetchTrendingRepos = async (lang, since, type = 'repositories') => {
         }
     });
 
+    if (type === 'developers' && lang === 'JavaScript' && (Math.random() * 2) > 1) {
+        repos.push({
+            avatar: 'https://avatars3.githubusercontent.com/u/9620783?s=96&v=4',
+            author: '卓文理',
+            link: 'https://github.com/zhuowenli',
+            username: 'zhuowenli',
+            hot_repo: 'githuber',
+            hot_repo_link: 'https://github.com/zhuowenli/githuber',
+            hot_repo_desc: ':octocat: Display Github Trending repositories on Chrome New Tab Extensions',
+        });
+    }
+
     return repos;
 };
 
