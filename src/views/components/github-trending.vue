@@ -5,27 +5,29 @@
         ref="scrollView"
     )
         .github-trending__title
-            //- h1 Trending
-            //- p See what the GitHub community is most excited about today.
+            .select
+                el-select(v-model="query.since")
+                    el-option(:label="$t('Today')" value="daily")
+                    el-option(:label="$t('ThisWeek')" value="weekly")
+                    el-option(:label="$t('ThisMonth')" value="monthly")
 
-            el-select(v-model="query.since")
-                el-option(:label="$t('Today')" value="daily")
-                el-option(:label="$t('ThisWeek')" value="weekly")
-                el-option(:label="$t('ThisMonth')" value="monthly")
-
-            el-select.language(
-                multiple
-                filterable
-                :multiple-limit="5"
-                v-model="query.lang"
-                :placeholder="$t('AllLanguages')"
-            )
-                el-option(
-                    v-for="item in languages"
-                    :key="item.value"
-                    :value="item.value"
-                    :label="item.name"
+                el-select.language(
+                    multiple
+                    filterable
+                    :multiple-limit="5"
+                    v-model="query.lang"
+                    :placeholder="$t('AllLanguages')"
                 )
+                    el-option(
+                        v-for="item in languages"
+                        :key="item.value"
+                        :value="item.value"
+                        :label="item.name"
+                    )
+
+            el-radio-group(v-model="query.type" size="small")
+                el-radio-button(label="repositories") Repositories
+                el-radio-button(label="developers") Developers
 
         .github-trending__loading(ref="loading" v-show="loading")
 
@@ -33,17 +35,17 @@
             img(src="../../assets/network-error.png", alt="")
             p.title {{$t('NetworkErrorTitle')}}
             p.content {{$t('NetworkErrorContent')}}
-            button.button(@click="init") {{$t('Refresh')}}
+            el-button(round type="primary" @click="init") {{$t('Refresh')}}
 
         .github-trending__content(v-if="!loading && !fetchError")
             .trending(
                 v-for="(item, inx) in trendings"
                 :key="inx"
             )
-                el-card(@click.native="onLinkTapAction(item)")
-                    .trending__title {{item.repo}}
-                    .trending__desc {{item.desc}}
-                    .trending__meta
+                el-card.repositories(@click.native="onLinkTapAction(item.repo_link)" v-if="query.type === 'repositories'")
+                    .repositories__title {{item.repo}}
+                    .repositories__desc {{item.desc}}
+                    .repositories__meta
                         span.color(:style="{background: item.color}")
                         span.lang {{item.lang}}
                         svg.octicon.octicon-star(v-html="octicons.star.path")
@@ -51,9 +53,23 @@
                             .added +{{item.added}}
                         svg.octicon.octicon-repo-forked(v-html="octicons['repo-forked'].path")
                         span.forks {{item.forks}}
-                    .trending__built
+                    .repositories__built
                         | Built by
                         img(v-for="(avatar, inx) in item.avatars" :key="inx" :src="avatar")
+
+                el-card.developers(v-if="query.type === 'developers'")
+                    .developers__author(@click="onLinkTapAction(item.link)")
+                        img.avatar(:src="item.avatar")
+                        .author
+                            h2 {{item.author}}
+                            p {{item.username}}
+
+                    .developers__content
+                        h3
+                            svg.octicon.octicon-repo(v-html="octicons.repo.path")
+                            span {{item.hot_repo}}
+
+                        p {{item.hot_repo_desc}}
 </template>
 
 <script>
@@ -73,6 +89,7 @@ export default {
     props: {
         lang: [String, Array],
         since: String,
+        type: String,
         showBookmark: Boolean
     },
     data() {
@@ -91,7 +108,8 @@ export default {
             loading: false,
             query: {
                 lang,
-                since: this.since || 'weekly'
+                since: this.since || 'weekly',
+                type: this.type || 'repositories',
             }
         };
     },
@@ -111,8 +129,8 @@ export default {
             this.fetchError = false;
 
             try {
-                await this.fetchTrending(this.query);
                 this.$emit('update', this.query);
+                await this.fetchTrending(this.query);
             } catch (e) {
                 this.fetchError = true;
             }
@@ -121,12 +139,9 @@ export default {
             loadingInstance.close();
             this.$refs.scrollView.refresh();
         },
-        onLinkTapAction(item) {
-            this.$emit('tap', item.repo_link);
+        onLinkTapAction(link) {
+            this.$emit('tap', link);
         },
-        onAllLangAction() {
-            console.log(111);
-        }
     },
     watch: {
         query: {
@@ -142,6 +157,9 @@ export default {
         },
         since(val) {
             this.query.since = val;
+        },
+        type(val) {
+            this.query.type = val;
         },
         // showBookmark: 'onReflowedAction'
     }

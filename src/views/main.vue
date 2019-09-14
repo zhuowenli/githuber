@@ -28,6 +28,7 @@
                 github-trending(
                     :lang="config.lang"
                     :since="config.since"
+                    :type="config.type"
                     :showBookmark="config.showBookmark"
                     @tap="onLinkTapAction"
                     @update="onConfigUpdateAction"

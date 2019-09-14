@@ -41,7 +41,6 @@ body
     &__body
         padding: 10px 20px
 
-
 .el-input__inner
     background-color: var(--background)
     background: var(--background)
@@ -52,16 +51,20 @@ body
     &:focus
         border-color: var(--borderColor)
 
+.el-radio-button__inner
+    background: var(--background)
+    border: 1px solid var(--borderColor)
+.el-radio-button:first-child .el-radio-button__inner
+    border-left-color: var(--borderColor)
+
 .el-input.is-active .el-input__inner,
     border-color: var(--borderColor)
-
 
 .el-select
     &:hover .el-input__inner,
     .el-input.is-focus .el-input__inner,
     .el-input__inner:focus
         border-color: var(--backgroundLightest)
-
     .el-tag
         background-color: var(--backgroundLighter)
         &__close.el-icon-close
@@ -90,7 +93,6 @@ body
     &::after
         border-bottom-color: var(--background)
 
-
 .el-select-dropdown
     border: 1px solid var(--borderColor)
     background-color: var(--background)
@@ -104,7 +106,6 @@ body
     &__item:hover
         background-color: var(--backgroundLighter)
         color: var(--blue)
-
 
 .el-select-dropdown.is-multiple
     .el-select-dropdown__item.selected,
