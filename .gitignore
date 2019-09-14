@@ -29,3 +29,4 @@ dist/
 *.crx
 __temp__
 .DS_Store
+*.zip
