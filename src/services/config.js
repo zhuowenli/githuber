@@ -10,6 +10,7 @@ export default {
     engineNavName: 'Images',
     engineName: 'google',
     since: 'monthly',
+    type: 'repositories',
     lang: [],
     locale: 'en',
     showBookmark: true,

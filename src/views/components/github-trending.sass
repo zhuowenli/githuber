@@ -13,7 +13,20 @@
 
     &__title
         display: flex
+        flex-direction: row
+        align-items: center
+        flex-wrap: wrap
         padding-left: 5px
+        padding-right: 10px
+        .el-radio-group
+            margin-left: 5px
+            white-space: nowrap
+
+        .select
+            flex: 1
+            display: flex
+            align-items: center
+
         .el-select
             margin: 5px
             &.language
@@ -24,6 +37,8 @@
                 max-width: none !important
                 padding: 5px 30px 5px 2px
                 min-width: 195px
+                transform: none
+                top: 0
                 & > span
                     display: flex
                 & > .el-select__input
@@ -40,9 +55,8 @@
     .scroller
         padding: 10px
 
-    .vue-waterfall
-        &-slot
-            padding: 10px
+    .vue-waterfall-slot
+        padding: 10px
 
     &__content
         display: flex
@@ -83,13 +97,9 @@
 
     .trending
         display: block
-        cursor: pointer
         box-shadow: none
         padding: 10px
         width: 100%
-        .el-card__body
-            position: relative
-            padding: 16px 20px
 
         .octicon
             width: 14px
@@ -99,12 +109,27 @@
             &-repo-forked
                 width: 10px
 
+        $colors: #f5222d #fa541c #ffa940 #ACD925 #52D925 #25D952 #25D9AC #25ACD9 #2552D9 #5225D9 #AC25D9 #ff5a93
+        $length: length($colors)
+
+        @each $color in $colors
+            $i: index($colors, $color);
+            &:nth-child(#{$length}n + #{$i}) .developers
+                border-bottom-color: $color
+
+    .repositories
+        position: relative
+        .el-card__body
+            padding: 16px 20px
+            cursor: pointer
+
         &__title
             color: var(--darkBlue)
             font-size: 20px
             line-height: 30px
             margin-bottom: 8px
             @include ellipsis
+
         &__desc
             height: 72px
             font-size: 14px
@@ -112,6 +137,7 @@
             color: var(--fontColor)
             word-break: break-all
             @include max-text(3)
+
         &__meta
             display: flex
             height: 24px
@@ -139,6 +165,7 @@
                     color: var(--red)
                     opacity: 0
                     transition: all 0.2s ease
+
         &__built
             display: flex
             height: 24px
@@ -152,10 +179,84 @@
                 border-radius: 3px
                 margin-left: 4px
 
-        &:hover .trending__meta
+        &:hover .repositories__meta
             .added
                 opacity: 1
                 transform: translateY(-15px)
+
+    .developers
+        border-bottom: 2px solid transparent
+        .el-card__body
+            padding: 24px 30px 20px
+
+        &__author
+            position: relative
+            display: flex
+            cursor: pointer
+            .avatar
+                width: 60px
+                height: 60px
+                border-radius: 30px
+                overflow: hidden
+
+            .author
+                display: flex
+                flex-direction: column
+                justify-content: center
+                flex: 1
+                padding-left: 16px
+                h2
+                    margin: 0
+                    color: var(--darkBlue)
+                    font-size: 20px
+                    line-height: 30px
+                    font-weight: normal
+                    white-space: nowrap
+                p
+                    margin: 0
+                    font-size: 14px
+                    line-height: 24px
+                    color: var(--fontColor)
+
+        &__content
+            position: relative
+            display: flex
+            flex-direction: column
+            padding-top: 40px
+            &:before
+                content: ''
+                position: absolute
+                top: 20px
+                left: 0
+                width: 16px
+                height: 1px
+                background: var(--backgroundLightest)
+
+            h3
+                display: flex
+                flex-direction: row
+                justify-content: center
+                margin: 0
+                height: 20px
+                +max-text(1)
+                cursor: pointer
+                font-weight: normal
+                margin-bottom: 12px
+                white-space: nowrap
+                span
+                    font-size: 16px
+                    vertical-align: top
+                .octicon
+                    margin-top: 2px
+
+            p
+                height: 40px
+                font-size: 12px
+                line-height: 20px
+                +max-text(2)
+                color: var(--fontColor)
+                margin: 0
+                word-break: break-word
 
 
 @media only screen and (min-width: 960px)
