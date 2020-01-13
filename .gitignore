@@ -30,3 +30,5 @@ dist/
 __temp__
 .DS_Store
 *.zip
+yarn.lock
+package-lock.json

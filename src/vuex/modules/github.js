@@ -37,7 +37,7 @@ const fetchTrendingRepos = async (lang, since, type = 'repositories') => {
             const title = $el.find('h1').text().trim().replace(/(\s|\n)+/g, '');
             const [author, repo] = title.split('/');
 
-            const starLink = `/${title}/stargazers.${repo}`;
+            const starLink = `/${title}/stargazers`;
             const forkLink = `/${title}/network/members.${repo}`;
             const repoLink = `https://github.com/${title}`;
 
