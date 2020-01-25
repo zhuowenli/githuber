@@ -15,9 +15,13 @@ var $img = $('#img');
 var $button = $('#button');
 var $notification = $('#notification');
 
-chrome.tabs.getSelected(null, function(tab) {
+chrome.tabs.query({ active: true }, function(tabs) {
+    if (!tabs.length) return;
+    var tab = tabs[0];
+
     $title.val(tab.title);
     $url.val(tab.url);
+
     if (tab.favIconUrl) {
         $img.html('<img src="' + tab.favIconUrl + '">')
     } else {

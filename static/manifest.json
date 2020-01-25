@@ -20,25 +20,10 @@
         "newtab": "./index.html"
     },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-	"externally_connectable": {
-		"matches": [
-            "*://*.baidu.com/*",
-            "*://github.com/*",
-            "*://*.github.com/*",
-            "*://up-z0.qiniu.com/*"
-        ]
-	},
     "permissions": [
         "*://github.com/*",
-        "*://*.github.com/*",
         "*://*.baidu.com/*",
-        "chrome://favicon/",
-        "topSites",
-        "storage",
-        "activeTab",
-        "cookies",
         "webRequest",
-        "webNavigation",
         "tabs"
     ],
 	"offline_enabled": true,
