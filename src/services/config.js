@@ -7,9 +7,9 @@
 'use strict';
 
 export default {
-    engineNavName: 'Images',
+    engineNavName: 'Web',
     engineName: 'google',
-    since: 'monthly',
+    since: 'daily',
     type: 'repositories',
     lang: [],
     locale: 'en',
