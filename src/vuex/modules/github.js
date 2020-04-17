@@ -23,8 +23,8 @@ const toMonth = time.getMonth() + 1;
 const fetchTrendingRepos = async (lang, since, type = 'repositories') => {
     // 访问页面
     const url = `https://github.com/trending${type === 'developers' ? '/developers/' : '/'}${encodeURIComponent(lang)}`;
+    console.log('⬇️fetch:', url);
     const data = await get(url, { since });
-
     const $ = cheerio.load(data);
     const repos = [];
 
