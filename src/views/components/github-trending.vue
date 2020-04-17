@@ -42,7 +42,10 @@
                 v-for="(item, inx) in trendings"
                 :key="inx"
             )
-                el-card.repositories(@click.native="onLinkTapAction(item.repo_link)" v-if="query.type === 'repositories'")
+                el-card.repositories(
+                    v-if="query.type === 'repositories'"
+                    @click.native="onLinkTapAction(item.repo_link)"
+                )
                     .repositories__title {{item.repo}}
                     .repositories__desc {{item.desc}}
                     .repositories__meta
@@ -132,6 +135,7 @@ export default {
                 this.$emit('update', this.query);
                 await this.fetchTrending(this.query);
             } catch (e) {
+                console.log(e);
                 this.fetchError = true;
             }
 
