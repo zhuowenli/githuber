@@ -1,0 +1,9 @@
+{
+    "default": true,
+    "MD007": { "indent": 4 },
+    "MD013": { "line_length": 300 },
+    "no-hard-tabs": true,
+    "no-inline-html": false,
+    "first-line-h1": false,
+    "no-duplicate-header": false
+}
