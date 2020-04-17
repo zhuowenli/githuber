@@ -45,6 +45,7 @@ export const actions = {
             try {
                 const text = decodeURIComponent(item);
                 const array = text.split('0{#S+_}');
+                console.log(text, array);
                 const content = JSON.parse(array[1]);
 
                 obj.name = content[4];

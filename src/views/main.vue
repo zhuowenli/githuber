@@ -74,8 +74,8 @@ export default {
         ...mapActions('bookmark', ['removeBookmark', 'restoreBackupBookmarks', 'saveBookmark']),
 
         // 搜索事件
-        onSearchAction(url) {
-            if (this.config.openSearchInNewTab) {
+        onSearchAction(url, jump = false) {
+            if (this.config.openSearchInNewTab || jump) {
                 chrome.tabs.create({ url });
             } else {
                 chrome.tabs.update({ url });
@@ -83,8 +83,8 @@ export default {
         },
 
         // 点击链接跳转
-        onLinkTapAction(url) {
-            if (this.config.openLinkInNewTab) {
+        onLinkTapAction(url, jump = false) {
+            if (this.config.openLinkInNewTab || jump) {
                 chrome.tabs.create({ url });
             } else {
                 chrome.tabs.update({ url });
@@ -92,8 +92,8 @@ export default {
         },
 
         // 点击书签跳转
-        onBookmarkTapAction(url) {
-            if (this.config.openBookmarkInNewTab) {
+        onBookmarkTapAction(url, jump = false) {
+            if (this.config.openBookmarkInNewTab || jump) {
                 chrome.tabs.create({ url });
             } else {
                 chrome.tabs.update({ url });
