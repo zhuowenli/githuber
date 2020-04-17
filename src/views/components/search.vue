@@ -1,6 +1,6 @@
 <template lang="pug">
     .search
-        el-form(@submit.prevent.native="onSearchAction")
+        el-form(@submit.prevent.native="")
             el-tabs(v-model="activeEngineNavName" @tab-click="onSearchNameTapAction")
                 el-tab-pane(
                     v-for="item in searchEngine.engines"
@@ -15,6 +15,8 @@
                 :trigger-on-focus="false"
                 v-model="searchText"
                 @select="onSearchAction"
+                @keyup.enter.native.exact="onSearchAction"
+                @keyup.enter.native.shift="onSearchAction($event, true)"
             )
                 el-dropdown(
                     slot="prefix"
@@ -84,17 +86,18 @@ export default {
 
             if (str) {
                 try {
-                    await this.fetchSuperpage(str);
+                    // 百度取消了网站联想的功能
+                    // await this.fetchSuperpage(str);
                     await this.fetchSuggestion(str);
 
                     this.suggestions.map(name => result.push({ name }));
 
-                    if (this.superpages.length) {
-                        result.unshift({
-                            ...this.superpages[0],
-                            value: str
-                        });
-                    }
+                    // if (this.superpages.length) {
+                    //     result.unshift({
+                    //         ...this.superpages[0],
+                    //         value: str
+                    //     });
+                    // }
                 } catch (e) {
                     console.log(e);
                 }
@@ -118,7 +121,7 @@ export default {
          * @param {String} item.value 默认搜索值
          * @param {String} item.name 搜索联想内容
          */
-        onSearchAction({ search, name, url, value }) {
+        onSearchAction({ search, name, url, value }, jump = false) {
             if (value) {
                 this.searchText = value;
             }
@@ -139,7 +142,7 @@ export default {
                 this.searchText = name;
             }
 
-            return this.$emit('search', `${this.searchEngineNav.url}${this.searchText}`);
+            return this.$emit('search', `${this.searchEngineNav.url}${this.searchText}`, jump);
         },
 
         /**
@@ -162,6 +165,10 @@ export default {
         onSearchNameTapAction({ name }) {
             this.activeEngineNavName = name;
         },
+
+        onSubmit(e) {
+            console.log(e);
+        }
     },
     watch: {
         activeEngineName(val) {
