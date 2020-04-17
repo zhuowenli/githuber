@@ -9,13 +9,14 @@
 import * as types from '../types';
 import findOne from '../../services/findOne';
 import storage from '../../services/storage';
+import google from '../../assets/search-google.png';
 
 export const getters = {
     bookmarks: state => state.bookmarks,
 };
 
 export const actions = {
-    async fetchBookmarks ({ commit }) {
+    async fetchBookmarks({ commit }) {
         let data = storage.getItem('GITHUBER_BOOKMARKS') || [];
 
         if (!data.length) {
@@ -28,17 +29,18 @@ export const actions = {
                 }, {
                     name: 'zhuowenli - GitHub',
                     url: 'https://github.com/zhuowenli',
-                    logo: 'https://st-qn.gittt.cn/2018/1/22/1516614358916991.png'
+                    logo: 'http://st-qn.gittt.cn/2018/1/22/1516614358916991.png'
                 }, {
                     name: 'Dribbble - Show and tell for designers',
                     url: 'https://dribbble.com/',
                     logo: 'https://cdn.dribbble.com/assets/dribbble-ball-192-ec064e49e6f63d9a5fa911518781bee0c90688d052a038f8876ef0824f65eaf2.png'
                 }, {
                     name: 'Codrops - 右键点击列表进入编辑模式',
-                    url: 'https://tympanus.net/codrops/'
+                    url: 'https://tympanus.net/codrops/',
+                    logo: 'https://avatars3.githubusercontent.com/u/310036?s=200&v=4'
                 }, {
                     name: '编辑模式下双击可编辑、拖拽可排序',
-                    logo: 'https://www.google.com/images/branding/product/ico/googleg_lodp.ico',
+                    logo: google,
                     url: 'https://www.google.com/'
                 },
             ];
@@ -49,11 +51,11 @@ export const actions = {
         commit(types.RECEIVE_BOOKMARKS, data);
         return data;
     },
-    async updateBookmarks ({ commit }, data) {
+    async updateBookmarks({ commit }, data) {
         commit(types.RECEIVE_BOOKMARKS, data);
         return data;
     },
-    async saveBookmark ({ commit }, { form: item, index }) {
+    async saveBookmark({ commit }, { form: item, index }) {
         commit(types.SAVE_BOOKMARKS, { item, index });
         return item;
     },
