@@ -6,7 +6,7 @@
         <img src="https://img.shields.io/github/license/zhuowenli/githuber?style=flat-square" alt="license">
     </a>
     <a href="https://gitmoji.carloscuesta.me" target="_blank">
-        <img src="https://img.shields.io/badge/Gitmoji%20Commits-😜-FFDD67.svg?style=flat-square" alt="gitmoji commits">
+        <img src="https://img.shields.io/badge/Gitmoji%20Commits-%20😜-FFDD67.svg?style=flat-square" alt="gitmoji commits">
     </a>
     <a href="https://github.com/zhuowenli/githuber/pulls">
         <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs welcome">
