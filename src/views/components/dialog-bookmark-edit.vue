@@ -7,7 +7,7 @@
                 el-input(v-model="dialog.form.url")
             el-form-item(:label="$t('Logo')")
                 el-input(v-model="dialog.form.logo" placeholder="https?://xxx.png")
-                image-uploader(v-model="dialog.form.logo")
+                //- image-uploader(v-model="dialog.form.logo")
         .dialog-footer(slot="footer")
             el-button(@click="dialog.show = false") {{$t('Cancel')}}
             el-button(type="primary" @click="onBookmarkSaveAction") {{$t('Save')}}
@@ -15,11 +15,11 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import imageUploader from '../../components/image-uploader';
+// import imageUploader from '../../components/image-uploader';
 
 export default {
     name: 'dialog-bookmark-edit',
-    components: { imageUploader },
+    // components: { imageUploader },
     props: {
         value: Object
     },

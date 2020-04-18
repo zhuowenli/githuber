@@ -13,18 +13,20 @@
             "16": "assets/icon/icon-16.png",
             "48": "assets/icon/icon-48.png",
             "128": "assets/icon/icon-128.png"
-        },
-        "default_popup": "./popup.html"
+        }
     },
-    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "background": {
+       "scripts": [ "background.js" ]
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval' http://localhost:8098; script-src-elem 'self' http://localhost:8098; object-src 'self'",
     "chrome_url_overrides": {
         "newtab": "./index.html"
     },
     "permissions": [
         "*://github.com/*",
         "*://*.baidu.com/*",
-        "webRequest",
-        "tabs"
+        "storage",
+        "webRequest"
     ],
 	"offline_enabled": true,
 	"minimum_chrome_version": "36"

@@ -6,7 +6,6 @@
 
 'use strict';
 
-// import Promise from 'bluebird';
 import Router from 'koa-router';
 import models from '../models';
 

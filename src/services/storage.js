@@ -8,21 +8,40 @@
 
 export default {
     getItem(key) {
-        const item = window.localStorage.getItem(key);
-
-        if (item) {
-            return JSON.parse(item);
-        }
-
-        return null;
+        return new Promise((resolve) => {
+            chrome.storage.local.get(key, item => {
+                // console.log('getItem', key);
+                if (item[key]) {
+                    resolve(JSON.parse(item[key]));
+                } else {
+                    resolve(null);
+                }
+            });
+        });
     },
+
     setItem(key, val) {
-        window.localStorage.setItem(key, JSON.stringify(val));
-        return key;
+        return new Promise((resolve, reject) => {
+            chrome.storage.local.set({ [key]: JSON.stringify(val) }, e => {
+                if (e) {
+                    reject(e);
+                } else {
+                    resolve(val);
+                }
+            });
+        });
     },
+
     removeItem(key) {
-        window.localStorage.removeItem(key);
-        return key;
+        return new Promise((resolve, reject) => {
+            chrome.storage.local.remove(key, e => {
+                if (e) {
+                    reject(e);
+                } else {
+                    resolve(key);
+                }
+            });
+        });
     }
 };
 

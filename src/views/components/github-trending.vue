@@ -85,8 +85,8 @@
 import { Loading } from 'element-ui';
 import octicons from 'octicons';
 import { mapGetters, mapActions } from 'vuex';
-import Waterfall from 'vue-waterfall/lib/waterfall';
-import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot';
+import Waterfall from 'vue-waterfall/lib/waterfall.vue';
+import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot.vue';
 import languages from '../../services/languages';
 
 export default {
@@ -176,7 +176,5 @@ export default {
 };
 </script>
 
-<style lang="sass">
-    @import './github-trending.sass'
-</style>
+<style lang="sass" src="./github-trending.sass"></style>
 

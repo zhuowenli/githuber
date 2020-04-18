@@ -2,12 +2,15 @@
 <html>
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-        <title><%= htmlWebpackPlugin.options.title %></title>
-        <% if (htmlWebpackPlugin.options.description) { %>
-        <meta name="description" content="<%= htmlWebpackPlugin.options.description %>"/>
+        <title><%= html.title %></title>
+        <% if (html.description) { %>
+        <meta name="description" content="<%= html.description %>"/>
         <% } %>
     </head>
     <body>
         <div id="app"></div>
+        <% if (envs.NODE_ENV === 'development') { %>
+        <script src="http://localhost:8098"></script>
+        <% } %>
     </body>
 </html>

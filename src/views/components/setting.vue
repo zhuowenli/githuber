@@ -78,9 +78,9 @@ export default {
     },
     methods: {
         // 导出配置
-        onExportAction() {
-            const config = storage.getItem('GITHUBER_CONFIGURATION');
-            const bookmarks = storage.getItem('GITHUBER_BOOKMARKS') || [];
+        async onExportAction() {
+            const config = await storage.getItem('GITHUBER_CONFIGURATION');
+            const bookmarks = await storage.getItem('GITHUBER_BOOKMARKS') || [];
             const data = JSON.stringify({ config, bookmarks });
 
             const blob = new Blob([data], { type: 'text/plain;charset=utf-8' });

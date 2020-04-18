@@ -113,6 +113,4 @@ export default {
 };
 </script>
 
-<style lang="sass">
-    @import './bookmark.sass'
-</style>
+<style lang="sass" src="./bookmark.sass"></style>

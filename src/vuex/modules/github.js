@@ -7,7 +7,6 @@
 'use strict';
 
 import cheerio from 'cheerio';
-import Promise from 'bluebird';
 import { get } from '../../services/fetch';
 import * as types from '../types';
 import languages from '../../services/languages';
@@ -54,7 +53,9 @@ const fetchTrendingRepos = async (lang, since, type = 'repositories') => {
             };
 
             if ($avatars && $avatars.length) {
-                [...$avatars].map($avatar => item.avatars.push($avatar.attribs.src));
+                $avatars.map((inx, $avatar) => {
+                    item.avatars.push($avatar.attribs.src)
+                });
             }
 
             const { result } = findOne(languages, { name: item.lang });
@@ -139,13 +140,14 @@ export const actions = {
         if (!query.lang.length || isAllLanguage) {
             repos = await fetchTrendingRepos('', since, type);
         } else {
-            await Promise.map(query.lang, async lang => {
+            for (const lang of query.lang) {
                 const res = await fetchTrendingRepos(lang, since, type);
                 repos = repos.concat(res);
-                return res;
-            });
+            }
+
             repos = repos.sort((a, b) => (+b.added - a.added));
         }
+
 
         commit(types.RECEIVE_GITHUB_TRENDINGS, repos);
 

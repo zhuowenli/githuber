@@ -41,7 +41,6 @@
 <script>
 import { mapActions } from 'vuex';
 import octicons from 'octicons';
-import Promise from 'bluebird';
 import searchBox from './components/search.vue';
 import githubTrending from './components/github-trending.vue';
 import bookmark from './components/bookmark.vue';
@@ -56,15 +55,18 @@ export default {
     name: 'hero',
     components: { searchBox, githubTrending, bookmark, mainSetting, dialogBookmarkEdit },
     data() {
-        const cfg = storage.getItem('GITHUBER_CONFIGURATION');
         return {
             octicons,
-            config: { ...defaultConfig, ...cfg },
+            config: { ...defaultConfig },
             dialog: {
                 show: false,
                 form: {},
             },
         };
+    },
+    async beforeCreate() {
+        const cfg = await storage.getItem('GITHUBER_CONFIGURATION');
+        Object.assign(this.config, cfg);
     },
     mounted() {
         document.title = this.$t('NewTabs');
@@ -190,6 +192,4 @@ export default {
 };
 </script>
 
-<style lang="sass">
-    @import './main.sass';
-</style>
+<style lang="sass" src="./main.sass"></style>

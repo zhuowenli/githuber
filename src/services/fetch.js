@@ -7,10 +7,6 @@
 'use strict';
 
 import axios from 'axios';
-import Promise from 'bluebird';
-// import cookie from './cookie';
-
-// const auths = {};
 
 /**
  * XMLHttpRequest 封装

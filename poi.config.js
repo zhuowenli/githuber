@@ -4,47 +4,44 @@
  * @Date: 2017-08-22 15:05:24
  */
 
-'use strict';
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
 
-module.exports = (options, req) => ({
+const isDev = process.env.NODE_ENV === 'development';
+
+module.exports = {
     entry: 'src/index.js',
-    host: '0.0.0.0',
-    filename: {
-        js: '[name].js',
-        css: '[name].css',
-        static: 'static/[name]-[hash].[ext]'
+    output: {
+        fileNames: {
+            js: '[name].js',
+            css: '[name].css',
+            image: 'static/[path][name].[ext]',
+            font: 'static/[path][name].[ext]',
+        },
+        html: {
+            title: 'New Tabs',
+            template: 'index.html',
+        },
+        minimize: !isDev,
+        sourceMap: !isDev,
     },
-    html: {
-        title: 'New Tabs',
-        template: 'index.html'
+    babel: {
+        jsx: 'vue',
     },
-    resolve: true,
-    sourceMap: !!options.dev,
-    extendWebpack(cfg) {
-        // Disable progress bar while building
-        // cfg.plugins.delete('progress-bar');
-        cfg.module.rule('scss')
-            .use('sass-loader')
-            .tap(opt => {
-                opt.includePaths = [path.resolve(__dirname, './node_modules')];
-                return opt;
-            });
-    },
-    webpack(cfg) {
+    configureWebpack(cfg) {
         cfg.resolve.modules.push(path.resolve('src'));
         cfg.resolve.alias.vue$ = 'vue/dist/vue.js';
 
-        if (!options.dev) {
+        if (!isDev) {
             cfg.devtool = false;
             cfg.bail = true;
         } else {
             cfg.devtool = 'source-map';
         }
 
+        // cfg.plugins.push(new BundleAnalyzerPlugin());
+
         return cfg;
     },
-    vendor: options.mode === 'test' ? false : Object.keys(require('./package.json').dependencies)
-});
+};
 

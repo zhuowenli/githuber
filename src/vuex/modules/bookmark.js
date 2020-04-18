@@ -16,8 +16,8 @@ export const getters = {
 };
 
 export const actions = {
-    async fetchBookmarks({ commit }) {
-        let data = storage.getItem('GITHUBER_BOOKMARKS') || [];
+    async fetchBookmarks ({ commit }) {
+        let data = await storage.getItem('GITHUBER_BOOKMARKS') || [];
 
         if (!data.length) {
             /* eslint-disable max-len */
@@ -29,7 +29,7 @@ export const actions = {
                 }, {
                     name: 'zhuowenli - GitHub',
                     url: 'https://github.com/zhuowenli',
-                    logo: 'http://st-qn.gittt.cn/2018/1/22/1516614358916991.png'
+                    logo: 'https://avatars3.githubusercontent.com/u/9620783?s=460&v=4'
                 }, {
                     name: 'Dribbble - Show and tell for designers',
                     url: 'https://dribbble.com/',
