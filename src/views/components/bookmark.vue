@@ -13,7 +13,9 @@
                 :key="inx"
                 :class="{edit: edit}"
                 @contextmenu="toggleEditAction"
-                @click="onLinkTapAction(item)"
+                @click.exact="onLinkTapAction(item)"
+                @click.meta="onLinkTapAction(item, true)"
+                @click.ctrl="onLinkTapAction(item, true)"
                 @dblclick="onEditAction(item, inx)"
             )
                 .el-icon-close(@click.stop="onRemoveAction(item)")
@@ -80,9 +82,9 @@ export default {
             await this.fetchBookmarks();
             this.$refs.scrollView.refresh();
         },
-        onLinkTapAction(item) {
+        onLinkTapAction(item, jump) {
             if (!this.edit) {
-                this.$emit('tap', item.url);
+                this.$emit('tap', item.url, jump);
             }
         },
         toggleEditAction(e) {

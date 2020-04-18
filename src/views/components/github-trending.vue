@@ -42,7 +42,12 @@
                 v-for="(item, inx) in trendings"
                 :key="inx"
             )
-                el-card.repositories(@click.native="onLinkTapAction(item.repo_link)" v-if="query.type === 'repositories'")
+                el-card.repositories(
+                    v-if="query.type === 'repositories'"
+                    @click.native.exact="onLinkTapAction(item.repo_link)"
+                    @click.native.meta="onLinkTapAction(item.repo_link, true)"
+                    @click.native.ctrl="onLinkTapAction(item.repo_link, true)"
+                )
                     .repositories__title {{item.repo}}
                     .repositories__desc {{item.desc}}
                     .repositories__meta
@@ -58,7 +63,11 @@
                         img(v-for="(avatar, inx) in item.avatars" :key="inx" :src="avatar")
 
                 el-card.developers(v-if="query.type === 'developers'")
-                    .developers__author(@click="onLinkTapAction(item.link)")
+                    .developers__author(
+                        @click.exact="onLinkTapAction(item.link)"
+                        @click.meta="onLinkTapAction(item.link, true)"
+                        @click.ctrl="onLinkTapAction(item.link, true)"
+                    )
                         img.avatar(:src="item.avatar")
                         .author
                             h2 {{item.author}}
@@ -132,6 +141,7 @@ export default {
                 this.$emit('update', this.query);
                 await this.fetchTrending(this.query);
             } catch (e) {
+                console.log(e);
                 this.fetchError = true;
             }
 
@@ -139,8 +149,8 @@ export default {
             loadingInstance.close();
             this.$refs.scrollView.refresh();
         },
-        onLinkTapAction(link) {
-            this.$emit('tap', link);
+        onLinkTapAction(link, jump) {
+            this.$emit('tap', link, jump);
         },
     },
     watch: {

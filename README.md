@@ -1,6 +1,17 @@
 <p align="center">
     <img src="./assets/logo.png" width="150" />
 </p>
+<p align="center">
+    <a href="https://github.com/zhuowenli/githuber/blob/master/LICENSE">
+        <img src="https://img.shields.io/badge/License-MPL--2.0-fe7d37.svg?style=flat-square" alt="gitmoji commits">
+    </a>
+    <a href="https://gitmoji.carloscuesta.me" target="_blank">
+        <img src="https://img.shields.io/badge/Gitmoji%20Commits-%20😜-FFDD67.svg?style=flat-square" alt="gitmoji commits">
+    </a>
+    <a href="https://github.com/zhuowenli/githuber/pulls">
+        <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs welcome">
+    </a>
+</p>
 
 ## GITHUBER
 
@@ -12,7 +23,7 @@
 ✔ 项目开源，方便大家进行代码审计、添加新功能<br>
 ✔ 支持中英文、备份数据、以及基本视图设置
 
-![](./assets/0.png)
+![screenshot](./assets/0.png)
 
 One-click install from Google Chrome Web Store ⬇️ ⬇️ ⬇️
 
@@ -23,13 +34,17 @@ One-click install from Google Chrome Web Store ⬇️ ⬇️ ⬇️
 用于调试 `chrome` 特性，代码编译成功后手动刷新页面方可生效
 
 1. 安装依赖
+
     ```bash
     npm i
     ```
+
 2. 编译代码
+
     ```bash
     npm run watch
     ```
+
 3. 打开 Chrome 扩展程序 [chrome://extensions/](chrome://extensions/)，开启开发者模式
 4. 点击**加载已解压的扩展程序**，找到编译后输出的 `dist` 目录，加载代码
 
