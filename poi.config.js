@@ -4,7 +4,7 @@
  * @Date: 2017-08-22 15:05:24
  */
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
 
 const isDev = process.env.NODE_ENV === 'development';
