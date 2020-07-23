@@ -44,29 +44,29 @@
             )
                 el-card.repositories(
                     v-if="query.type === 'repositories'"
-                    @click.native.exact="onLinkTapAction(item.repo_link)"
-                    @click.native.meta="onLinkTapAction(item.repo_link, true)"
-                    @click.native.ctrl="onLinkTapAction(item.repo_link, true)"
+                    @click.native.exact="onLinkTapAction(item.url)"
+                    @click.native.meta="onLinkTapAction(item.url, true)"
+                    @click.native.ctrl="onLinkTapAction(item.url, true)"
                 )
-                    .repositories__title {{item.repo}}
-                    .repositories__desc {{item.desc}}
+                    .repositories__title {{item.name}}
+                    .repositories__desc {{item.description}}
                     .repositories__meta
-                        span.color(:style="{background: item.color}")
-                        span.lang {{item.lang}}
+                        span.color(:style="{background: item.languageColor}")
+                        span.lang {{item.language}}
                         svg.octicon.octicon-star(v-html="octicons.star.path")
                         span.stars {{item.stars}}
-                            .added +{{item.added}}
+                            .added +{{item.currentPeriodStars}}
                         svg.octicon.octicon-repo-forked(v-html="octicons['repo-forked'].path")
                         span.forks {{item.forks}}
                     .repositories__built
                         | Built by
-                        img(v-for="(avatar, inx) in item.avatars" :key="inx" :src="avatar")
+                        img(v-for="(item, inx) in item.builtBy" :key="inx" :src="item.avatar")
 
                 el-card.developers(v-if="query.type === 'developers'")
                     .developers__author(
-                        @click.exact="onLinkTapAction(item.link)"
-                        @click.meta="onLinkTapAction(item.link, true)"
-                        @click.ctrl="onLinkTapAction(item.link, true)"
+                        @click.exact="onLinkTapAction(item.url)"
+                        @click.meta="onLinkTapAction(item.url, true)"
+                        @click.ctrl="onLinkTapAction(item.url, true)"
                     )
                         img.avatar(:src="item.avatar")
                         .author
@@ -74,11 +74,11 @@
                             p {{item.username}}
 
                     .developers__content
-                        h3
+                        h3(v-if="item.repo")
                             svg.octicon.octicon-repo(v-html="octicons.repo.path")
-                            span {{item.hot_repo}}
+                            span {{item.repo.name}}
 
-                        p {{item.hot_repo_desc}}
+                        p(v-if="item.repo") {{item.repo.description}}
 </template>
 
 <script>
