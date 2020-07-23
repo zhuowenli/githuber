@@ -41,7 +41,6 @@
 <script>
 import { mapActions } from 'vuex';
 import octicons from 'octicons';
-import Promise from 'bluebird';
 import searchBox from './components/search.vue';
 import githubTrending from './components/github-trending.vue';
 import bookmark from './components/bookmark.vue';
@@ -190,6 +189,4 @@ export default {
 };
 </script>
 
-<style lang="sass">
-    @import './main.sass';
-</style>
+<style lang="sass" src="./main.sass"></style>
