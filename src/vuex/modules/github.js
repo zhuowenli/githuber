@@ -6,6 +6,7 @@
 
 'use strict';
 
+import Promise from 'bluebird';
 import { get } from '../../services/fetch';
 import * as types from '../types';
 import storage from '../../services/storage';
