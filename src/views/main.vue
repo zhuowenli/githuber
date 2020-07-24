@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import Promise from 'bluebird';
 import { mapActions } from 'vuex';
 import octicons from 'octicons';
 import searchBox from './components/search.vue';
