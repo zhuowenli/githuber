@@ -16,14 +16,13 @@
         },
         "default_popup": "./popup.html"
     },
-    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "content_security_policy": "script-src 'self'; object-src 'self'",
     "chrome_url_overrides": {
         "newtab": "./index.html"
     },
     "permissions": [
         "webRequest",
-        "tabs",
-        "http://suggestion.baidu.com/su"
+        "tabs"
     ],
 	"offline_enabled": true,
 	"minimum_chrome_version": "36"

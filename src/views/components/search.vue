@@ -85,22 +85,22 @@ export default {
             const result = [];
 
             if (str) {
-                try {
-                    // 百度取消了网站联想的功能
-                    // await this.fetchSuperpage(str);
-                    await this.fetchSuggestion(str);
+                // try {
+                //     // 百度取消了网站联想的功能
+                //     // await this.fetchSuperpage(str);
+                //     await this.fetchSuggestion(str);
 
-                    this.suggestions.map(name => result.push({ name }));
+                //     this.suggestions.map(name => result.push({ name }));
 
-                    // if (this.superpages.length) {
-                    //     result.unshift({
-                    //         ...this.superpages[0],
-                    //         value: str
-                    //     });
-                    // }
-                } catch (e) {
-                    console.log(e);
-                }
+                //     // if (this.superpages.length) {
+                //     //     result.unshift({
+                //     //         ...this.superpages[0],
+                //     //         value: str
+                //     //     });
+                //     // }
+                // } catch (e) {
+                //     console.log(e);
+                // }
 
                 this.customSearchEngines.map(item => result.unshift({
                     name: `${this.$t('SearchFrom')} ${item.name}`,
