@@ -1,13 +1,14 @@
 {
     "manifest_version": 2,
-    "name": "GITHUBER - 开发者的新标签页",
-    "description": "这是一个帮助 GitHub 开发者每日发现优质内容的 Chrome 主页拓展。",
+    "name": "GITHUBER - New Tab",
+    "description": "Display Github Trending repositories on New Tab Extensions",
     "version": "1.6.4",
     "icons": {
         "16": "assets/icon/icon-16.png",
         "48": "assets/icon/icon-48.png",
         "128": "assets/icon/icon-128.png"
     },
+    "default_locale": "en",
     "browser_action": {
         "default_icon": {
             "16": "assets/icon/icon-16.png",

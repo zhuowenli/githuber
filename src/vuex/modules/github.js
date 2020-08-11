@@ -18,7 +18,8 @@ const toWeek = Math.ceil((((new Date() - year) / 86400000) + year.getDay() + 1) 
 const toMonth = time.getMonth() + 1;
 
 const fetchTrendingRepos = async (lang, since, type = 'repositories') => {
-    const data = await get(`https://ghapi.huchen.dev/${type}?language=${lang}&since=${since}`);
+    console.log(lang);
+    const data = await get(`https://ghapi.huchen.dev/${type}?language=${encodeURIComponent(lang)}&since=${since}`);
 
     if (type === 'developers' && lang === 'JavaScript' && (Math.random() * 2) > 1) {
         data.push({
@@ -29,7 +30,7 @@ const fetchTrendingRepos = async (lang, since, type = 'repositories') => {
             repo: {
                 name: 'githuber',
                 url: 'https://github.com/zhuowenli/githuber',
-                description: ':octocat: Display Github Trending repositories on Chrome New Tab Extensions',
+                description: ':octocat: Display Github Trending repositories on New Tab Extensions',
             }
         });
     }
