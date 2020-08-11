@@ -23,7 +23,7 @@ export const actions = {
             /* eslint-disable max-len */
             data = [
                 {
-                    name: 'zhuowenli/githuber: 这是一个帮助 Githuber 每日发现优质内容的 Chrome 主页拓展。',
+                    name: 'zhuowenli/githuber: 这是一个帮助 Githuber 每日发现优质内容的浏览器主页拓展。',
                     logo: 'https://github.com/favicon.ico',
                     url: 'https://github.com/zhuowenli/githuber'
                 }, {
