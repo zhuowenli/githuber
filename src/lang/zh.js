@@ -13,6 +13,7 @@ export default {
     Bing: '必应',
     Yahoo: '雅虎',
     DuckDuckGo: 'DuckDuckGo',
+    DogeDoge: 'DogeDoge',
     Web: '网页',
     Images: '图片',
     News: '新闻',

@@ -13,6 +13,7 @@ export default {
     Bing: 'Bing',
     DuckDuckGo: 'DuckDuckGo',
     Yahoo: 'Yahoo',
+    DogeDoge: 'DogeDoge',
     Web: 'Web',
     Images: 'Images',
     News: 'News',

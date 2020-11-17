@@ -120,6 +120,17 @@ export default [
         ]
     },
     {
+        name: 'DogeDoge',
+        value: 'dogedoge',
+        engines: [
+            {
+                name: 'Web',
+                value: 'Web',
+                url: 'https://www.dogedoge.com/results?q='
+            }
+        ]
+    },
+    {
         name: 'DuckDuckGo',
         value: 'duckduckgo',
         engines: [
