@@ -1,6 +1,6 @@
 {
   "name": "githuber",
-  "version": "1.6.6",
+  "version": "1.7.0",
   "main": "index.js",
   "repository": "git@github.com:zhuowenli/githuber.git",
   "author": "卓文理 <531840344@qq.com>",
