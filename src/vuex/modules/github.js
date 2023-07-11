@@ -19,7 +19,7 @@ const toMonth = time.getMonth() + 1;
 
 const fetchTrendingRepos = async (lang, since, type = 'repositories') => {
     console.log(lang);
-    const data = await get(`https://gtrend.flwha.com/${type}?language=${encodeURIComponent(lang)}&since=${since}`);
+    const data = await get(`https://gtrend.infly.io/${type}?language=${encodeURIComponent(lang)}&since=${since}`);
 
     if (type === 'developers' && lang === 'JavaScript' && (Math.random() * 2) > 1) {
         data.push({
