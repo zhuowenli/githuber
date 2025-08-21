@@ -26,9 +26,9 @@ export function fetch(query = {}) {
     }
 
     params.headers = Object.assign(params.headers, {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
     });
-    params.validateStatus = status => (status >= 200 && status < 500);
+    params.validateStatus = (status) => status >= 200 && status < 500;
 
     // console.log('=========== FETCH START ===========');
     // console.log(params);
@@ -68,7 +68,10 @@ export function fetch(query = {}) {
  */
 export function get(url, data = {}, headers = {}) {
     return fetch({
-        url, data, method: 'get', headers
+        url,
+        data,
+        method: 'get',
+        headers,
     });
 }
 
@@ -82,7 +85,10 @@ export function get(url, data = {}, headers = {}) {
  */
 export function post(url, data = {}, headers = {}) {
     return fetch({
-        url, data, method: 'post', headers
+        url,
+        data,
+        method: 'post',
+        headers,
     });
 }
 
@@ -96,7 +102,10 @@ export function post(url, data = {}, headers = {}) {
  */
 export function del(url, data = {}, headers = {}) {
     return fetch({
-        url, data, method: 'delete', headers
+        url,
+        data,
+        method: 'delete',
+        headers,
     });
 }
 
@@ -110,10 +119,12 @@ export function del(url, data = {}, headers = {}) {
  */
 export function put(url, data = {}, headers = {}) {
     return fetch({
-        url, data, method: 'put', headers
+        url,
+        data,
+        method: 'put',
+        headers,
     });
 }
-
 
 /**
  * http jsonp 请求简单封装
@@ -129,22 +140,40 @@ export function jsonp(url, query = {}) {
         data: {
             ...query,
             cb: 'callback',
-            t: (new Date()).getTime()
+            t: new Date().getTime(),
         },
         method: 'get',
         responseType: 'text',
-        headers: {}
-    }).then(res => {
-        const data = {};
-        const callback = (item) => Object.assign(data, item);
+        headers: {},
+    }).then((res) => {
+        try {
+            const startIndex = res.indexOf('(');
+            const endIndex = res.lastIndexOf(')');
 
-        eval(res);
+            if (startIndex !== -1 && endIndex !== -1 && endIndex > startIndex) {
+                const payload = res.slice(startIndex + 1, endIndex);
+                const normalised = payload.replace(/[\r\n\t]/g, '').replace(/([,{\s])([a-zA-Z_$][0-9a-zA-Z_$]*)\s*:/g, '$1"$2":');
+                return JSON.parse(normalised);
+            }
+        } catch (e) {
+            const proxy = {};
+            proxy.name = '接口请求异常';
+            proxy.message = (e && e.message) || 'Invalid JSONP response';
+            return Promise.reject(proxy);
+        }
 
-        return data;
+        const proxy = {};
+        proxy.name = '接口请求异常';
+        proxy.message = 'Invalid JSONP response';
+        return Promise.reject(proxy);
     });
 }
 
 export default {
-    fetch, get, put, delete: del, post, jsonp
+    fetch,
+    get,
+    put,
+    delete: del,
+    post,
+    jsonp,
 };
-

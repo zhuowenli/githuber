@@ -14,20 +14,30 @@ module.exports = (options, req) => ({
     filename: {
         js: '[name].js',
         css: '[name].css',
-        static: 'static/[name]-[hash].[ext]'
+        static: 'static/[name]-[hash].[ext]',
     },
     html: {
         title: 'New Tabs',
-        template: 'index.html'
+        template: 'index.html',
     },
     resolve: true,
     sourceMap: !!options.dev,
     extendWebpack(cfg) {
         // Disable progress bar while building
         // cfg.plugins.delete('progress-bar');
-        cfg.module.rule('scss')
+        cfg.module
+            .rule('scss')
             .use('sass-loader')
-            .tap(opt => {
+            .tap((opt) => {
+                opt.implementation = require('sass');
+                opt.includePaths = [path.resolve(__dirname, './node_modules')];
+                return opt;
+            });
+        cfg.module
+            .rule('sass')
+            .use('sass-loader')
+            .tap((opt) => {
+                opt.implementation = require('sass');
                 opt.includePaths = [path.resolve(__dirname, './node_modules')];
                 return opt;
             });
@@ -45,6 +55,5 @@ module.exports = (options, req) => ({
 
         return cfg;
     },
-    vendor: options.mode === 'test' ? false : Object.keys(require('./package.json').dependencies)
+    vendor: options.mode === 'test' ? false : Object.keys(require('./package.json').dependencies),
 });
-

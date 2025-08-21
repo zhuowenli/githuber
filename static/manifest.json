@@ -1,14 +1,14 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "GITHUBER - New Tab",
     "description": "Display Github Trending repositories on New Tab Extensions",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "icons": {
         "16": "assets/icon/icon-16.png",
         "48": "assets/icon/icon-48.png",
         "128": "assets/icon/icon-128.png"
     },
-    "browser_action": {
+    "action": {
         "default_icon": {
             "16": "assets/icon/icon-16.png",
             "48": "assets/icon/icon-48.png",
@@ -16,14 +16,21 @@
         },
         "default_popup": "./popup.html"
     },
-    "content_security_policy": "script-src 'self'; object-src 'self'",
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://gtrend.infly.io http://suggestion.baidu.com http://nssug.baidu.com http://githuber.zhuowenli.com http://up-z0.qiniu.com"
+    },
     "chrome_url_overrides": {
         "newtab": "./index.html"
     },
     "permissions": [
-        "webRequest",
         "tabs"
     ],
-	"offline_enabled": true,
-	"minimum_chrome_version": "36"
+    "host_permissions": [
+        "https://gtrend.infly.io/*",
+        "http://suggestion.baidu.com/*",
+        "http://nssug.baidu.com/*",
+        "http://githuber.zhuowenli.com/*",
+        "http://up-z0.qiniu.com/*"
+    ],
+    "minimum_chrome_version": "88"
 }
